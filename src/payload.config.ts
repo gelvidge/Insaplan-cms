@@ -3,6 +3,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { migrations } from './migrations'
 
 // Collections
 import { Pages } from './collections/Pages'
@@ -33,8 +34,6 @@ export default buildConfig({
         user: Users.slug,
         meta: {
             titleSuffix: '- Insaplan CMS',
-            favicon: '/favicon.ico',
-            ogImage: '/og-image.jpg'
         }
     },
     collections: [
@@ -62,9 +61,7 @@ export default buildConfig({
         pool: {
             connectionString: process.env.DATABASE_URL
         },
-        prodMigrations: {
-            dir: path.resolve(dirname, './migrations')
-        },
+        prodMigrations: migrations,
         // Disable prepared statements for Supabase compatibility
         push: false,
         migrationDir: path.resolve(dirname, './migrations')

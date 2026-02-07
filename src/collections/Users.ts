@@ -40,8 +40,8 @@ export const Users: CollectionConfig = {
                 }
             ],
             access: {
-                create: isAdmin,
-                update: isAdmin
+                create: ({ req: { user } }) => user?.role === 'admin',
+                update: ({ req: { user } }) => user?.role === 'admin',
             }
         }
     ]

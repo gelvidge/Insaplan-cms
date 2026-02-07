@@ -1,0 +1,72 @@
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.navigationScrolled {
+    background: linear-gradient(135deg, var(--mantine-color-deepblue-9), var(--mantine-color-purple-8));
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logoText {
+    background: linear-gradient(135deg, var(--mantine-color-white), var(--mantine-color-gray-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menuButton {
+    color: #FFFFFF !important;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.menuButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF !important;
+}
+
+.menuButton > span {
+    color: #FFFFFF !important;
+}
+
+.menuButton svg {
+    color: #FFFFFF !important;
+}
+
+.menuItem {
+    font-size: 14px;
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+.menuItem:hover {
+    background: var(--mantine-color-deepblue-0);
+}
+
+.mobileLink {
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--mantine-color-gray-9);
+    padding: 12px 0;
+    transition: color 0.2s ease;
+}
+
+.mobileLink:hover {
+    color: var(--mantine-color-deepblue-6);
+}

@@ -1,0 +1,220 @@
+.hero {
+    background: linear-gradient(135deg, #060a14 0%, #2e4072 50%, #64317f 100%);
+    color: white;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(148, 83, 181, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(66, 90, 161, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.heroContainer {
+    position: relative;
+    z-index: 1;
+}
+
+.launchingBanner {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--mantine-radius-xl);
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.emailInput {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    border-radius: var(--mantine-radius-md);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    min-width: 200px;
+    max-width: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.emailInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.emailInput:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.eyebrow {
+    color: var(--mantine-color-purple-3);
+    letter-spacing: 2px;
+    margin-bottom: -8px;
+}
+
+.mainTitle {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: white;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--mantine-color-gray-1);
+}
+
+.checkIcon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.primaryCta {
+    font-weight: 600;
+    box-shadow: 0 4px 14px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.primaryCta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(255, 255, 255, 0.4);
+}
+
+.secondaryCta {
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.secondaryCta:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.heroImageContainer {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.browserChrome {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--mantine-radius-lg);
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.imageContent {
+    background: var(--mantine-color-gray-0);
+    border-radius: var(--mantine-radius-md);
+    padding: 60px 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carouselRoot {
+    border-radius: var(--mantine-radius-md);
+}
+
+.carouselIndicators {
+    bottom: 10px;
+}
+
+.carouselIndicator {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.carouselIndicator[data-active] {
+    width: 24px;
+    background-color: var(--mantine-color-deepblue-6);
+}
+
+.trustBar {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trustIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--mantine-radius-md);
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .emailInput {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .imageContent {
+        min-height: 250px;
+        padding: 40px 20px;
+    }
+
+    .trustBar {
+        margin-top: 40px;
+    }
+
+    .heroImageContainer {
+        animation: none;
+    }
+}

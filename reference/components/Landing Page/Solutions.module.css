@@ -1,0 +1,17 @@
+.solutionImagePlaceholder {
+    width: 100%;
+    height: 400px;
+    background: var(--mantine-color-white);
+    border-radius: var(--mantine-radius-lg);
+    border: 3px dashed var(--mantine-color-gray-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .solutionImagePlaceholder {
+        height: 250px;
+    }
+}

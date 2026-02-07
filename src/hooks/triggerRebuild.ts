@@ -46,8 +46,7 @@ export const triggerRebuild: CollectionAfterChangeHook = async ({
             )
         } catch (error) {
             req.payload.logger.error(
-                `Failed to trigger rebuild for ${collection.slug}:`,
-                error
+                `Failed to trigger rebuild for ${collection.slug}: ${error instanceof Error ? error.message : String(error)}`
             )
             // Don't fail the document save if webhook fails
         }
