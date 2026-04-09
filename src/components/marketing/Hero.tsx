@@ -3,66 +3,94 @@
 import { Box, Text, Button, Stack, Group, Container, Grid } from '@mantine/core'
 import { Carousel } from '@mantine/carousel'
 import Autoplay from 'embla-carousel-autoplay'
-import { useRef } from 'react'
-import { IconCheck, IconUsers, IconFileCheck, IconTrendingUp, IconClock } from '@tabler/icons-react'
+import { useActionState, useEffect, useRef } from 'react'
+import {
+    IconCheck,
+    IconSparkles,
+    IconTemplate,
+    IconCards,
+    IconBuildingSkyscraper,
+} from '@tabler/icons-react'
 import classes from './Hero.module.css'
-import { submitWaitlistForm } from '@/app/(marketing)/actions'
+import { submitWaitlistForm, type WaitlistFormState } from '@/app/(marketing)/actions'
 
 const trustSignals = [
-    { icon: IconUsers, label: '10,000+ Teams' },
-    { icon: IconFileCheck, label: '500K+ Plans Created' },
-    { icon: IconTrendingUp, label: '98% Satisfaction' },
-    { icon: IconClock, label: '90% Time Saved' },
+    { icon: IconSparkles, label: 'AI-powered' },
+    { icon: IconTemplate, label: 'Custom templates' },
+    { icon: IconCards, label: "Knowledgebase" },
+    { icon: IconBuildingSkyscraper, label: 'Enterprise features' },
 ]
 
 const carouselSlides = [
     {
-        title: 'Strategic Planning Dashboard',
-        description: 'Real-time view of your strategic plans with progress tracking and KPIs',
+        title: 'Curate Insights Once',
+        description: 'Capture, tag, and reuse internal knowledge across every plan you build.',
     },
     {
-        title: 'Insights Knowledge Base',
-        description: 'Centralized repository of organizational insights, searchable and AI-powered',
+        title: 'Frameworks and Processes Built In',
+        description: 'Manage a broad library of business frameworks and planning processes.',
     },
     {
-        title: 'Framework Selection',
-        description: 'Choose from SWOT, OKRs, Business Model Canvas, and more proven methodologies',
+        title: 'Visual Tables and Infographics',
+        description: 'Turn complex information into clear tables and visuals stakeholders understand.',
     },
     {
-        title: 'Beautiful Reports',
-        description: 'Generate professional reports with stunning infographics and visualizations',
+        title: 'Templates With Hundreds of Options',
+        description: 'Use custom templates and flexible building blocks to fit the way you work.',
     },
     {
-        title: 'Real-Time Collaboration',
-        description: 'Work together on plans with live updates and commenting',
+        title: 'Iterate Fast',
+        description: 'Refine and evolve plans quickly as priorities, teams, and projects change.',
     },
+]
+
+const useCases = [
+    'Strategic Plans',
+    'Corporate Plans',
+    'Sales Plans',
+    'Marketing Plans',
+    'Product Launch Plans',
+    'Project Management',
+    'Growth Plans',
+    'Account Plans',
+    'Product Roadmaps',
+    'Startup Business Plans',
 ]
 
 const Hero = () => {
     const autoplay = useRef(Autoplay({ delay: 4000 }))
+    const formRef = useRef<HTMLFormElement | null>(null)
+
+    const initialState: WaitlistFormState = { status: 'idle' }
+    const [state, formAction, pending] = useActionState(submitWaitlistForm, initialState)
+
+    useEffect(() => {
+        if (state.status === 'success') {
+            formRef.current?.reset()
+        }
+    }, [state.status])
 
     return (
         <Box className={classes.hero}>
-            <Container size="xl" className={classes.heroContainer}>
-                <Box className={classes.launchingBanner}>
-                    <Text size="sm" fw={600} c="white">
-                        🚀 Launching Soon
-                    </Text>
-                </Box>
-
-                <Grid gutter={60} align="center">
+            <Container size={1440} className={classes.heroContainer}>
+                <Grid gutter={{ base: 24, md: 60 }} align="center">
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <Stack gap="xl">
-                            <Text className={classes.eyebrow} size="sm" tt="uppercase" fw={600}>
-                                AI-Powered Strategy Execution Platform
-                            </Text>
+                            <Group gap="sm" align="center" className={classes.eyebrowRow}>
+                                <Text className={classes.eyebrow} size="sm" tt="uppercase" fw={600}>
+                                    AI-powered planning
+                                </Text>
+                                <Text size="xs" fw={700} tt="uppercase" className={classes.launchingSoonBadge}>
+                                    Launching Soon
+                                </Text>
+                            </Group>
 
-                            <h1 className={classes.mainTitle}>Turn Insights into Plans</h1>
+                            <h1 className={classes.mainTitle}>Insight-Driven Planning Made Easy</h1>
 
                             <Text className={classes.subtitle} size="xl">
-                                Transform strategic planning from weeks to hours with AI-powered
-                                frameworks, real-time dashboards, and beautiful reporting—all in one
-                                unified platform.
+                                Capture insights as beautiful infographics, charts, and tables. Build
+                                and iterate plans fast with hundreds of predefined templates, then
+                                report and track execution.
                             </Text>
 
                             <Group gap="lg">
@@ -78,12 +106,22 @@ const Hero = () => {
                                 ))}
                             </Group>
 
-                            <form action={submitWaitlistForm}>
+                            <Stack gap="sm">
+                                <Group gap="sm" className={classes.useCases}>
+                                    {useCases.map((useCase) => (
+                                        <Text key={useCase} size="sm" className={classes.useCasePill}>
+                                            {useCase}
+                                        </Text>
+                                    ))}
+                                </Group>
+                            </Stack>
+
+                            <form action={formAction} ref={formRef}>
                                 <Stack gap="md" mt="md">
                                     <Text size="lg" fw={500} c="gray.1">
                                         Join the waitlist for early access
                                     </Text>
-                                    <Group gap="sm" align="flex-start">
+                                    <Group gap="sm" align="flex-start" className={classes.emailRow}>
                                         <input
                                             type="email"
                                             name="email"
@@ -98,12 +136,24 @@ const Hero = () => {
                                             variant="white"
                                             c="deepblue.9"
                                             className={classes.primaryCta}
+                                            loading={pending}
+                                            disabled={pending}
                                         >
                                             Get Early Access
                                         </Button>
                                     </Group>
+                                    {state.status === 'success' && (
+                                        <Text c="teal.2" size="sm" aria-live="polite">
+                                            Email submitted successfully.
+                                        </Text>
+                                    )}
+                                    {state.status === 'error' && (
+                                        <Text c="red.2" size="sm" aria-live="polite">
+                                            {state.message}
+                                        </Text>
+                                    )}
                                     <Text c="gray.2" size="sm">
-                                        Be the first to know when we launch • No spam, ever
+                                        Be the first to know when we launch - no spam
                                     </Text>
                                 </Stack>
                             </form>
@@ -154,7 +204,7 @@ const Hero = () => {
                     </Grid.Col>
                 </Grid>
 
-                <Box className={classes.trustBar} mt={80}>
+                <Box className={classes.trustBar} mt={50}>
                     <Grid gutter="xl">
                         {trustSignals.map((signal) => (
                             <Grid.Col key={signal.label} span={{ base: 6, sm: 3 }}>

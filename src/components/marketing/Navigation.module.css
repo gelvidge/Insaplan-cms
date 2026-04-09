@@ -5,12 +5,14 @@
     right: 0;
     z-index: 100;
     transition: all 0.3s ease;
-    background: transparent;
+    background: #3a427a;
+    backdrop-filter: blur(18px);
+    
 }
 
 .navigationScrolled {
-    background: linear-gradient(135deg, var(--mantine-color-deepblue-9), var(--mantine-color-purple-8));
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: #3a427a;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.14);
 }
 
 .logo {

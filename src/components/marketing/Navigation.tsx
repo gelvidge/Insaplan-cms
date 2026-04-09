@@ -59,7 +59,7 @@ export const Navigation = () => {
     return (
         <>
             <Box className={`${classes.navigation} ${scrolled ? classes.navigationScrolled : ''}`}>
-                <Container size="xl">
+                <Container size={1440}>
                     <Group justify="space-between" h={70}>
                         <Anchor component={Link} href="/" className={classes.logo}>
                             <Text size="xl" fw={700} className={classes.logoText}>

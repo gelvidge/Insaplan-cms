@@ -2,13 +2,27 @@
 
 import { createFormSubmission } from '@/lib/queries'
 
-export async function submitWaitlistForm(formData: FormData) {
-    const email = formData.get('email') as string
+export type WaitlistFormState =
+    | { status: 'idle' }
+    | { status: 'success' }
+    | { status: 'error'; message: string }
 
-    if (!email) return
+export async function submitWaitlistForm(
+    _prevState: WaitlistFormState,
+    formData: FormData,
+): Promise<WaitlistFormState> {
+    const email = (formData.get('email') as string | null)?.trim()
 
-    await createFormSubmission({
-        formType: 'waitlist',
-        email,
-    })
+    if (!email) return { status: 'error', message: 'Please enter your email.' }
+
+    try {
+        await createFormSubmission({
+            formType: 'waitlist',
+            email,
+        })
+
+        return { status: 'success' }
+    } catch {
+        return { status: 'error', message: 'Something went wrong. Please try again.' }
+    }
 }

@@ -1,5 +1,6 @@
 .cta {
-    background: linear-gradient(45deg, var(--mantine-color-deepblue-9), var(--mantine-color-purple-6));
+    /* The animated home background is rendered at the page level. Keep this transparent so it shows through. */
+    background: transparent;
     color: white;
 }
 

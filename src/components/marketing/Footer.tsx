@@ -32,7 +32,7 @@ const footerLinks = {
 
 const Footer = () => (
     <Box className={classes.footer} py={60}>
-        <Container size="xl">
+        <Container size={1440}>
             <Stack gap="xl">
                 <Stack gap="sm">
                     <Box className={classes.footerLogoPlaceholder}>

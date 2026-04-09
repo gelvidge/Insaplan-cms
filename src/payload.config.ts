@@ -62,7 +62,8 @@ export default buildConfig({
             connectionString: process.env.DATABASE_URL
         },
         prodMigrations: migrations,
-        // Disable prepared statements for Supabase compatibility
+        // Supabase-managed Postgres often uses restricted roles (e.g. `prisma.<ref>`). Keep push off
+        // and apply schema via migrations/SQL editor with a privileged role.
         push: false,
         migrationDir: path.resolve(dirname, './migrations')
     }),
