@@ -112,11 +112,11 @@ const SocialProof = ({ section, testimonials }: Props) => {
                                         <Text size="sm" c="dimmed" style={{ fontStyle: 'italic' }}>
                                             &ldquo;{testimonial.quote}&rdquo;
                                         </Text>
-                                        {'companyLogo' in testimonial && testimonial.companyLogo?.url ? (
+                                        {'companyLogo' in testimonial && (testimonial.companyLogo as any)?.url ? (
                                             <Box className={classes.testimonialLogoPlaceholder}>
                                                 <Image
-                                                    src={testimonial.companyLogo.url}
-                                                    alt={testimonial.companyLogo.alt ?? testimonial.company}
+                                                    src={(testimonial.companyLogo as any).url}
+                                                    alt={(testimonial.companyLogo as any).alt ?? testimonial.company}
                                                     width={80}
                                                     height={30}
                                                     style={{ objectFit: 'contain' }}

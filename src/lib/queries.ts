@@ -84,6 +84,11 @@ export async function fetchSiteMetadata() {
     return payload.findGlobal({ slug: 'site-metadata' as any }) as any
 }
 
+export async function fetchProductFeaturesPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-features-page' as any }) as any
+}
+
 export async function fetchProductOverviewPage() {
     const payload = await getPayloadClient()
     return payload.findGlobal({ slug: 'product-overview-page' as any }) as any
@@ -150,16 +155,6 @@ export async function fetchPageBySlug(slug: string) {
     return result.docs[0] || null
 }
 
-export async function fetchFeaturedTestimonials(limit = 6) {
-    const payload = await getPayloadClient()
-    const result = await payload.find({
-        collection: 'testimonials',
-        where: { featured: { equals: true } },
-        sort: 'order',
-        limit,
-    })
-    return result.docs
-}
 
 export async function fetchFAQsPage() {
     const payload = await getPayloadClient()

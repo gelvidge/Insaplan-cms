@@ -20,12 +20,14 @@ import { IconChevronDown } from '@tabler/icons-react'
 import classes from './Navigation.module.css'
 
 
-type NavChild = { label: string; url: string; description?: string }
+type NavChild = { label: string; url: string; description?: string | null; id?: string | null }
 type NavItem = {
     label: string
     type: 'custom' | 'page' | 'dropdown'
-    url?: string
-    children?: NavChild[]
+    url?: string | null
+    children?: NavChild[] | null
+    openInNewTab?: boolean | null
+    [key: string]: unknown
 }
 
 const FALLBACK_ITEMS: NavItem[] = [
@@ -70,13 +72,16 @@ const FALLBACK_ITEMS: NavItem[] = [
 ]
 
 interface NavigationProps {
-    menuItems?: NavItem[]
-    logoText?: string
-    ctaLabel?: string
-    ctaUrl?: string
+    menuItems?: NavItem[] | null
+    logoText?: string | null
+    ctaLabel?: string | null
+    ctaUrl?: string | null
 }
 
-export const Navigation = ({ menuItems, logoText = 'Insaplan', ctaLabel = 'Request Access', ctaUrl = '/contact' }: NavigationProps) => {
+export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLabelProp, ctaUrl: ctaUrlProp }: NavigationProps) => {
+    const logoText = logoTextProp ?? 'Insaplan'
+    const ctaLabel = ctaLabelProp ?? 'Request Access'
+    const ctaUrl = ctaUrlProp ?? '/contact'
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const [scrolled, setScrolled] = useState(false)
     const { scrollY } = useScroll()
@@ -85,7 +90,7 @@ export const Navigation = ({ menuItems, logoText = 'Insaplan', ctaLabel = 'Reque
         setScrolled(y > 50)
     })
 
-    const items: NavItem[] = menuItems?.length ? menuItems : FALLBACK_ITEMS
+    const items: NavItem[] = menuItems?.length ? (menuItems as NavItem[]) : FALLBACK_ITEMS
 
     return (
         <>
@@ -128,7 +133,7 @@ export const Navigation = ({ menuItems, logoText = 'Insaplan', ctaLabel = 'Reque
                                                 <Menu.Item
                                                     key={child.label}
                                                     component={Link}
-                                                    href={child.url}
+                                                    href={child.url || '/'}
                                                     className={classes.menuItem}
                                                 >
                                                     {child.label}
@@ -186,7 +191,7 @@ export const Navigation = ({ menuItems, logoText = 'Insaplan', ctaLabel = 'Reque
                                     <Anchor
                                         key={child.label}
                                         component={Link}
-                                        href={child.url}
+                                        href={child.url || '/'}
                                         className={classes.mobileLink}
                                         onClick={closeDrawer}
                                     >
