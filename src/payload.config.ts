@@ -96,7 +96,8 @@ export default buildConfig({
     },
     db: postgresAdapter({
         pool: {
-            connectionString: process.env.DATABASE_URL
+            connectionString: process.env.DATABASE_URL,
+            max: 3,
         },
         prodMigrations: migrations,
         // Supabase-managed Postgres often uses restricted roles (e.g. `prisma.<ref>`). Keep push off

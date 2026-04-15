@@ -1,6 +1,5 @@
 [build]
-builder = "nixpacks"
-buildCommand = "pnpm run build"
+builder = "dockerfile"
 
 [deploy]
 startCommand = "node_modules/.bin/next start --port 3001"
