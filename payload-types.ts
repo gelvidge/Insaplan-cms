@@ -74,9 +74,6 @@ export interface Config {
     faqs: Faq;
     'pricing-plans': PricingPlan;
     solutions: Solution;
-    'product-features': ProductFeature;
-    'case-studies': CaseStudy;
-    testimonials: Testimonial;
     changelog: Changelog;
     'navigation-menus': NavigationMenu;
     'form-submissions': FormSubmission;
@@ -95,9 +92,6 @@ export interface Config {
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     solutions: SolutionsSelect<false> | SolutionsSelect<true>;
-    'product-features': ProductFeaturesSelect<false> | ProductFeaturesSelect<true>;
-    'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
-    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     changelog: ChangelogSelect<false> | ChangelogSelect<true>;
     'navigation-menus': NavigationMenusSelect<false> | NavigationMenusSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -112,9 +106,41 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    'marketing-home': MarketingHome;
+    'product-overview-page': ProductOverviewPage;
+    'product-knowledge-base-page': ProductKnowledgeBasePage;
+    'product-planning-page': ProductPlanningPage;
+    'product-visuals-page': ProductVisualsPage;
+    'product-reporting-page': ProductReportingPage;
+    'solutions-page': SolutionsPage;
+    'pricing-page': PricingPage;
+    'blog-page': BlogPage;
+    'faqs-page': FaqsPage;
+    'support-page': SupportPage;
+    'knowledge-base-page': KnowledgeBasePage;
+    'contact-page': ContactPage;
+    'legal-page': LegalPage;
+    footer: Footer;
+    'site-metadata': SiteMetadatum;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
+    'marketing-home': MarketingHomeSelect<false> | MarketingHomeSelect<true>;
+    'product-overview-page': ProductOverviewPageSelect<false> | ProductOverviewPageSelect<true>;
+    'product-knowledge-base-page': ProductKnowledgeBasePageSelect<false> | ProductKnowledgeBasePageSelect<true>;
+    'product-planning-page': ProductPlanningPageSelect<false> | ProductPlanningPageSelect<true>;
+    'product-visuals-page': ProductVisualsPageSelect<false> | ProductVisualsPageSelect<true>;
+    'product-reporting-page': ProductReportingPageSelect<false> | ProductReportingPageSelect<true>;
+    'solutions-page': SolutionsPageSelect<false> | SolutionsPageSelect<true>;
+    'pricing-page': PricingPageSelect<false> | PricingPageSelect<true>;
+    'blog-page': BlogPageSelect<false> | BlogPageSelect<true>;
+    'faqs-page': FaqsPageSelect<false> | FaqsPageSelect<true>;
+    'support-page': SupportPageSelect<false> | SupportPageSelect<true>;
+    'knowledge-base-page': KnowledgeBasePageSelect<false> | KnowledgeBasePageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'legal-page': LegalPageSelect<false> | LegalPageSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    'site-metadata': SiteMetadataSelect<false> | SiteMetadataSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
@@ -520,6 +546,32 @@ export interface Solution {
    */
   slug: string;
   subtitle: string;
+  /**
+   * Small label above the headline — e.g. "THE PROBLEM"
+   */
+  heroKicker?: string | null;
+  /**
+   * Large bold headline — e.g. "WHAT'S KILLING YOUR RANKINGS?"
+   */
+  heroHeadline?: string | null;
+  /**
+   * Word or phrase within the headline to highlight in purple — e.g. "YOUR RANKINGS?"
+   */
+  heroHeadlineAccent?: string | null;
+  /**
+   * Paragraph shown to the right of the headline
+   */
+  heroBody?: string | null;
+  /**
+   * Process steps shown below the headline (e.g. Enter URL → Agent Analyzes → …)
+   */
+  heroSteps?:
+    | {
+        label: string;
+        active?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
   heroImage?: (number | null) | Media;
   overview: {
     root: {
@@ -536,12 +588,15 @@ export interface Solution {
     };
     [k: string]: unknown;
   };
-  keyFeatures?:
+  /**
+   * The key challenges or frustrations this solution resolves for the audience
+   */
+  challenges?:
     | {
         title: string;
         description: string;
         /**
-         * Icon name from Tabler Icons (e.g., "IconRocket")
+         * Icon name from Tabler Icons (e.g., "clock", "puzzle", "bolt")
          */
         icon?: string | null;
         id?: string | null;
@@ -555,7 +610,17 @@ export interface Solution {
         id?: string | null;
       }[]
     | null;
-  caseStudies?: (number | CaseStudy)[] | null;
+  keyFeatures?:
+    | {
+        title: string;
+        description: string;
+        /**
+         * Icon name from Tabler Icons (e.g., "IconRocket")
+         */
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   cta?: {
     text?: string | null;
     url?: string | null;
@@ -590,188 +655,6 @@ export interface Solution {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "case-studies".
- */
-export interface CaseStudy {
-  id: number;
-  companyName: string;
-  /**
-   * URL-friendly identifier
-   */
-  slug: string;
-  companyLogo: number | Media;
-  industry: 'saas' | 'ecommerce' | 'healthcare' | 'finance' | 'education' | 'manufacturing' | 'other';
-  companySize: 'startup' | 'smb' | 'enterprise';
-  challenge: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  solution: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  results: {
-    /**
-     * E.g., "Revenue Growth", "Time Saved"
-     */
-    metric: string;
-    /**
-     * E.g., "50%", "10 hours/week"
-     */
-    value: string;
-    /**
-     * Optional context, e.g., "vs. previous year"
-     */
-    improvement?: string | null;
-    id?: string | null;
-  }[];
-  quote: {
-    text: string;
-    author: string;
-    role: string;
-    photo?: (number | null) | Media;
-  };
-  heroImage?: (number | null) | Media;
-  status: 'draft' | 'published' | 'archived';
-  publishedDate?: string | null;
-  seo?: {
-    /**
-     * Optimal length: 50-60 characters
-     */
-    metaTitle?: string | null;
-    /**
-     * Optimal length: 150-160 characters
-     */
-    metaDescription?: string | null;
-    /**
-     * Recommended: 1200x630px
-     */
-    ogImage?: (number | null) | Media;
-    /**
-     * Leave empty to use default URL
-     */
-    canonicalUrl?: string | null;
-    /**
-     * Prevent search engines from indexing this page
-     */
-    noIndex?: boolean | null;
-    /**
-     * Comma-separated keywords for SEO
-     */
-    keywords?: string[] | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-features".
- */
-export interface ProductFeature {
-  id: number;
-  name: string;
-  /**
-   * URL-friendly identifier
-   */
-  slug: string;
-  /**
-   * Short catchy description (one sentence)
-   */
-  tagline: string;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Feature icon or illustration
-   */
-  icon?: (number | null) | Media;
-  /**
-   * Screenshot showing the feature
-   */
-  screenshot?: (number | null) | Media;
-  /**
-   * Demo video (optional)
-   */
-  video?: (number | null) | Media;
-  category?: ('planning' | 'collaboration' | 'analytics' | 'automation' | 'integration' | 'visualization') | null;
-  /**
-   * Which plans include this feature
-   */
-  availableIn?: ('starter' | 'professional' | 'enterprise')[] | null;
-  comingSoon?: boolean | null;
-  order: number;
-  status: 'draft' | 'published' | 'archived';
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials".
- */
-export interface Testimonial {
-  id: number;
-  /**
-   * Keep it concise and impactful (max 500 characters)
-   */
-  quote: string;
-  author: string;
-  /**
-   * E.g., "CEO", "Product Manager"
-   */
-  role: string;
-  company: string;
-  companyLogo?: (number | null) | Media;
-  photo?: (number | null) | Media;
-  /**
-   * Rating out of 5
-   */
-  rating?: number | null;
-  /**
-   * Show on homepage
-   */
-  featured?: boolean | null;
-  order: number;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -926,18 +809,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'solutions';
         value: number | Solution;
-      } | null)
-    | ({
-        relationTo: 'product-features';
-        value: number | ProductFeature;
-      } | null)
-    | ({
-        relationTo: 'case-studies';
-        value: number | CaseStudy;
-      } | null)
-    | ({
-        relationTo: 'testimonials';
-        value: number | Testimonial;
       } | null)
     | ({
         relationTo: 'changelog';
@@ -1161,9 +1032,20 @@ export interface SolutionsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   subtitle?: T;
+  heroKicker?: T;
+  heroHeadline?: T;
+  heroHeadlineAccent?: T;
+  heroBody?: T;
+  heroSteps?:
+    | T
+    | {
+        label?: T;
+        active?: T;
+        id?: T;
+      };
   heroImage?: T;
   overview?: T;
-  keyFeatures?:
+  challenges?:
     | T
     | {
         title?: T;
@@ -1179,7 +1061,14 @@ export interface SolutionsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
-  caseStudies?: T;
+  keyFeatures?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
   cta?:
     | T
     | {
@@ -1200,89 +1089,6 @@ export interface SolutionsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-features_select".
- */
-export interface ProductFeaturesSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
-  tagline?: T;
-  description?: T;
-  icon?: T;
-  screenshot?: T;
-  video?: T;
-  category?: T;
-  availableIn?: T;
-  comingSoon?: T;
-  order?: T;
-  status?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "case-studies_select".
- */
-export interface CaseStudiesSelect<T extends boolean = true> {
-  companyName?: T;
-  slug?: T;
-  companyLogo?: T;
-  industry?: T;
-  companySize?: T;
-  challenge?: T;
-  solution?: T;
-  results?:
-    | T
-    | {
-        metric?: T;
-        value?: T;
-        improvement?: T;
-        id?: T;
-      };
-  quote?:
-    | T
-    | {
-        text?: T;
-        author?: T;
-        role?: T;
-        photo?: T;
-      };
-  heroImage?: T;
-  status?: T;
-  publishedDate?: T;
-  seo?:
-    | T
-    | {
-        metaTitle?: T;
-        metaDescription?: T;
-        ogImage?: T;
-        canonicalUrl?: T;
-        noIndex?: T;
-        keywords?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials_select".
- */
-export interface TestimonialsSelect<T extends boolean = true> {
-  quote?: T;
-  author?: T;
-  role?: T;
-  company?: T;
-  companyLogo?: T;
-  photo?: T;
-  rating?: T;
-  featured?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1457,6 +1263,591 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "marketing-home".
+ */
+export interface MarketingHome {
+  id: number;
+  hero?: {
+    eyebrow?: string | null;
+    badge?: string | null;
+    headline?: string | null;
+    subtitle?: string | null;
+    pillars?:
+      | {
+          label?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    useCases?:
+      | {
+          label?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    trustSignals?:
+      | {
+          icon?: ('sparkles' | 'template' | 'cards' | 'building') | null;
+          label?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    carouselSlides?:
+      | {
+          title?: string | null;
+          description?: string | null;
+          /**
+           * Optional screenshot/image for this slide
+           */
+          image?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  coreFeatures?: {
+    kicker?: string | null;
+    heading?: string | null;
+    description?: string | null;
+    features?:
+      | {
+          icon?: ('bulb' | 'target' | 'report') | null;
+          title?: string | null;
+          description?: string | null;
+          capabilities?:
+            | {
+                label?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          visuals?:
+            | {
+                label?: string | null;
+                /**
+                 * Optional screenshot for this visual card
+                 */
+                image?: (number | null) | Media;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  socialProof?: {
+    heading?: string | null;
+    subheading?: string | null;
+    logosLabel?: string | null;
+    customerLogos?:
+      | {
+          companyName: string;
+          logo?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  cta?: {
+    title?: string | null;
+    description?: string | null;
+    emailPlaceholder?: string | null;
+    buttonLabel?: string | null;
+    note?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-overview-page".
+ */
+export interface ProductOverviewPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  howItWorksHeading?: string | null;
+  howItWorksSubheading?: string | null;
+  steps?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  keyBenefits?: {
+    heading?: string | null;
+    subheading?: string | null;
+    benefits?:
+      | {
+          icon?: ('clock' | 'palette' | 'adjustments' | 'books' | 'database' | 'sparkles') | null;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  featuresHeading?: string | null;
+  featuresSubheading?: string | null;
+  features?:
+    | {
+        icon?: ('chart-bar' | 'palette' | 'brain' | 'adjustments' | 'books' | 'database') | null;
+        title: string;
+        description: string;
+        benefits?:
+          | {
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  problemsHeading?: string | null;
+  problemsSubheading?: string | null;
+  problems?:
+    | {
+        problem: string;
+        solution: string;
+        id?: string | null;
+      }[]
+    | null;
+  comparisonTable?: {
+    heading?: string | null;
+    subheading?: string | null;
+    columns?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    rows?:
+      | {
+          aspect: string;
+          values?:
+            | {
+                value: 'true' | 'false' | 'limited';
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-knowledge-base-page".
+ */
+export interface ProductKnowledgeBasePage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  sectionHeading?: string | null;
+  sectionSubheading?: string | null;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-planning-page".
+ */
+export interface ProductPlanningPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  sectionHeading?: string | null;
+  sectionSubheading?: string | null;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-visuals-page".
+ */
+export interface ProductVisualsPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  sectionHeading?: string | null;
+  sectionSubheading?: string | null;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-reporting-page".
+ */
+export interface ProductReportingPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  sectionHeading?: string | null;
+  sectionSubheading?: string | null;
+  features?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions-page".
+ */
+export interface SolutionsPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  sectionHeading?: string | null;
+  sectionSubheading?: string | null;
+  /**
+   * The list of solutions shown on the solutions landing page. Order determines display order.
+   */
+  solutionLinks?:
+    | {
+        /**
+         * Display name (e.g. "Sales")
+         */
+        label: string;
+        /**
+         * URL slug (e.g. "sales" → /solutions/sales)
+         */
+        slug: string;
+        /**
+         * Short description shown on the card
+         */
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-page".
+ */
+export interface PricingPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  /**
+   * Label for the monthly billing toggle option
+   */
+  monthlyLabel?: string | null;
+  /**
+   * Label for the annual billing toggle option
+   */
+  annualLabel?: string | null;
+  /**
+   * Badge text shown next to the annual option
+   */
+  annualDiscountBadge?: string | null;
+  /**
+   * Shown in place of a price for enterprise/custom plans
+   */
+  customPriceLabel?: string | null;
+  /**
+   * Suffix appended to monthly price display
+   */
+  perMonthSuffix?: string | null;
+  /**
+   * Badge label on the highlighted plan
+   */
+  popularBadgeLabel?: string | null;
+  /**
+   * Note shown below price when annual billing is selected
+   */
+  billedAnnuallyLabel?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-page".
+ */
+export interface BlogPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  readMoreLabel?: string | null;
+  emptyStateHeading?: string | null;
+  emptyStateMessage?: string | null;
+  /**
+   * Map blog category slugs to display labels.
+   */
+  categoryLabels?:
+    | {
+        /**
+         * Category slug as stored on posts (e.g. "product-updates")
+         */
+        slug: string;
+        /**
+         * Display label shown in the UI (e.g. "Product Updates")
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs-page".
+ */
+export interface FaqsPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  /**
+   * Shown when there are no FAQs in the system
+   */
+  emptyStateMessage?: string | null;
+  /**
+   * Map category slugs to display labels. Order determines display sequence.
+   */
+  categoryLabels?:
+    | {
+        /**
+         * Category slug as stored on FAQ records (e.g. "general")
+         */
+        slug: string;
+        /**
+         * Display label shown in the UI (e.g. "General")
+         */
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support-page".
+ */
+export interface SupportPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  comingSoonMessage?: string | null;
+  contactHeading?: string | null;
+  /**
+   * Support email address shown on the page
+   */
+  contactEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "knowledge-base-page".
+ */
+export interface KnowledgeBasePage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  comingSoonHeading?: string | null;
+  comingSoonMessage?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  namePlaceholder?: string | null;
+  emailPlaceholder?: string | null;
+  companyPlaceholder?: string | null;
+  messagePlaceholder?: string | null;
+  submitButtonLabel?: string | null;
+  successMessage?: string | null;
+  responseNote?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "legal-page".
+ */
+export interface LegalPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  /**
+   * Label for the Terms of Service tab
+   */
+  termsTabLabel?: string | null;
+  /**
+   * Label for the Privacy Policy tab
+   */
+  privacyTabLabel?: string | null;
+  /**
+   * Label for the Data Security tab
+   */
+  dataSecurityTabLabel?: string | null;
+  /**
+   * Full Terms of Service text
+   */
+  termsContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Full Privacy Policy text
+   */
+  privacyContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Shown when terms richText is empty
+   */
+  termsComingSoon?: string | null;
+  /**
+   * Shown when privacy richText is empty
+   */
+  privacyComingSoon?: string | null;
+  /**
+   * Full Data Security documentation text
+   */
+  dataSecurityContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Shown when data security richText is empty
+   */
+  dataSecurityComingSoon?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  /**
+   * Brand name shown as logo text in nav and footer
+   */
+  logoText?: string | null;
+  /**
+   * Label for the primary CTA button in the navigation bar
+   */
+  navCtaLabel?: string | null;
+  /**
+   * URL for the navigation CTA button
+   */
+  navCtaUrl?: string | null;
+  tagline?: string | null;
+  /**
+   * Name used in the copyright line (e.g. "Insaplan")
+   */
+  copyrightName?: string | null;
+  /**
+   * Text after the year and company name in the copyright line
+   */
+  copyrightSuffix?: string | null;
+  linkGroups?:
+    | {
+        /**
+         * Category heading (e.g. "Product")
+         */
+        heading: string;
+        links?:
+          | {
+              label: string;
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-metadata".
+ */
+export interface SiteMetadatum {
+  id: number;
+  /**
+   * Browser tab title for all marketing pages
+   */
+  defaultTitle?: string | null;
+  /**
+   * Default meta description
+   */
+  defaultDescription?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
@@ -1504,6 +1895,447 @@ export interface SiteSetting {
   };
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "marketing-home_select".
+ */
+export interface MarketingHomeSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        eyebrow?: T;
+        badge?: T;
+        headline?: T;
+        subtitle?: T;
+        pillars?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        useCases?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        trustSignals?:
+          | T
+          | {
+              icon?: T;
+              label?: T;
+              id?: T;
+            };
+        carouselSlides?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+            };
+      };
+  coreFeatures?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              capabilities?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              visuals?:
+                | T
+                | {
+                    label?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  socialProof?:
+    | T
+    | {
+        heading?: T;
+        subheading?: T;
+        logosLabel?: T;
+        customerLogos?:
+          | T
+          | {
+              companyName?: T;
+              logo?: T;
+              id?: T;
+            };
+      };
+  cta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        emailPlaceholder?: T;
+        buttonLabel?: T;
+        note?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-overview-page_select".
+ */
+export interface ProductOverviewPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  howItWorksHeading?: T;
+  howItWorksSubheading?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  keyBenefits?:
+    | T
+    | {
+        heading?: T;
+        subheading?: T;
+        benefits?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  featuresHeading?: T;
+  featuresSubheading?: T;
+  features?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        benefits?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  problemsHeading?: T;
+  problemsSubheading?: T;
+  problems?:
+    | T
+    | {
+        problem?: T;
+        solution?: T;
+        id?: T;
+      };
+  comparisonTable?:
+    | T
+    | {
+        heading?: T;
+        subheading?: T;
+        columns?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        rows?:
+          | T
+          | {
+              aspect?: T;
+              values?:
+                | T
+                | {
+                    value?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-knowledge-base-page_select".
+ */
+export interface ProductKnowledgeBasePageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  sectionHeading?: T;
+  sectionSubheading?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-planning-page_select".
+ */
+export interface ProductPlanningPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  sectionHeading?: T;
+  sectionSubheading?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-visuals-page_select".
+ */
+export interface ProductVisualsPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  sectionHeading?: T;
+  sectionSubheading?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-reporting-page_select".
+ */
+export interface ProductReportingPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  sectionHeading?: T;
+  sectionSubheading?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions-page_select".
+ */
+export interface SolutionsPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  sectionHeading?: T;
+  sectionSubheading?: T;
+  solutionLinks?:
+    | T
+    | {
+        label?: T;
+        slug?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-page_select".
+ */
+export interface PricingPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  monthlyLabel?: T;
+  annualLabel?: T;
+  annualDiscountBadge?: T;
+  customPriceLabel?: T;
+  perMonthSuffix?: T;
+  popularBadgeLabel?: T;
+  billedAnnuallyLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-page_select".
+ */
+export interface BlogPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  readMoreLabel?: T;
+  emptyStateHeading?: T;
+  emptyStateMessage?: T;
+  categoryLabels?:
+    | T
+    | {
+        slug?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs-page_select".
+ */
+export interface FaqsPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  emptyStateMessage?: T;
+  categoryLabels?:
+    | T
+    | {
+        slug?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "support-page_select".
+ */
+export interface SupportPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  comingSoonMessage?: T;
+  contactHeading?: T;
+  contactEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "knowledge-base-page_select".
+ */
+export interface KnowledgeBasePageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  comingSoonHeading?: T;
+  comingSoonMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  namePlaceholder?: T;
+  emailPlaceholder?: T;
+  companyPlaceholder?: T;
+  messagePlaceholder?: T;
+  submitButtonLabel?: T;
+  successMessage?: T;
+  responseNote?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "legal-page_select".
+ */
+export interface LegalPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  termsTabLabel?: T;
+  privacyTabLabel?: T;
+  dataSecurityTabLabel?: T;
+  termsContent?: T;
+  privacyContent?: T;
+  termsComingSoon?: T;
+  privacyComingSoon?: T;
+  dataSecurityContent?: T;
+  dataSecurityComingSoon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  logoText?: T;
+  navCtaLabel?: T;
+  navCtaUrl?: T;
+  tagline?: T;
+  copyrightName?: T;
+  copyrightSuffix?: T;
+  linkGroups?:
+    | T
+    | {
+        heading?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-metadata_select".
+ */
+export interface SiteMetadataSelect<T extends boolean = true> {
+  defaultTitle?: T;
+  defaultDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

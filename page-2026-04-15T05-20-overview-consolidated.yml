@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - link "Insaplan" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - paragraph [ref=e6]: Insaplan
+    - generic [ref=e7]:
+      - button "Product" [ref=e8] [cursor=pointer]
+      - button "Solutions" [ref=e14] [cursor=pointer]
+      - button "Resources" [ref=e20] [cursor=pointer]
+      - link "Pricing" [ref=e26] [cursor=pointer]:
+        - /url: /pricing
+      - button "About" [ref=e29] [cursor=pointer]
+    - generic [ref=e35]:
+      - link "Sign In" [ref=e36] [cursor=pointer]:
+        - /url: https://app.insaplan.com/auth/signin
+      - link "Start Free Trial" [ref=e39] [cursor=pointer]:
+        - /url: https://app.insaplan.com/auth/signup
+  - main [ref=e42]:
+    - generic [ref=e43]:
+      - generic
+      - generic
+      - generic [ref=e46]
+  - generic [ref=e519]:
+    - generic [ref=e520]:
+      - paragraph [ref=e522]: "[LOGO: Insaplan]"
+      - paragraph [ref=e523]: Turn Insights into Plans. Strategic planning and reporting made simple.
+    - generic [ref=e525]:
+      - generic [ref=e527]
+      - generic [ref=e532]
+      - generic [ref=e540]
+      - generic [ref=e545]
+      - generic [ref=e551]
+    - paragraph [ref=e557]: © 2026 Insaplan. All Rights Reserved.
+  - button "Open Next.js Dev Tools" [ref=e564] [cursor=pointer]:
+    - img [ref=e565]
+  - alert [ref=e568]

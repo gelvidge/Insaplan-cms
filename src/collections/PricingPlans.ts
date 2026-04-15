@@ -6,7 +6,7 @@ export const PricingPlans: CollectionConfig = {
     admin: {
         useAsTitle: 'planName',
         defaultColumns: ['planName', 'planType', 'price', 'order'],
-        group: 'Marketing'
+        group: 'Content'
     },
     access: {
         read: publicRead,

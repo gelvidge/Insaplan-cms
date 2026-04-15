@@ -1,0 +1,282 @@
+/* ── Client root ─────────────────────────────────────────────────────────── */
+.clientRoot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* ── Billing toggle ──────────────────────────────────────────────────────── */
+.toggleRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toggleLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(20, 36, 70, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.toggleLabelActive {
+    color: #0f1f3d;
+    font-weight: 600;
+}
+
+.toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(20, 28, 48, 0.12);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease;
+    flex-shrink: 0;
+}
+
+.toggleOn {
+    background: #2e5599;
+}
+
+.toggleThumb {
+    display: block;
+    position: absolute;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.saveBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 7px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(22, 160, 70, 0.9);
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    align-items: start;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(20, 28, 48, 0.09);
+    border-radius: 20px;
+    padding: 28px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(46, 85, 153, 0.2);
+    box-shadow: 0 8px 32px rgba(16, 36, 69, 0.09);
+}
+
+.cardPopular {
+    border-color: #2e5599;
+    box-shadow: 0 12px 40px rgba(46, 85, 153, 0.14);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 24px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2e5599, #6d3fbd);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* ── Card header ─────────────────────────────────────────────────────────── */
+.cardHeader {
+    margin-bottom: 20px;
+}
+
+.planName {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f1f3d;
+    margin: 0 0 6px;
+}
+
+.planDesc {
+    font-size: 0.84rem;
+    color: rgba(20, 36, 70, 0.58);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Price ───────────────────────────────────────────────────────────────── */
+.priceRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    margin-bottom: 4px;
+}
+
+.priceCurrency {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f1f3d;
+    line-height: 1;
+    padding-bottom: 6px;
+}
+
+.priceAmount {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #0f1f3d;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.pricePer {
+    font-size: 0.9rem;
+    color: rgba(20, 36, 70, 0.45);
+    padding-bottom: 8px;
+    margin-left: 2px;
+}
+
+.priceCustom {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f1f3d;
+    line-height: 1;
+}
+
+.annualNote {
+    font-size: 0.76rem;
+    color: rgba(20, 36, 70, 0.4);
+    margin: 0 0 4px;
+}
+
+/* ── CTA button ──────────────────────────────────────────────────────────── */
+.ctaButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-block: 20px 24px;
+    transition: opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ctaButton:hover {
+    opacity: 0.88;
+}
+
+.ctaButtonPrimary {
+    background: linear-gradient(135deg, #2e5599, #6d3fbd);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(46, 85, 153, 0.3);
+}
+
+.ctaButtonOutline {
+    background: transparent;
+    color: #2e5599;
+    border: 1.5px solid rgba(46, 85, 153, 0.3);
+}
+
+.ctaButtonOutline:hover {
+    border-color: #2e5599;
+    opacity: 1;
+    background: rgba(46, 85, 153, 0.04);
+}
+
+/* ── Feature list ────────────────────────────────────────────────────────── */
+.featureList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid rgba(20, 28, 48, 0.07);
+    padding-top: 20px;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.featureItemExcluded {
+    opacity: 0.4;
+}
+
+.featureIcon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.featureIconCheck {
+    background: rgba(34, 197, 94, 0.12);
+    color: rgba(22, 160, 70, 0.9);
+}
+
+.featureIconMinus {
+    background: rgba(20, 28, 48, 0.06);
+    color: rgba(20, 28, 48, 0.35);
+}
+
+.featureText {
+    font-size: 0.84rem;
+    color: rgba(20, 36, 70, 0.72);
+    line-height: 1.45;
+}
+
+.featureText strong {
+    color: #0f1f3d;
+    font-weight: 600;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+}

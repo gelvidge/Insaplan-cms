@@ -1,18 +1,44 @@
-import { Container, Title, Text, Table, TableThead, TableTbody, TableTr, TableTh, TableTd, Stack, Box, ThemeIcon } from '@mantine/core'
+import {
+    Container,
+    Title,
+    Text,
+    Table,
+    TableThead,
+    TableTbody,
+    TableTr,
+    TableTh,
+    TableTd,
+    Stack,
+    Box,
+    ThemeIcon,
+} from '@mantine/core'
 import { IconCheck, IconX, IconAlertCircle } from '@tabler/icons-react'
 
-const comparisonData = [
-    { aspect: 'Real-time updates', spreadsheets: false, powerpoint: false, insaplan: true },
-    { aspect: 'Searchable insights', spreadsheets: false, powerpoint: false, insaplan: true },
-    { aspect: 'Version control', spreadsheets: 'limited' as const, powerpoint: 'limited' as const, insaplan: true },
-    { aspect: 'Beautiful reports', spreadsheets: false, powerpoint: true, insaplan: true },
-    { aspect: 'AI assistance', spreadsheets: false, powerpoint: false, insaplan: true },
-    { aspect: 'Collaboration', spreadsheets: 'limited' as const, powerpoint: 'limited' as const, insaplan: true },
-    { aspect: 'Progress tracking', spreadsheets: false, powerpoint: false, insaplan: true },
-]
+// ---------------------------------------------------------------------------
+// DEPRECATED: hardcoded comparison data — enter rows and columns in the CMS
+// under Marketing > Marketing Pages > Comparison Table tab, then remove
+// this block.
+// ---------------------------------------------------------------------------
+const DEPRECATED_columns = ['Spreadsheets', 'PowerPoint', 'Insaplan']
 
-const renderIcon = (value: boolean | string) => {
-    if (value === true) {
+const DEPRECATED_rows: Array<{
+    aspect: string
+    values: Array<'true' | 'false' | 'limited'>
+}> = [
+    { aspect: 'Real-time updates', values: ['false', 'false', 'true'] },
+    { aspect: 'Searchable insights', values: ['false', 'false', 'true'] },
+    { aspect: 'Version control', values: ['limited', 'limited', 'true'] },
+    { aspect: 'Beautiful reports', values: ['false', 'true', 'true'] },
+    { aspect: 'AI assistance', values: ['false', 'false', 'true'] },
+    { aspect: 'Collaboration', values: ['limited', 'limited', 'true'] },
+    { aspect: 'Progress tracking', values: ['false', 'false', 'true'] },
+]
+// ---------------------------------------------------------------------------
+
+type CellValue = 'true' | 'false' | 'limited'
+
+const renderIcon = (value: CellValue) => {
+    if (value === 'true') {
         return (
             <ThemeIcon color="green.5" size={24} radius="xl" variant="light">
                 <IconCheck size={16} />
@@ -33,40 +59,78 @@ const renderIcon = (value: boolean | string) => {
     }
 }
 
-const ComparisonTable = () => (
-    <Box py={80}>
-        <Container size="lg">
-            <Stack gap="xl">
-                <Stack gap="md" align="center" ta="center">
-                    <Title order={2}>Why Insaplan vs. Traditional Methods</Title>
-                    <Text size="lg" c="dimmed" maw={700}>
-                        See how Insaplan compares to traditional planning tools
-                    </Text>
-                </Stack>
+type CmsRow = {
+    aspect: string
+    values?: Array<{ value: CellValue }> | null
+}
 
-                <Table striped highlightOnHover mt="xl">
-                    <TableThead>
-                        <TableTr>
-                            <TableTh>Aspect</TableTh>
-                            <TableTh ta="center">Spreadsheets</TableTh>
-                            <TableTh ta="center">PowerPoint</TableTh>
-                            <TableTh ta="center">Insaplan</TableTh>
-                        </TableTr>
-                    </TableThead>
-                    <TableTbody>
-                        {comparisonData.map((row, index) => (
-                            <TableTr key={index}>
-                                <TableTd fw={500}>{row.aspect}</TableTd>
-                                <TableTd ta="center">{renderIcon(row.spreadsheets)}</TableTd>
-                                <TableTd ta="center">{renderIcon(row.powerpoint)}</TableTd>
-                                <TableTd ta="center">{renderIcon(row.insaplan)}</TableTd>
+type SectionData = {
+    heading?: string | null
+    subheading?: string | null
+    columns?: Array<{ label: string }> | null
+    rows?: CmsRow[] | null
+}
+
+type Props = { data?: SectionData | null }
+
+const ComparisonTable = ({ data }: Props) => {
+    const heading = data?.heading ?? 'Why Insaplan vs. Traditional Methods'
+    const subheading =
+        data?.subheading ?? 'See how Insaplan compares to traditional planning tools'
+
+    const hasCmsData =
+        data?.columns && data.columns.length > 0 && data?.rows && data.rows.length > 0
+
+    const columns = hasCmsData
+        ? data!.columns!.map((c) => c.label)
+        : DEPRECATED_columns
+
+    const rows = hasCmsData
+        ? data!.rows!.map((r) => ({
+              aspect: r.aspect,
+              values: (r.values ?? []).map((v) => v.value),
+          }))
+        : DEPRECATED_rows
+
+    return (
+        <Box py={80} bg="gray.0" style={{ borderTop: '1px solid rgba(20,28,48,0.06)' }}>
+            <Container size="lg">
+                <Stack gap="xl">
+                    <Stack gap="md" align="center" ta="center">
+                        <Title order={2}>{heading}</Title>
+                        <Text size="lg" c="dimmed" maw={700}>
+                            {subheading}
+                        </Text>
+                    </Stack>
+
+                    <Table striped highlightOnHover mt="xl">
+                        <TableThead>
+                            <TableTr>
+                                <TableTh>Aspect</TableTh>
+                                {columns.map((col) => (
+                                    <TableTh key={col} ta="center">
+                                        {col}
+                                    </TableTh>
+                                ))}
                             </TableTr>
-                        ))}
-                    </TableTbody>
-                </Table>
-            </Stack>
-        </Container>
-    </Box>
-)
+                        </TableThead>
+                        <TableTbody>
+                            {rows.map((row, index) => (
+                                <TableTr key={index}>
+                                    <TableTd fw={500}>{row.aspect}</TableTd>
+                                    {row.values.map((value, vIndex) => (
+                                        <TableTd key={vIndex} ta="center">
+                                            {renderIcon(value as CellValue)}
+                                        </TableTd>
+                                    ))}
+                                </TableTr>
+                            ))}
+                        </TableTbody>
+                    </Table>
+                </Stack>
+            </Container>
+        </Box>
+    )
+}
 
 export default ComparisonTable

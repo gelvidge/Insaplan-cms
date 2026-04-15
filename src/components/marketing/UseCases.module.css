@@ -1,0 +1,227 @@
+/* ── Root ────────────────────────────────────────────────────────────────── */
+.root {
+    background: #ffffff;
+    border-top: 1px solid rgba(20, 28, 48, 0.06);
+    padding-block: 72px 88px;
+}
+
+.inner {
+    max-width: 1040px;
+    margin-inline: auto;
+    padding-inline: 32px;
+}
+
+/* ── Section heading ─────────────────────────────────────────────────────── */
+.heading {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 800;
+    color: #0f1f3d;
+    letter-spacing: -0.3px;
+    margin: 0 0 56px;
+    text-align: center;
+}
+
+/* ── Row ─────────────────────────────────────────────────────────────────── */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.rowReversed {
+    direction: rtl;
+}
+
+.rowReversed > * {
+    direction: ltr;
+}
+
+/* ── Text column ─────────────────────────────────────────────────────────── */
+.textCol {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.index {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #2e5599;
+    opacity: 0.6;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f1f3d;
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+}
+
+.desc {
+    font-size: 0.92rem;
+    color: rgba(20, 36, 70, 0.62);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 42ch;
+}
+
+/* ── Screenshot column ───────────────────────────────────────────────────── */
+.screenCol {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(16, 36, 69, 0.12);
+}
+
+/* ── Mock screen ─────────────────────────────────────────────────────────── */
+.mock {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #1a3264, #244d8a 60%, #2e5fa8);
+    min-height: 220px;
+}
+
+.mockChrome {
+    display: flex;
+    gap: 5px;
+    padding: 9px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.mockChrome span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.mockBody {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.mockSidebar {
+    flex: 0 0 56px;
+    background: rgba(0, 0, 0, 0.18);
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mockSidebarItem {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* Canvas */
+.mockCanvas {
+    flex: 1;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mockHeader {
+    height: 16px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.28);
+    width: 50%;
+    margin-bottom: 4px;
+}
+
+/* Bar chart */
+.mockChartRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+    padding-bottom: 2px;
+}
+
+.mockBar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, rgba(148, 180, 255, 0.75), rgba(100, 140, 220, 0.35));
+}
+
+.mockStatRow {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.mockStat {
+    flex: 1;
+    height: 20px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Document variant */
+.mockDocHeader {
+    height: 14px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.32);
+    width: 45%;
+    margin-bottom: 8px;
+}
+
+.mockDocLine {
+    height: 7px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.14);
+    margin-bottom: 5px;
+}
+
+.mockDocBlock {
+    height: 48px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(120, 160, 255, 0.22), rgba(160, 100, 240, 0.18));
+    margin-block: 8px;
+}
+
+/* Knowledge / list variant */
+.mockSearchBar {
+    height: 18px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.18);
+    margin-bottom: 10px;
+}
+
+.mockKbCard {
+    height: 36px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 6px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        direction: ltr;
+    }
+
+    .rowReversed {
+        direction: ltr;
+    }
+
+    .list { gap: 48px; }
+    .inner { padding-inline: 20px; }
+    .root { padding-block: 56px 72px; }
+}

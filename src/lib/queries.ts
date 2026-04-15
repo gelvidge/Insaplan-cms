@@ -39,6 +39,143 @@ export async function fetchSiteSettings() {
     return payload.findGlobal({ slug: 'site-settings' })
 }
 
+export async function fetchMarketingHome() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'marketing-home' as any }) as any
+}
+
+export async function fetchFooter() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'footer' as any }) as any
+}
+
+export async function fetchContactPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'contact-page' as any }) as any
+}
+
+export async function fetchBlogPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'blog-page' as any }) as any
+}
+
+export async function fetchPricingPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'pricing-page' as any }) as any
+}
+
+export async function fetchLegalPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'legal-page' as any }) as any
+}
+
+export async function fetchSupportPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'support-page' as any }) as any
+}
+
+export async function fetchKnowledgeBasePage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'knowledge-base-page' as any }) as any
+}
+
+export async function fetchSiteMetadata() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'site-metadata' as any }) as any
+}
+
+export async function fetchProductOverviewPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-overview-page' as any }) as any
+}
+
+export async function fetchProductKnowledgeBasePage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-knowledge-base-page' as any }) as any
+}
+
+export async function fetchProductPlanningPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-planning-page' as any }) as any
+}
+
+export async function fetchProductVisualsPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-visuals-page' as any }) as any
+}
+
+export async function fetchProductReportingPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'product-reporting-page' as any }) as any
+}
+
+export async function fetchSolutionsPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'solutions-page' as any }) as any
+}
+
+export async function fetchNavigationMenu(location: 'header' | 'footer' | 'mobile') {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'navigation-menus',
+        where: { location: { equals: location } },
+        limit: 1,
+    })
+    return result.docs[0] || null
+}
+
+export async function fetchSolutionBySlug(slug: string) {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'solutions',
+        where: {
+            slug: { equals: slug },
+            status: { equals: 'published' },
+        },
+        limit: 1,
+    })
+    return result.docs[0] || null
+}
+
+export async function fetchPageBySlug(slug: string) {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'pages',
+        where: {
+            slug: { equals: slug },
+            status: { equals: 'published' },
+        },
+        limit: 1,
+    })
+    return result.docs[0] || null
+}
+
+export async function fetchFeaturedTestimonials(limit = 6) {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'testimonials',
+        where: { featured: { equals: true } },
+        sort: 'order',
+        limit,
+    })
+    return result.docs
+}
+
+export async function fetchFAQsPage() {
+    const payload = await getPayloadClient()
+    return payload.findGlobal({ slug: 'faqs-page' as any }) as any
+}
+
+export async function fetchFAQs() {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'faqs',
+        sort: 'order',
+        limit: 200,
+    })
+    return result.docs
+}
+
 export async function createFormSubmission(data: {
     formType: 'contact' | 'demo' | 'waitlist' | 'newsletter' | 'support'
     name?: string

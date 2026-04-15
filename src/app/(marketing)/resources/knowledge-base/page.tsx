@@ -1,13 +1,16 @@
 import { Box, Container, Stack, Card, Text, ThemeIcon } from '@mantine/core'
 import { IconBook } from '@tabler/icons-react'
 import PageHero from '@/components/marketing/PageHero'
+import { fetchKnowledgeBasePage } from '@/lib/queries'
 
-export default function KnowledgeBasePage() {
+export default async function KnowledgeBasePage() {
+    const kbp = await fetchKnowledgeBasePage().catch(() => null) ?? {}
+
     return (
         <>
             <PageHero
-                title="Knowledge Base"
-                subtitle="Learn how to get the most out of Insaplan"
+                title={kbp.heroTitle ?? 'Knowledge Base'}
+                subtitle={kbp.heroSubtitle ?? 'Learn how to get the most out of Insaplan'}
             />
             <Box py={80}>
                 <Container size="md">
@@ -17,11 +20,10 @@ export default function KnowledgeBasePage() {
                                 <IconBook size={32} />
                             </ThemeIcon>
                             <Text fw={600} size="lg">
-                                Documentation Coming Soon
+                                {kbp.comingSoonHeading ?? 'Documentation Coming Soon'}
                             </Text>
                             <Text c="dimmed" maw={400}>
-                                We&apos;re building comprehensive documentation to help you get
-                                started with Insaplan. Check back soon!
+                                {kbp.comingSoonMessage ?? "We're building comprehensive documentation to help you get started with Insaplan. Check back soon!"}
                             </Text>
                         </Stack>
                     </Card>

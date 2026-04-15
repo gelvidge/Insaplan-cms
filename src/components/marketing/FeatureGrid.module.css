@@ -1,0 +1,285 @@
+.root {
+    background: #f8fafc;
+    border-top: 1px solid rgba(20, 28, 48, 0.06);
+    padding-block: 64px 80px;
+}
+
+.inner {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 32px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #0f1f3d;
+    letter-spacing: -0.4px;
+    margin: 0 0 12px;
+    line-height: 1.15;
+}
+
+.sub {
+    font-size: 1rem;
+    color: rgba(20, 36, 70, 0.6);
+    line-height: 1.65;
+    max-width: 58ch;
+    margin-inline: auto;
+    margin-bottom: 0;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+    background: #ffffff;
+    border: 1px solid rgba(20, 28, 48, 0.08);
+    border-radius: 16px;
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    cursor: default;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(46, 85, 153, 0.22);
+    box-shadow: 0 8px 28px rgba(16, 36, 69, 0.09);
+}
+
+/* Wide card spans 2 columns and shows a screenshot panel */
+.cardWide {
+    grid-column: span 2;
+    padding: 0;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 20px 20px;
+    flex: 1;
+    min-width: 0;
+}
+
+.cardWide .cardContent {
+    padding: 26px 24px;
+}
+
+.cardScreenshot {
+    flex: 0 0 52%;
+    border-left: 1px solid rgba(20, 28, 48, 0.07);
+    background: linear-gradient(145deg, #1a3264, #244d8a 60%, #2e5fa8);
+    border-radius: 0 16px 16px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+.icon {
+    flex-shrink: 0;
+    margin-bottom: 2px;
+}
+
+.title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.desc {
+    font-size: 0.84rem;
+    color: rgba(20, 36, 70, 0.62);
+    line-height: 1.55;
+    margin: 0;
+    flex: 1;
+}
+
+/* ── Pills ───────────────────────────────────────────────────────────────── */
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 9px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #2e5599;
+    background: rgba(46, 85, 153, 0.07);
+    border: 1px solid rgba(46, 85, 153, 0.12);
+    white-space: nowrap;
+}
+
+/* ── Mock screen ─────────────────────────────────────────────────────────── */
+.mockScreen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+}
+
+.mockChrome {
+    display: flex;
+    gap: 5px;
+    padding: 9px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.mockChrome span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.mockBody {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.mockSidebar {
+    flex: 0 0 52px;
+    background: rgba(0, 0, 0, 0.18);
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mockSidebarItem {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Main canvas area */
+.mockCanvas {
+    flex: 1;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Bar chart */
+.mockChartRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    flex: 1;
+    padding: 4px 0 2px;
+}
+
+.mockBar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, rgba(148, 180, 255, 0.7), rgba(100, 140, 220, 0.4));
+}
+
+/* Stat pills below chart */
+.mockStatRow {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.mockStat {
+    flex: 1;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Report variant */
+.mockReportHeader {
+    height: 14px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.35);
+    width: 55%;
+    margin-bottom: 6px;
+}
+
+.mockReportLine {
+    height: 7px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    margin-bottom: 4px;
+}
+
+.mockReportInfographic {
+    height: 52px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(120, 160, 255, 0.25), rgba(160, 100, 240, 0.2));
+    margin-block: 8px;
+}
+
+/* Knowledge variant */
+.mockSearchBar {
+    height: 18px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.18);
+    margin-bottom: 6px;
+}
+
+.mockTagRow {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-bottom: 6px;
+}
+
+.mockTag {
+    height: 14px;
+    width: 40px;
+    border-radius: 7px;
+    background: rgba(148, 180, 255, 0.3);
+}
+
+.mockKbCard {
+    height: 30px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 4px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* Wide cards still span 2 on 2-col grid */
+}
+
+@media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; gap: 12px; }
+    .cardWide { grid-column: span 1; }
+    .cardScreenshot { display: none; }
+    .card { flex-direction: column; }
+    .inner { padding-inline: 20px; }
+    .root { padding-block: 48px 60px; }
+}

@@ -1,42 +1,28 @@
-'use client'
+import Background from '@/components/marketing/Background'
+import { fetchLegalPage } from '@/lib/queries'
+import LegalPageClient from './LegalPageClient'
 
-import { Box, Container, Title, Text, Stack, Tabs } from '@mantine/core'
-import PageHero from '@/components/marketing/PageHero'
+export default async function LegalPage() {
+    const lp = await fetchLegalPage().catch(() => null) ?? {}
 
-export default function LegalPage() {
     return (
-        <>
-            <PageHero title="Legal" subtitle="Terms of Service and Privacy Policy" />
-            <Box py={80}>
-                <Container size="lg">
-                    <Tabs defaultValue="terms">
-                        <Tabs.List>
-                            <Tabs.Tab value="terms">Terms of Service</Tabs.Tab>
-                            <Tabs.Tab value="privacy">Privacy Policy</Tabs.Tab>
-                        </Tabs.List>
-
-                        <Tabs.Panel value="terms" pt="xl">
-                            <Stack gap="md">
-                                <Title order={3}>Terms of Service</Title>
-                                <Text c="dimmed">
-                                    Coming soon. Our terms of service are being finalized and will be
-                                    available before launch.
-                                </Text>
-                            </Stack>
-                        </Tabs.Panel>
-
-                        <Tabs.Panel value="privacy" pt="xl">
-                            <Stack gap="md">
-                                <Title order={3}>Privacy Policy</Title>
-                                <Text c="dimmed">
-                                    Coming soon. Our privacy policy is being finalized and will be
-                                    available before launch.
-                                </Text>
-                            </Stack>
-                        </Tabs.Panel>
-                    </Tabs>
-                </Container>
-            </Box>
-        </>
+        <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+            <Background />
+            <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+                <LegalPageClient
+                    heroTitle={lp.heroTitle ?? 'Legal'}
+                    heroSubtitle={lp.heroSubtitle ?? 'Terms of Service, Privacy Policy and Data Security'}
+                    termsTabLabel={lp.termsTabLabel ?? 'Terms of Service'}
+                    privacyTabLabel={lp.privacyTabLabel ?? 'Privacy Policy'}
+                    dataSecurityTabLabel={lp.dataSecurityTabLabel ?? 'Data Security'}
+                    termsContent={lp.termsContent ?? null}
+                    privacyContent={lp.privacyContent ?? null}
+                    dataSecurityContent={lp.dataSecurityContent ?? null}
+                    termsComingSoon={lp.termsComingSoon ?? 'Coming soon. Our terms of service are being finalized and will be available before launch.'}
+                    privacyComingSoon={lp.privacyComingSoon ?? 'Coming soon. Our privacy policy is being finalized and will be available before launch.'}
+                    dataSecurityComingSoon={lp.dataSecurityComingSoon ?? 'Coming soon. Our data security documentation is being finalized and will be available before launch.'}
+                />
+            </div>
+        </div>
     )
 }

@@ -1,17 +1,168 @@
-.featureImagePlaceholder {
+.section {
+    position: relative;
+    padding-block: 90px;
+    overflow: hidden;
+    background: radial-gradient(circle at 20% 10%, rgba(126, 87, 194, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(66, 90, 161, 0.12) 0%, transparent 48%),
+        linear-gradient(180deg, var(--mantine-color-gray-0) 0%, rgba(255, 255, 255, 0.92) 100%);
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle at 30% 60%, rgba(126, 87, 194, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(34, 139, 230, 0.12) 0%, transparent 58%);
+    filter: blur(24px);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+}
+
+.kicker {
+    color: var(--mantine-color-purple-6);
+    letter-spacing: 2px;
+}
+
+.featureCard {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--mantine-radius-xl);
+    padding: clamp(20px, 2.5vw, 34px);
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
+}
+
+.featureText {
+    max-width: 640px;
+}
+
+.capabilitiesLabel {
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.visualsWrap {
     width: 100%;
-    height: 400px;
-    background: var(--mantine-color-gray-1);
+    display: flex;
+    justify-content: center;
+}
+
+.visualsGrid {
+    position: relative;
+    width: min(560px, 100%);
+    height: 420px;
+}
+
+.visualCard {
+    position: absolute;
     border-radius: var(--mantine-radius-lg);
-    border: 3px dashed var(--mantine-color-gray-4);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+    transform-origin: center;
+}
+
+.visualChrome {
+    height: 34px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: space-between;
+    padding: 0 12px;
+    background: linear-gradient(90deg, rgba(34, 139, 230, 0.06), rgba(126, 87, 194, 0.06));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.visualChromeTitle {
+    letter-spacing: 1.2px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.visualControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.7;
+}
+
+.visualControl {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.visualBody {
+    position: relative;
+    height: calc(100% - 34px);
+    background: radial-gradient(circle at 30% 20%, rgba(34, 139, 230, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(126, 87, 194, 0.12) 0%, transparent 58%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 255, 0.95));
+}
+
+.visualImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.visualPlaceholder {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(34, 139, 230, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(126, 87, 194, 0.14) 0%, transparent 62%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(248, 250, 255, 0.95));
+}
+
+.visualCard1 {
+    width: 78%;
+    height: 78%;
+    left: 0;
+    top: 8%;
+    transform: rotate(-1deg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 255, 0.98));
+}
+
+.visualCard2 {
+    width: 56%;
+    height: 52%;
+    right: 0;
+    top: 0;
+    transform: rotate(2.5deg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(252, 248, 255, 0.98));
+}
+
+.visualCard3 {
+    width: 58%;
+    height: 50%;
+    right: 8%;
+    bottom: 0;
+    transform: rotate(-3deg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 252, 255, 0.98));
 }
 
 @media (max-width: 768px) {
-    .featureImagePlaceholder {
-        height: 250px;
+    .section {
+        padding-block: 70px;
+    }
+
+    .visualsGrid {
+        height: 300px;
+    }
+
+    .visualChrome {
+        height: 30px;
+    }
+
+    .visualBody {
+        height: calc(100% - 30px);
     }
 }

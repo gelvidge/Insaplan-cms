@@ -1,0 +1,117 @@
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.body {
+    flex: 1;
+    background: #f8fafc;
+    border-top: 1px solid rgba(20, 28, 48, 0.06);
+    padding-block: 64px 96px;
+}
+
+.inner {
+    max-width: 780px;
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+/* ── Category sections ───────────────────────────────────────────────────── */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.group {}
+
+.groupHeading {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2e5599;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(46, 85, 153, 0.15);
+}
+
+/* ── Accordion list ──────────────────────────────────────────────────────── */
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    border-bottom: 1px solid rgba(20, 28, 48, 0.07);
+}
+
+.item:first-child {
+    border-top: 1px solid rgba(20, 28, 48, 0.07);
+}
+
+/* ── Question button ─────────────────────────────────────────────────────── */
+.question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f1f3d;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+}
+
+.question:hover {
+    color: #2e5599;
+}
+
+.chevron {
+    flex-shrink: 0;
+    color: rgba(46, 85, 153, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+/* ── Answer ──────────────────────────────────────────────────────────────── */
+.answer {
+    overflow: hidden;
+}
+
+.answerInner {
+    padding: 0 4px 18px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(20, 36, 70, 0.68);
+    white-space: pre-wrap;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.empty {
+    text-align: center;
+    padding: 64px 24px;
+    color: rgba(20, 36, 70, 0.45);
+    font-size: 0.95rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+    .body { padding-block: 48px 72px; }
+    .question { font-size: 0.9rem; }
+}

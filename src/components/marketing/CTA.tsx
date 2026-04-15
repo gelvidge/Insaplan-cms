@@ -5,7 +5,31 @@ import { useActionState, useEffect, useRef } from 'react'
 import classes from './CTA.module.css'
 import { submitWaitlistForm, type WaitlistFormState } from '@/app/(marketing)/actions'
 
-const CTA = () => {
+type CTAData = {
+    title?: string
+    description?: string
+    emailPlaceholder?: string
+    buttonLabel?: string
+    note?: string
+}
+
+const defaultData: CTAData = {
+    title: 'Build better plans, faster',
+    description:
+        'Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.',
+    emailPlaceholder: 'Enter your email',
+    buttonLabel: 'Join Waitlist',
+}
+
+const CTA = ({ data }: { data?: CTAData | null }) => {
+    const merged = {
+        title: data?.title ?? defaultData.title,
+        description: data?.description ?? defaultData.description,
+        emailPlaceholder: data?.emailPlaceholder ?? defaultData.emailPlaceholder,
+        buttonLabel: data?.buttonLabel ?? defaultData.buttonLabel,
+
+    }
+
     const formRef = useRef<HTMLFormElement | null>(null)
 
     const initialState: WaitlistFormState = { status: 'idle' }
@@ -22,18 +46,17 @@ const CTA = () => {
         <Container size={960}>
             <Stack align="center" gap="xl">
                 <Text className={classes.ctaTitle} ta="center">
-                    Build better plans, faster
+                    {merged.title}
                 </Text>
                 <Text size="lg" c="gray.1" ta="center" maw={600}>
-                    Join the waitlist for early access to curated insights, flexible templates, and
-                    rapid iteration across strategy, planning, and project management.
+                    {merged.description}
                 </Text>
                 <form action={formAction} ref={formRef}>
                     <Group gap="sm" justify="center" align="flex-start">
                         <input
                             type="email"
                             name="email"
-                            placeholder="Enter your email"
+                            placeholder={merged.emailPlaceholder}
                             className={classes.emailInput}
                             required
                         />
@@ -47,7 +70,7 @@ const CTA = () => {
                             loading={pending}
                             disabled={pending}
                         >
-                            Join Waitlist
+                            {merged.buttonLabel}
                         </Button>
                     </Group>
                     {state.status === 'success' && (
@@ -61,9 +84,7 @@ const CTA = () => {
                         </Text>
                     )}
                 </form>
-                <Text c="gray.2" size="sm">
-                    Get notified when we launch - no spam, ever
-                </Text>
+               
             </Stack>
         </Container>
     </Box>

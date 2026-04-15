@@ -1,0 +1,118 @@
+.hero {
+    position: relative;
+    padding-top: 160px;
+    padding-bottom: 80px;
+    overflow: hidden;
+    /* transparent so the page-level animated Background shows through */
+    background: transparent;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .bodyCol {
+        max-width: 560px;
+    }
+}
+
+/* ── Left column ── */
+.kicker {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mantine-color-gray-0);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    padding: 5px 10px;
+    margin-bottom: 28px;
+}
+
+.headline {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--mantine-color-gray-0);
+    text-transform: uppercase;
+    margin: 0 0 0 0;
+}
+
+.accent {
+    color: var(--mantine-color-purple-4);
+}
+
+/* ── Right column ── */
+.bodyCol {
+    padding-top: 4px;
+}
+
+.bodyText {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--mantine-color-gray-3);
+}
+
+/* ── Step flow ── */
+.steps {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 60px;
+    justify-content: center;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stepLabel {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mantine-color-gray-4);
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: border-color 0.2s;
+}
+
+.stepLabel.active {
+    color: var(--mantine-color-gray-0);
+    border-color: var(--mantine-color-purple-4);
+}
+
+.stepArrow {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+    padding: 0 4px;
+    flex-shrink: 0;
+}

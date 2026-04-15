@@ -9,7 +9,7 @@ export const Solutions: CollectionConfig = {
     admin: {
         useAsTitle: 'title',
         defaultColumns: ['title', 'slug', 'status'],
-        group: 'Marketing'
+        group: 'Content'
     },
     access: {
         read: publishedOnly,
@@ -29,6 +29,61 @@ export const Solutions: CollectionConfig = {
             type: 'text',
             required: true
         },
+        // ── Hero section (replaces plain PageHero banner) ──────────────────
+        {
+            name: 'heroKicker',
+            type: 'text',
+            label: 'Hero Kicker',
+            admin: {
+                description: 'Small label above the headline — e.g. "THE PROBLEM"'
+            }
+        },
+        {
+            name: 'heroHeadline',
+            type: 'text',
+            label: 'Hero Headline',
+            admin: {
+                description: 'Large bold headline — e.g. "WHAT\'S KILLING YOUR RANKINGS?"'
+            }
+        },
+        {
+            name: 'heroHeadlineAccent',
+            type: 'text',
+            label: 'Hero Headline Accent Word',
+            admin: {
+                description: 'Word or phrase within the headline to highlight in purple — e.g. "YOUR RANKINGS?"'
+            }
+        },
+        {
+            name: 'heroBody',
+            type: 'textarea',
+            label: 'Hero Body Text',
+            admin: {
+                description: 'Paragraph shown to the right of the headline'
+            }
+        },
+        {
+            name: 'heroSteps',
+            type: 'array',
+            label: 'Hero Step Flow',
+            admin: {
+                description: 'Process steps shown below the headline (e.g. Enter URL → Agent Analyzes → …)'
+            },
+            fields: [
+                {
+                    name: 'label',
+                    type: 'text',
+                    required: true
+                },
+                {
+                    name: 'active',
+                    type: 'checkbox',
+                    label: 'Highlighted step',
+                    defaultValue: false
+                }
+            ]
+        },
+        // ──────────────────────────────────────────────────────────────────
         {
             name: 'heroImage',
             type: 'upload',
@@ -42,9 +97,12 @@ export const Solutions: CollectionConfig = {
             label: 'Solution Overview'
         },
         {
-            name: 'keyFeatures',
+            name: 'challenges',
             type: 'array',
-            label: 'Key Features',
+            label: 'Challenges & Frustrations',
+            admin: {
+                description: 'The key challenges or frustrations this solution resolves for the audience'
+            },
             fields: [
                 {
                     name: 'title',
@@ -60,7 +118,7 @@ export const Solutions: CollectionConfig = {
                     name: 'icon',
                     type: 'text',
                     admin: {
-                        description: 'Icon name from Tabler Icons (e.g., "IconRocket")'
+                        description: 'Icon name from Tabler Icons (e.g., "clock", "puzzle", "bolt")'
                     }
                 }
             ]
@@ -88,13 +146,28 @@ export const Solutions: CollectionConfig = {
             ]
         },
         {
-            name: 'caseStudies',
-            type: 'relationship',
-            relationTo: 'case-studies',
-            hasMany: true,
-            admin: {
-                position: 'sidebar'
-            }
+            name: 'keyFeatures',
+            type: 'array',
+            label: 'Key Features',
+            fields: [
+                {
+                    name: 'title',
+                    type: 'text',
+                    required: true
+                },
+                {
+                    name: 'description',
+                    type: 'textarea',
+                    required: true
+                },
+                {
+                    name: 'icon',
+                    type: 'text',
+                    admin: {
+                        description: 'Icon name from Tabler Icons (e.g., "IconRocket")'
+                    }
+                }
+            ]
         },
         {
             name: 'cta',

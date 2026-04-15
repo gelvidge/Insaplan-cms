@@ -85,7 +85,7 @@
     align-items: center;
     padding: 6px 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(129, 9, 113, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.18);
     color: rgba(255, 255, 255, 0.92);
     letter-spacing: 1px;
@@ -126,8 +126,8 @@
 .useCasePill {
     padding: 6px 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #7dbb9148;
+    border: 1px solid #7dbb91;
     color: var(--mantine-color-gray-0);
     line-height: 1.2;
 }
@@ -160,10 +160,24 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.dot {
+.windowHeader {
+    padding: 2px 2px 0 2px;
+}
+
+.windowTitle {
+    letter-spacing: 1.6px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.windowControls {
+    opacity: 0.7;
+}
+
+.windowControl {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.22);
 }
 
 .imageContent {
@@ -175,6 +189,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.slideImageWrap {
+    width: 100%;
+    max-width: 520px;
+    border-radius: var(--mantine-radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.slideImage {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .carouselRoot {

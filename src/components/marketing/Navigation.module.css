@@ -4,15 +4,9 @@
     left: 0;
     right: 0;
     z-index: 100;
-    transition: all 0.3s ease;
-    background: #3a427a;
+    background: #10184d;
     backdrop-filter: blur(18px);
-    
-}
-
-.navigationScrolled {
-    background: #3a427a;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.14);
+    border-bottom: 1px solid transparent;
 }
 
 .logo {

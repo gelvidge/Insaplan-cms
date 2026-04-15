@@ -1,0 +1,365 @@
+/* ── Page shell ──────────────────────────────────────────────────────────── */
+.page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.hero {
+    padding-top: 140px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heroInner {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 48px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.heroMeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.categoryBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.heroDivider {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.heroMetaItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.heroTitle {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin: 0 0 20px;
+}
+
+.heroExcerpt {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Hero image placeholder ──────────────────────────────────────────────── */
+.heroImage {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    height: 260px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #152b5a, #1e3f7a 55%, #2a5299);
+    border-radius: 16px 16px 0 0;
+}
+
+.heroImageOrb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.heroImageContent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px 0;
+    gap: 12px;
+}
+
+.mockDoc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mockDocHeading {
+    height: 14px;
+    width: 40%;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.mockDocLine {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.mockBars {
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+    flex: 1;
+    padding-bottom: 0;
+}
+
+.mockBar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, rgba(148, 180, 255, 0.8), rgba(100, 140, 220, 0.25));
+}
+
+/* ── Article body ────────────────────────────────────────────────────────── */
+.articleWrap {
+    background: #ffffff;
+    border-top: none;
+    padding-block: 56px 80px;
+}
+
+.article {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 48px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #1a2a42;
+}
+
+/* Rich text typography */
+.article h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f1f3d;
+    margin: 2.2em 0 0.6em;
+    letter-spacing: -0.2px;
+    line-height: 1.25;
+}
+
+.article h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin: 1.8em 0 0.5em;
+}
+
+.article p {
+    margin: 0 0 1.2em;
+    color: rgba(26, 42, 66, 0.82);
+}
+
+.article ul,
+.article ol {
+    margin: 0 0 1.2em 1.4em;
+    padding: 0;
+}
+
+.article li {
+    margin-bottom: 0.4em;
+    color: rgba(26, 42, 66, 0.82);
+}
+
+.article strong {
+    color: #0f1f3d;
+    font-weight: 700;
+}
+
+.article a {
+    color: #2e5599;
+    text-decoration: underline;
+    text-decoration-color: rgba(46, 85, 153, 0.3);
+}
+
+/* ── Inline image placeholders ───────────────────────────────────────────── */
+/* These wrap around text — float left on even, right on odd */
+.article :global(.inline-image) {
+    width: 280px;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #152b5a, #2a5299);
+    box-shadow: 0 8px 24px rgba(16, 36, 69, 0.15);
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.article :global(.inline-image-left) {
+    float: left;
+    margin-right: 24px;
+}
+
+.article :global(.inline-image-right) {
+    float: right;
+    margin-left: 24px;
+}
+
+.article :global(.clearfix)::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* ── Inline mock images ──────────────────────────────────────────────────── */
+.inlineMock {
+    float: left;
+    width: 260px;
+    height: 180px;
+    margin: 4px 28px 20px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, #152b5a, #1e3f7a 55%, #2a5299);
+    box-shadow: 0 8px 28px rgba(16, 36, 69, 0.18);
+    flex-shrink: 0;
+}
+
+/* Every other sibling floats right */
+.inlineMock:nth-child(even) {
+    float: right;
+    margin: 4px 0 20px 28px;
+}
+
+.inlineMockOrb {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120, 80, 220, 0.3), transparent 70%);
+    filter: blur(24px);
+    pointer-events: none;
+}
+
+.inlineBars {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 80px;
+}
+
+.inlineBar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, rgba(148, 180, 255, 0.85), rgba(100, 140, 220, 0.25));
+}
+
+.inlineDocLines {
+    position: absolute;
+    inset: 18px 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inlineDocHeading {
+    height: 12px;
+    width: 55%;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.32);
+    margin-bottom: 4px;
+}
+
+.inlineDocLine {
+    height: 7px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.inlineDocBlock {
+    height: 36px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, rgba(120, 160, 255, 0.22), rgba(160, 100, 240, 0.18));
+    margin-block: 4px;
+}
+
+.inlineNode {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(148, 180, 255, 0.75);
+}
+
+.inlineConnector {
+    position: absolute;
+    height: 1.5px;
+    background: rgba(148, 180, 255, 0.25);
+    transform-origin: left center;
+}
+
+/* ── Tags ────────────────────────────────────────────────────────────────── */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(20, 28, 48, 0.08);
+}
+
+.tagsLabel {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(20, 36, 70, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2e5599;
+    background: rgba(46, 85, 153, 0.07);
+    border: 1px solid rgba(46, 85, 153, 0.14);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+    .heroInner { padding-inline: 20px; }
+    .heroImage { border-radius: 0; height: 200px; }
+    .article { padding-inline: 20px; }
+    .inlineMock,
+    .inlineMock:nth-child(even) { float: none; width: 100%; margin: 0 0 20px; }
+    .articleWrap { padding-block: 40px 64px; }
+}

@@ -5,43 +5,43 @@ const comparisonData = [
     {
         aspect: 'Real-time updates',
         spreadsheets: false,
-        powerpoint: false,
+        slides: false,
         insaplan: true
     },
     {
         aspect: 'Searchable insights',
         spreadsheets: false,
-        powerpoint: false,
+        slides: false,
         insaplan: true
     },
     {
         aspect: 'Version control',
         spreadsheets: 'limited',
-        powerpoint: 'limited',
+        slides: 'limited',
         insaplan: true
     },
     {
         aspect: 'Beautiful reports',
         spreadsheets: false,
-        powerpoint: true,
+        slides: true,
         insaplan: true
     },
     {
         aspect: 'AI assistance',
         spreadsheets: false,
-        powerpoint: false,
+        slides: false,
         insaplan: true
     },
     {
         aspect: 'Collaboration',
         spreadsheets: 'limited',
-        powerpoint: 'limited',
+        slides: 'limited',
         insaplan: true
     },
     {
         aspect: 'Progress tracking',
         spreadsheets: false,
-        powerpoint: false,
+        slides: false,
         insaplan: true
     }
 ];
@@ -84,7 +84,7 @@ const ComparisonTable = () => (
                         <Table.Tr>
                             <Table.Th>Aspect</Table.Th>
                             <Table.Th ta="center">Spreadsheets</Table.Th>
-                            <Table.Th ta="center">PowerPoint</Table.Th>
+                            <Table.Th ta="center">Slides</Table.Th>
                             <Table.Th ta="center">Insaplan</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
@@ -93,7 +93,7 @@ const ComparisonTable = () => (
                             <Table.Tr key={index}>
                                 <Table.Td fw={500}>{row.aspect}</Table.Td>
                                 <Table.Td ta="center">{renderIcon(row.spreadsheets)}</Table.Td>
-                                <Table.Td ta="center">{renderIcon(row.powerpoint)}</Table.Td>
+                                <Table.Td ta="center">{renderIcon(row.slides)}</Table.Td>
                                 <Table.Td ta="center">{renderIcon(row.insaplan)}</Table.Td>
                             </Table.Tr>
                         ))}

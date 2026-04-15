@@ -1,0 +1,346 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - link "Insaplan" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - paragraph [ref=e6]: Insaplan
+    - generic [ref=e7]:
+      - button "Product" [ref=e8] [cursor=pointer]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: Product
+          - img [ref=e12]
+      - button "Solutions" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]:
+          - generic [ref=e16]: Solutions
+          - img [ref=e18]
+      - button "Resources" [ref=e20] [cursor=pointer]:
+        - generic [ref=e21]:
+          - generic [ref=e22]: Resources
+          - img [ref=e24]
+      - link "Pricing" [ref=e26] [cursor=pointer]:
+        - /url: /pricing
+        - generic [ref=e28]: Pricing
+      - button "About" [ref=e29] [cursor=pointer]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: About
+          - img [ref=e33]
+    - generic [ref=e35]:
+      - link "Sign In" [ref=e36] [cursor=pointer]:
+        - /url: https://app.insaplan.com/auth/signin
+        - generic [ref=e38]: Sign In
+      - link "Start Free Trial" [ref=e39] [cursor=pointer]:
+        - /url: https://app.insaplan.com/auth/signup
+        - generic [ref=e41]: Start Free Trial
+  - main [ref=e42]:
+    - generic [ref=e43]:
+      - generic:
+        - img
+      - generic:
+        - img
+      - generic [ref=e46]:
+        - generic [ref=e49]:
+          - heading "Turn Insights into Plans" [level=1] [ref=e50]
+          - paragraph [ref=e51]: Capture organizational knowledge, build strategic plans with proven frameworks, and generate beautiful reports—all in one platform.
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - heading "How It Works" [level=2] [ref=e56]
+            - paragraph [ref=e57]: Three simple steps to transform your planning process
+          - generic [ref=e59]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: "1"
+              - heading "Capture Insights" [level=3] [ref=e63]
+              - paragraph [ref=e64]: Centralize organizational knowledge, market data, and research into a searchable intelligence hub.
+            - generic [ref=e66]:
+              - generic [ref=e67]: "2"
+              - heading "Build Plans" [level=3] [ref=e68]
+              - paragraph [ref=e69]: Use proven frameworks and AI assistance to create strategic plans, budgets, and roadmaps.
+            - generic [ref=e71]:
+              - generic [ref=e72]: "3"
+              - heading "Generate Reports" [level=3] [ref=e73]
+              - paragraph [ref=e74]: Create beautiful, data-driven reports and presentations that communicate your strategy clearly.
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - heading "Problems We Solve" [level=2] [ref=e79]
+            - paragraph [ref=e80]: Common challenges Insaplan addresses
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e85]: Challenge 01
+              - generic [ref=e86]:
+                - generic [ref=e87]:
+                  - generic [ref=e88]: "\""
+                  - generic [ref=e89]: Problem
+                - paragraph [ref=e90]: Plans take weeks to create and are outdated by the time they are finished
+                - paragraph [ref=e91]: "Insaplan fix: AI-assisted planning reduces creation time from weeks to hours with real-time updates"
+            - generic [ref=e92]:
+              - generic [ref=e95]: Challenge 02
+              - generic [ref=e96]:
+                - generic [ref=e97]:
+                  - generic [ref=e98]: "\""
+                  - generic [ref=e99]: Problem
+                - paragraph [ref=e100]: Strategic reports are static, ugly, and fail to communicate vision
+                - paragraph [ref=e101]: "Insaplan fix: Beautiful, dynamic reports with professional infographics and data visualizations"
+            - generic [ref=e102]:
+              - generic [ref=e105]: Challenge 03
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - generic [ref=e108]: "\""
+                  - generic [ref=e109]: Problem
+                - paragraph [ref=e110]: Organizational knowledge is scattered across emails, docs, and spreadsheets
+                - paragraph [ref=e111]: "Insaplan fix: Centralized knowledge base that integrates with your planning process"
+            - generic [ref=e112]:
+              - generic [ref=e115]: Challenge 04
+              - generic [ref=e116]:
+                - generic [ref=e117]:
+                  - generic [ref=e118]: "\""
+                  - generic [ref=e119]: Problem
+                - paragraph [ref=e120]: No standardized approach to strategic planning across the organization
+                - paragraph [ref=e121]: "Insaplan fix: Integrated business frameworks ensure consistency and best practices"
+            - generic [ref=e122]:
+              - generic [ref=e125]: Challenge 05
+              - generic [ref=e126]:
+                - generic [ref=e127]:
+                  - generic [ref=e128]: "\""
+                  - generic [ref=e129]: Problem
+                - paragraph [ref=e130]: Difficult to track progress and measure impact of strategic initiatives
+                - paragraph [ref=e131]: "Insaplan fix: Real-time dashboards and progress tracking with customizable KPIs"
+            - generic [ref=e132]:
+              - generic [ref=e135]: Challenge 06
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - generic [ref=e138]: "\""
+                  - generic [ref=e139]: Problem
+                - paragraph [ref=e140]: Teams work in silos without visibility into overall strategy
+                - paragraph [ref=e141]: "Insaplan fix: Collaborative platform with shared visibility and aligned objectives"
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - paragraph [ref=e146]: Core Capabilities
+            - heading "Features" [level=2] [ref=e147]
+            - paragraph [ref=e148]: Everything you need to transform strategic planning from a painful process into a competitive advantage
+          - generic [ref=e149]:
+            - article [ref=e150]:
+              - generic [ref=e152]:
+                - img [ref=e154]
+                - generic [ref=e159]:
+                  - paragraph [ref=e160]: Capability 01
+                  - heading "Beautiful Infographics" [level=3] [ref=e161]
+              - generic [ref=e162]:
+                - paragraph [ref=e163]: Create stunning visual presentations of your strategic plans and data.
+                - generic [ref=e164]:
+                  - generic [ref=e165]: Professional templates
+                  - generic [ref=e166]: Custom branding
+                  - generic [ref=e167]: Export to multiple formats
+            - article [ref=e168]:
+              - generic [ref=e170]:
+                - img [ref=e172]
+                - generic [ref=e177]:
+                  - paragraph [ref=e178]: Capability 02
+                  - heading "Beautiful Charts" [level=3] [ref=e179]
+              - generic [ref=e180]:
+                - paragraph [ref=e181]: Visualize data with professional charts that tell your story.
+                - generic [ref=e182]:
+                  - generic [ref=e183]: Interactive dashboards
+                  - generic [ref=e184]: Real-time data updates
+                  - generic [ref=e185]: Multiple chart types
+            - article [ref=e186]:
+              - generic [ref=e188]:
+                - img [ref=e190]
+                - generic [ref=e197]:
+                  - paragraph [ref=e198]: Capability 03
+                  - heading "AI-Assisted Insights & Planning" [level=3] [ref=e199]
+              - generic [ref=e200]:
+                - paragraph [ref=e201]: Leverage AI to uncover insights and accelerate planning.
+                - generic [ref=e202]:
+                  - generic [ref=e203]: Smart recommendations
+                  - generic [ref=e204]: Automated analysis
+                  - generic [ref=e205]: Pattern recognition
+            - article [ref=e206]:
+              - generic [ref=e208]:
+                - img [ref=e210]
+                - generic [ref=e220]:
+                  - paragraph [ref=e221]: Capability 04
+                  - heading "Fully Customizable" [level=3] [ref=e222]
+              - generic [ref=e223]:
+                - paragraph [ref=e224]: Tailor every aspect to your organization's needs.
+                - generic [ref=e225]:
+                  - generic [ref=e226]: Custom workflows
+                  - generic [ref=e227]: Flexible data models
+                  - generic [ref=e228]: Personalized dashboards
+            - article [ref=e229]:
+              - generic [ref=e231]:
+                - img [ref=e233]
+                - generic [ref=e241]:
+                  - paragraph [ref=e242]: Capability 05
+                  - heading "Integrated Business Frameworks" [level=3] [ref=e243]
+              - generic [ref=e244]:
+                - paragraph [ref=e245]: Access proven frameworks like SWOT, OKRs, and Business Model Canvas.
+                - generic [ref=e246]:
+                  - generic [ref=e247]: Best practice templates
+                  - generic [ref=e248]: Industry-specific frameworks
+                  - generic [ref=e249]: Guided planning processes
+            - article [ref=e250]:
+              - generic [ref=e252]:
+                - img [ref=e254]
+                - generic [ref=e258]:
+                  - paragraph [ref=e259]: Capability 06
+                  - heading "Integrated Knowledge Bases" [level=3] [ref=e260]
+              - generic [ref=e261]:
+                - paragraph [ref=e262]: Build and leverage organizational knowledge for better planning.
+                - generic [ref=e263]:
+                  - generic [ref=e264]: Searchable insights
+                  - generic [ref=e265]: Common KPIs library
+                  - generic [ref=e266]: Industry benchmarks
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - paragraph [ref=e271]: Operating Advantage
+            - heading "Key Benefits" [level=2] [ref=e272]
+            - paragraph [ref=e273]: Everything you need to transform your planning process
+            - generic [ref=e274]:
+              - generic [ref=e275]: "6"
+              - generic [ref=e276]:
+                - paragraph [ref=e277]: Integrated strengths
+                - paragraph [ref=e278]: Designed to help leaders move from fragmented inputs to coherent strategic decisions.
+          - generic [ref=e279]:
+            - article [ref=e280]:
+              - img [ref=e283]
+              - heading "Fast & Efficient" [level=4] [ref=e286]
+              - paragraph [ref=e287]: Produce plans quickly and edit/monitor them in real-time
+            - article [ref=e288]:
+              - img [ref=e291]
+              - heading "Beautiful Outputs" [level=4] [ref=e296]
+              - paragraph [ref=e297]: Create stunning reports with professional infographics and charts
+            - article [ref=e298]:
+              - img [ref=e301]
+              - heading "Flexible & Customizable" [level=4] [ref=e311]
+              - paragraph [ref=e312]: Tailor workflows, data structures, and reports to your needs
+            - article [ref=e313]:
+              - img [ref=e316]
+              - heading "Best Practices Built-In" [level=4] [ref=e322]
+              - paragraph [ref=e323]: Integrated business frameworks guide your planning process
+            - article [ref=e324]:
+              - img [ref=e327]
+              - heading "Knowledge-Powered" [level=4] [ref=e331]
+              - paragraph [ref=e332]: Integrated knowledge bases include common KPIs and industry standards
+            - article [ref=e333]:
+              - img [ref=e336]
+              - heading "AI-Assisted" [level=4] [ref=e338]
+              - paragraph [ref=e339]: Get intelligent recommendations for insights and planning
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - heading "Why Insaplan vs. Traditional Methods" [level=2] [ref=e345]
+            - paragraph [ref=e346]: See how Insaplan compares to traditional planning tools
+          - table [ref=e347]:
+            - rowgroup [ref=e348]:
+              - row "Aspect Spreadsheets PowerPoint Insaplan" [ref=e349]:
+                - columnheader "Aspect" [ref=e350]
+                - columnheader "Spreadsheets" [ref=e351]
+                - columnheader "PowerPoint" [ref=e352]
+                - columnheader "Insaplan" [ref=e353]
+            - rowgroup [ref=e354]:
+              - row "Real-time updates" [ref=e355]:
+                - cell "Real-time updates" [ref=e356]
+                - cell [ref=e357]:
+                  - img [ref=e359]
+                - cell [ref=e362]:
+                  - img [ref=e364]
+                - cell [ref=e367]:
+                  - img [ref=e369]
+              - row "Searchable insights" [ref=e371]:
+                - cell "Searchable insights" [ref=e372]
+                - cell [ref=e373]:
+                  - img [ref=e375]
+                - cell [ref=e378]:
+                  - img [ref=e380]
+                - cell [ref=e383]:
+                  - img [ref=e385]
+              - row "Version control" [ref=e387]:
+                - cell "Version control" [ref=e388]
+                - cell [ref=e389]:
+                  - img [ref=e391]
+                - cell [ref=e393]:
+                  - img [ref=e395]
+                - cell [ref=e397]:
+                  - img [ref=e399]
+              - row "Beautiful reports" [ref=e401]:
+                - cell "Beautiful reports" [ref=e402]
+                - cell [ref=e403]:
+                  - img [ref=e405]
+                - cell [ref=e408]:
+                  - img [ref=e410]
+                - cell [ref=e412]:
+                  - img [ref=e414]
+              - row "AI assistance" [ref=e416]:
+                - cell "AI assistance" [ref=e417]
+                - cell [ref=e418]:
+                  - img [ref=e420]
+                - cell [ref=e423]:
+                  - img [ref=e425]
+                - cell [ref=e428]:
+                  - img [ref=e430]
+              - row "Collaboration" [ref=e432]:
+                - cell "Collaboration" [ref=e433]
+                - cell [ref=e434]:
+                  - img [ref=e436]
+                - cell [ref=e438]:
+                  - img [ref=e440]
+                - cell [ref=e442]:
+                  - img [ref=e444]
+              - row "Progress tracking" [ref=e446]:
+                - cell "Progress tracking" [ref=e447]
+                - cell [ref=e448]:
+                  - img [ref=e450]
+                - cell [ref=e453]:
+                  - img [ref=e455]
+                - cell [ref=e458]:
+                  - img [ref=e460]
+        - generic [ref=e464]:
+          - paragraph [ref=e465]: Build better plans, faster
+          - paragraph [ref=e466]: Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.
+          - generic [ref=e468]:
+            - textbox "Enter your email" [ref=e469]
+            - button "Join Waitlist" [ref=e470] [cursor=pointer]:
+              - generic [ref=e472]: Join Waitlist
+  - generic [ref=e475]:
+    - generic [ref=e476]:
+      - paragraph [ref=e478]: "[LOGO: Insaplan]"
+      - paragraph [ref=e479]: Turn Insights into Plans. Strategic planning and reporting made simple.
+    - generic [ref=e481]:
+      - generic [ref=e483]:
+        - paragraph [ref=e484]: Product
+        - link "Overview" [ref=e485] [cursor=pointer]:
+          - /url: /product/overview
+        - link "Features" [ref=e486] [cursor=pointer]:
+          - /url: /product/features
+      - generic [ref=e488]:
+        - paragraph [ref=e489]: Solutions
+        - link "Sales" [ref=e490] [cursor=pointer]:
+          - /url: /solutions/sales
+        - link "Marketing" [ref=e491] [cursor=pointer]:
+          - /url: /solutions/marketing
+        - link "Start Ups" [ref=e492] [cursor=pointer]:
+          - /url: /solutions/startups
+        - link "Enterprise" [ref=e493] [cursor=pointer]:
+          - /url: /solutions/enterprise
+        - link "Not for Profit" [ref=e494] [cursor=pointer]:
+          - /url: /solutions/nonprofit
+      - generic [ref=e496]:
+        - paragraph [ref=e497]: Resources
+        - link "Support" [ref=e498] [cursor=pointer]:
+          - /url: /resources/support
+        - link "Knowledge Base" [ref=e499] [cursor=pointer]:
+          - /url: /resources/knowledge-base
+      - generic [ref=e501]:
+        - paragraph [ref=e502]: Company
+        - link "About" [ref=e503] [cursor=pointer]:
+          - /url: /about
+        - link "Pricing" [ref=e504] [cursor=pointer]:
+          - /url: /pricing
+        - link "Contact Us" [ref=e505] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e507]:
+        - paragraph [ref=e508]: Legal
+        - link "Terms of Service" [ref=e509] [cursor=pointer]:
+          - /url: /legal
+        - link "Privacy Policy" [ref=e510] [cursor=pointer]:
+          - /url: /legal
+        - link "Data Security" [ref=e511] [cursor=pointer]:
+          - /url: /legal
+    - paragraph [ref=e513]: © 2026 Insaplan. All Rights Reserved.
