@@ -28,9 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
+export const dynamicParams = true
+
 export async function generateStaticParams() {
-    const { docs: posts } = await fetchBlogPosts(1000, 1)
-    return posts.map((post) => ({ slug: post.slug }))
+    try {
+        const { docs: posts } = await fetchBlogPosts(1000, 1)
+        return posts.map((post) => ({ slug: post.slug }))
+    } catch {
+        return []
+    }
 }
 
 export default async function BlogPostPage({ params }: Props) {
