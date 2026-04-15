@@ -7,6 +7,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { migrations } from './migrations'
 
+// During Next.js build phase, skip DB connection to avoid Railway/Vercel build failures
+const isBuildPhase = process.env.NEXT_PHASE === 'phase-production-build'
+
 // Collections
 import { Pages } from './collections/Pages'
 import { BlogPosts } from './collections/BlogPosts'
@@ -53,7 +56,7 @@ export default buildConfig({
     admin: {
         user: Users.slug,
         meta: {
-            titleSuffix: '- Insaplan CMS',
+            titleSuffix: '- Insaplan',
         }
     },
     collections: [
@@ -95,9 +98,9 @@ export default buildConfig({
         outputFile: path.resolve(dirname, '../payload-types.ts')
     },
     db: postgresAdapter({
-        pool: {
-            connectionString: process.env.DATABASE_URL
-        },
+        pool: isBuildPhase
+            ? { connectionString: 'postgresql://placeholder:placeholder@localhost/placeholder', max: 0 }
+            : { connectionString: process.env.DATABASE_URL },
         prodMigrations: migrations,
         // Supabase-managed Postgres often uses restricted roles (e.g. `prisma.<ref>`). Keep push off
         // and apply schema via migrations/SQL editor with a privileged role.
