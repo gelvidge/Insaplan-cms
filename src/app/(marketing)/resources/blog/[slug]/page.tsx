@@ -1,2 +1,1 @@
-export { default, generateMetadata } from '@/app/(marketing)/blog/[slug]/page'
-export const dynamic = 'force-dynamic'
+export { default, generateMetadata, generateStaticParams } from '@/app/(marketing)/blog/[slug]/page'

@@ -1,5 +1,6 @@
 [build]
 builder = "nixpacks"
+buildCommand = "pnpm run build"
 
 [deploy]
 startCommand = "node_modules/.bin/next start --port 3001"
