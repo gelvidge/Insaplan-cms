@@ -177,7 +177,6 @@ export const Solutions: CollectionConfig = {
                 {
                     name: 'text',
                     type: 'text',
-                    defaultValue: 'Get Started'
                 },
                 {
                     name: 'url',

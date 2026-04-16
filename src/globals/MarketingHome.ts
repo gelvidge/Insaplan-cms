@@ -4,28 +4,18 @@ import { isAdminOrEditor, publicRead } from '../access'
 export const MarketingHome: GlobalConfig = {
     slug: 'marketing-home',
     label: 'Home',
-    admin: {
-        group: 'Pages',
-    },
-    access: {
-        read: publicRead,
-        update: isAdminOrEditor,
-    },
+    admin: { group: 'Pages' },
+    access: { read: publicRead, update: isAdminOrEditor },
     fields: [
-        // ── Hero ─────────────────────────────────────────────────────────────
         {
             name: 'hero',
             type: 'group',
             label: 'Hero',
             fields: [
-                { name: 'eyebrow', type: 'text', defaultValue: 'AI-powered planning' },
-                { name: 'badge', type: 'text', defaultValue: 'Launching Soon' },
-                { name: 'headline', type: 'text', defaultValue: 'Turn insights into actionable plans' },
-                {
-                    name: 'subtitle',
-                    type: 'textarea',
-                    defaultValue: 'Capture insights as beautiful infographics, charts, and tables. Build and iterate plans fast with hundreds of predefined templates, then report and track execution.',
-                },
+                { name: 'eyebrow',  type: 'text' },
+                { name: 'badge',    type: 'text' },
+                { name: 'headline', type: 'text' },
+                { name: 'subtitle', type: 'textarea' },
                 {
                     name: 'pillars',
                     type: 'array',
@@ -49,7 +39,7 @@ export const MarketingHome: GlobalConfig = {
                             options: [
                                 { label: 'Sparkles', value: 'sparkles' },
                                 { label: 'Template', value: 'template' },
-                                { label: 'Cards', value: 'cards' },
+                                { label: 'Cards',    value: 'cards'    },
                                 { label: 'Building', value: 'building' },
                             ],
                         },
@@ -61,7 +51,7 @@ export const MarketingHome: GlobalConfig = {
                     type: 'array',
                     labels: { singular: 'Slide', plural: 'Slides' },
                     fields: [
-                        { name: 'title', type: 'text' },
+                        { name: 'title',       type: 'text' },
                         { name: 'description', type: 'textarea' },
                         {
                             name: 'image',
@@ -73,19 +63,14 @@ export const MarketingHome: GlobalConfig = {
                 },
             ],
         },
-        // ── Core Features ─────────────────────────────────────────────────────
         {
             name: 'coreFeatures',
             type: 'group',
             label: 'Core Features',
             fields: [
-                { name: 'kicker', type: 'text', defaultValue: 'Built for clarity' },
-                { name: 'heading', type: 'text', defaultValue: 'Different by design.' },
-                {
-                    name: 'description',
-                    type: 'textarea',
-                    defaultValue: 'Bring knowledge, planning, and reporting together with curated insights and flexible building blocks.',
-                },
+                { name: 'kicker',      type: 'text' },
+                { name: 'heading',     type: 'text' },
+                { name: 'description', type: 'textarea' },
                 {
                     name: 'features',
                     type: 'array',
@@ -95,12 +80,12 @@ export const MarketingHome: GlobalConfig = {
                             name: 'icon',
                             type: 'select',
                             options: [
-                                { label: 'Bulb', value: 'bulb' },
+                                { label: 'Bulb',   value: 'bulb'   },
                                 { label: 'Target', value: 'target' },
                                 { label: 'Report', value: 'report' },
                             ],
                         },
-                        { name: 'title', type: 'text' },
+                        { name: 'title',       type: 'text' },
                         { name: 'description', type: 'textarea' },
                         {
                             name: 'capabilities',
@@ -127,41 +112,35 @@ export const MarketingHome: GlobalConfig = {
                 },
             ],
         },
-        // ── Social Proof ──────────────────────────────────────────────────────
         {
             name: 'socialProof',
             type: 'group',
             label: 'Social Proof',
             fields: [
-                { name: 'heading', type: 'text', defaultValue: 'Trusted by Teams Worldwide' },
-                { name: 'subheading', type: 'text', defaultValue: 'Join thousands of teams executing strategy with confidence' },
-                { name: 'logosLabel', type: 'text', defaultValue: 'TRUSTED BY LEADING ORGANIZATIONS' },
+                { name: 'heading',    type: 'text' },
+                { name: 'subheading', type: 'text' },
+                { name: 'logosLabel', type: 'text' },
                 {
                     name: 'customerLogos',
                     type: 'array',
                     labels: { singular: 'Logo', plural: 'Logos' },
                     fields: [
-                        { name: 'companyName', type: 'text', required: true },
-                        { name: 'logo', type: 'upload', relationTo: 'media' },
+                        { name: 'companyName', type: 'text',   required: true },
+                        { name: 'logo',        type: 'upload', relationTo: 'media' },
                     ],
                 },
             ],
         },
-        // ── CTA ───────────────────────────────────────────────────────────────
         {
             name: 'cta',
             type: 'group',
             label: 'CTA',
             fields: [
-                { name: 'title', type: 'text', defaultValue: 'Build better plans, faster' },
-                {
-                    name: 'description',
-                    type: 'textarea',
-                    defaultValue: 'Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.',
-                },
-                { name: 'emailPlaceholder', type: 'text', defaultValue: 'Enter your email' },
-                { name: 'buttonLabel', type: 'text', defaultValue: 'Join Waitlist' },
-                { name: 'note', type: 'text', defaultValue: 'Get notified when we launch - no spam, ever' },
+                { name: 'title',            type: 'text' },
+                { name: 'description',      type: 'textarea' },
+                { name: 'emailPlaceholder', type: 'text' },
+                { name: 'buttonLabel',      type: 'text' },
+                { name: 'note',             type: 'text' },
             ],
         },
     ],

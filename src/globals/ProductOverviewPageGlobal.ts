@@ -13,15 +13,11 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
     },
     fields: [
         // ── Hero ─────────────────────────────────────────────────────────────
-        { name: 'heroTitle', type: 'text', defaultValue: 'Turn Insights into Plans' },
-        {
-            name: 'heroSubtitle',
-            type: 'textarea',
-            defaultValue: 'Capture organizational knowledge, build strategic plans with proven frameworks, and generate beautiful reports—all in one platform.',
-        },
+        { name: 'heroTitle', type: 'text'},
+        { name: 'heroSubtitle', type: 'textarea' },
         // ── How It Works ─────────────────────────────────────────────────────
-        { name: 'howItWorksHeading', type: 'text', defaultValue: 'How It Works' },
-        { name: 'howItWorksSubheading', type: 'text', defaultValue: 'Three simple steps to transform your planning process' },
+        { name: 'howItWorksHeading', type: 'text'},
+        { name: 'howItWorksSubheading', type: 'text'},
         {
             name: 'steps',
             type: 'array',
@@ -37,8 +33,8 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
             type: 'group',
             label: 'Key Benefits Section',
             fields: [
-                { name: 'heading', type: 'text', defaultValue: 'Key Benefits' },
-                { name: 'subheading', type: 'text', defaultValue: 'Everything you need to transform your planning process' },
+                { name: 'heading', type: 'text'},
+                { name: 'subheading', type: 'text'},
                 {
                     name: 'benefits',
                     type: 'array',
@@ -64,11 +60,11 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
         },
         // ── Features ─────────────────────────────────────────────────────────
         {
-            name: 'featuresHeading', type: 'text', defaultValue: 'Features',
+            name: 'featuresHeading', type: 'text',
         },
         {
             name: 'featuresSubheading', type: 'textarea',
-            defaultValue: 'Everything you need to transform strategic planning from a painful process into a competitive advantage',
+            
         },
         {
             name: 'features',
@@ -98,8 +94,8 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
             ],
         },
         // ── Problems We Solve ─────────────────────────────────────────────────
-        { name: 'problemsHeading', type: 'text', defaultValue: 'Problems We Solve' },
-        { name: 'problemsSubheading', type: 'text', defaultValue: 'Common challenges Insaplan addresses' },
+        { name: 'problemsHeading', type: 'text'},
+        { name: 'problemsSubheading', type: 'text'},
         {
             name: 'problems',
             type: 'array',
@@ -115,8 +111,8 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
             type: 'group',
             label: 'Comparison Table Section',
             fields: [
-                { name: 'heading', type: 'text', defaultValue: 'Why Insaplan vs. Traditional Methods' },
-                { name: 'subheading', type: 'text', defaultValue: 'See how Insaplan compares to traditional planning tools' },
+                { name: 'heading', type: 'text'},
+                { name: 'subheading', type: 'text'},
                 {
                     name: 'columns',
                     type: 'array',

@@ -187,6 +187,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 24px;
+    background: radial-gradient(ellipse at 60% 40%, #594a8c 0%, #3a427a 45%, #1e1b3a 100%);
 }
 
 .flowSvg {

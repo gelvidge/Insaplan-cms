@@ -15,36 +15,36 @@ export const FooterGlobal: GlobalConfig = {
         {
             name: 'logoText',
             type: 'text',
-            defaultValue: 'Insaplan',
+            
             admin: { description: 'Brand name shown as logo text in nav and footer' },
         },
         {
             name: 'navCtaLabel',
             type: 'text',
-            defaultValue: 'Request Access',
+            
             admin: { description: 'Label for the primary CTA button in the navigation bar' },
         },
         {
             name: 'navCtaUrl',
             type: 'text',
-            defaultValue: '/contact',
+            
             admin: { description: 'URL for the navigation CTA button' },
         },
         {
             name: 'tagline',
             type: 'text',
-            defaultValue: 'Turn Insights into Plans. Strategic planning and reporting made simple.',
+            
         },
         {
             name: 'copyrightName',
             type: 'text',
-            defaultValue: 'Insaplan',
+            
             admin: { description: 'Name used in the copyright line (e.g. "Insaplan")' },
         },
         {
             name: 'copyrightSuffix',
             type: 'text',
-            defaultValue: 'All Rights Reserved.',
+            
             admin: { description: 'Text after the year and company name in the copyright line' },
         },
         {

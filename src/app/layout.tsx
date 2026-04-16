@@ -2,11 +2,9 @@ import type { Metadata } from 'next'
 import '@mantine/core/styles.css'
 import '@mantine/carousel/styles.css'
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
-import '../globals.css'
+import './globals.css'
 import Providers from '@/components/marketing/Providers'
-import Navigation from '@/components/marketing/Navigation'
-import Footer from '@/components/marketing/Footer'
-import { fetchSiteMetadata, fetchFooter, fetchNavigationMenu } from '@/lib/queries'
+import { fetchSiteMetadata } from '@/lib/queries'
 
 export async function generateMetadata(): Promise<Metadata> {
     const meta = await fetchSiteMetadata().catch(() => null)
@@ -16,12 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 }
 
-export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
-    const [footerData, headerNav] = await Promise.all([
-        fetchFooter().catch(() => null),
-        fetchNavigationMenu('header').catch(() => null),
-    ])
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" {...mantineHtmlProps}>
             <head>
@@ -30,11 +23,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
             </head>
             <body>
                 <Providers>
-                    <Navigation
-                        menuItems={headerNav?.items}
-                    />
-                    <main>{children}</main>
-                    <Footer data={footerData} />
+                    {children}
                 </Providers>
             </body>
         </html>

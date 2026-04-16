@@ -15,13 +15,13 @@ export const SiteMetadataGlobal: GlobalConfig = {
         {
             name: 'defaultTitle',
             type: 'text',
-            defaultValue: 'Insaplan',
+            
             admin: { description: 'Browser tab title for all marketing pages' },
         },
         {
             name: 'defaultDescription',
             type: 'textarea',
-            defaultValue: 'AI-Powered Strategy Execution Platform',
+            
             admin: { description: 'Default meta description' },
         },
     ],

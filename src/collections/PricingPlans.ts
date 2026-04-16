@@ -99,7 +99,6 @@ export const PricingPlans: CollectionConfig = {
                     name: 'text',
                     type: 'text',
                     required: true,
-                    defaultValue: 'Get Started'
                 },
                 {
                     name: 'url',

@@ -21,7 +21,7 @@ export const SiteSettings: GlobalConfig = {
                             name: 'siteName',
                             type: 'text',
                             required: true,
-                            defaultValue: 'Insaplan'
+                            
                         },
                         {
                             name: 'siteDescription',
@@ -162,7 +162,7 @@ export const SiteSettings: GlobalConfig = {
                                 {
                                     name: 'enabled',
                                     type: 'checkbox',
-                                    defaultValue: false,
+                                    
                                     admin: {
                                         description: 'Enable maintenance mode'
                                     }

@@ -139,6 +139,208 @@ async function seed() {
     })
     console.log('  done.')
 
+    // ── Product Planning Page ─────────────────────────────────────────────
+    console.log('Seeding product-planning-page...')
+    await payload.updateGlobal({
+        slug: 'product-planning-page',
+        data: {
+            heroTitle: 'Planning',
+            heroSubtitle: 'Build strategic plans with proven frameworks and AI assistance — faster than ever before.',
+            painPoints: [
+                { icon: 'spreadsheet', title: 'Spreadsheet-led planning',     description: 'Tracking your plans in spreadsheets?',                                          color: '124,58,237' },
+                { icon: 'timeline',    title: 'Progress is unclear',           description: 'Unsure how plans are progressing?',                                             color: '34,139,230' },
+                { icon: 'users',       title: 'Org-wide visibility is weak',   description: 'Difficulties in seeing activities across the organisation?',                   color: '34,197,94'  },
+                { icon: 'puzzle',      title: 'Dependencies stay hidden',      description: 'Unable to see how strategic activities support each other?',                   color: '251,146,60' },
+                { icon: 'clock',       title: 'Updates rely on chasing people', description: 'Difficulties in getting the team to update plans?',                           color: '236,72,153' },
+            ],
+            templates: {
+                kicker: 'Templates',
+                heading: 'Start from a planning model that already fits the work',
+                body: 'Choose from multiple planning templates, adapt them to your organisation, or create your own. Insaplan gives teams a structured starting point without forcing every plan into the same shape.',
+                stat1Value: '8+',
+                stat1Label: 'ready-to-use framework examples',
+                stat2Value: 'Custom',
+                stat2Label: 'template creation for your planning method',
+                callout: 'Standardise how teams plan without flattening how they think.',
+                pills: [
+                    { label: 'OKRs' }, { label: 'Balanced Scorecard' }, { label: 'Product Roadmap' },
+                    { label: 'Ansoff Matrix' }, { label: 'Business Model Canvas' },
+                    { label: 'Scenario Planning' }, { label: 'Hoshin Kanri' }, { label: 'GSOT' },
+                ],
+            },
+            metrics: {
+                kicker: 'Key Metrics',
+                heading: 'Link key metrics to your plan',
+                body: 'Add the measures and planning controls that make execution manageable. Insaplan lets you attach KPI metrics, dependencies, governance, budgets, risks, stakeholders, and your own custom fields directly to the plan itself.',
+                points: [
+                    { label: 'Choose from an extensive library of KPI metrics or create your own measures around how your organisation actually runs.' },
+                    { label: 'Track supporting planning metadata like dependencies, budgets, risk registers, governance, and stakeholder ownership in one place.' },
+                    { label: 'Turn plans from static documents into live operating tools with metrics and controls that travel with the work.' },
+                ],
+                pills: [
+                    { label: 'KPI Library' }, { label: 'Dependencies' }, { label: 'Budgets' },
+                    { label: 'Risk Registers' }, { label: 'Governance' }, { label: 'Stakeholders' }, { label: 'Custom Metrics' },
+                ],
+                badgeLabel: 'Plan Controls',
+                miniStat: '7 core tracking dimensions',
+            },
+            tracking: {
+                kicker: 'Tracking',
+                heading: 'Switch the same plan into the view each audience needs',
+                body: 'Planning is only useful when people can read it. Give leadership a timeline, teams a board, or strategy owners a structural view of how work fits together.',
+                views: [
+                    { label: 'Gantt Charts', description: 'Map work across time, milestones, and dependencies so leaders can see delivery shape immediately.',           icon: 'timeline' },
+                    { label: 'Kanban Boards', description: 'Give teams a clear operational view of work in motion, blockers, and what needs attention next.',           icon: 'columns'  },
+                    { label: 'Tree Views',   description: 'Break strategy into goals, initiatives, and activities to show how execution rolls up to intent.',           icon: 'route'    },
+                ],
+            },
+            linkedPlanning: {
+                kicker: 'Linked Planning',
+                heading: 'Show how plans and activities support each other',
+                body: 'Connect strategy, initiatives, and operational work so teams can see where effort contributes, where dependencies exist, and where alignment is missing.',
+                points: [
+                    { label: 'Connect high-level strategic plans to departmental plans and day-to-day activities.' },
+                    { label: 'See how one initiative supports another before work drifts or duplicates.' },
+                    { label: 'Give leaders a clean line of sight from goal to execution across the organisation.' },
+                ],
+            },
+            aiPlanning: {
+                kicker: 'AI Planning',
+                heading: 'Generate plans from your own knowledge, not generic prompts',
+                body: 'Use AI-assisted plan generation grounded in your own knowledge base insights. Start with what your organisation already knows, then turn it into a structured, actionable plan faster.',
+                steps: [
+                    { label: 'Pull insight from your own knowledge base, frameworks, and previous plans.' },
+                    { label: 'Generate an initial plan structure with goals, workstreams, and supporting activities.' },
+                    { label: 'Refine, link, and track the plan with your team instead of starting from a blank page.' },
+                ],
+                sourcePills: [
+                    { label: 'Knowledge Base' }, { label: 'Past Plans' }, { label: 'Best-Practice Frameworks' },
+                    { label: 'Team Context' }, { label: 'Internal Strategy Docs' },
+                ],
+            },
+        } as any,
+    })
+    console.log('  done.')
+
+    // ── Product Reporting Page ────────────────────────────────────────────
+    console.log('Seeding product-reporting-page...')
+    await payload.updateGlobal({
+        slug: 'product-reporting-page',
+        data: {
+            heroTitle: 'Reporting',
+            heroSubtitle: 'Track execution, measure impact, and communicate progress with beautiful real-time dashboards and reports.',
+            painPoints: [
+                { icon: 'presentation', title: 'Manual progress reporting', description: 'Are you generating progress reports for projects manually?',                                          color: '124,58,237' },
+                { icon: 'chart',        title: 'Impact is hard to see',     description: 'Having difficulties in seeing the impact your plans have on the organisation?',                      color: '34,139,230' },
+                { icon: 'target',       title: 'No feedback loop',          description: 'No feedback loop to assess which activities bring the most benefit?',                                color: '34,197,94'  },
+            ],
+            dashboards: {
+                kicker: 'Dashboards',
+                heading: 'Build your own dashboard for plan performance and execution',
+                body: 'Reporting should not start at the end of the month. Create dashboards that show how plans are executing right now, which activities are moving the needle, and where the organisation needs to intervene next.',
+                points: [
+                    { label: 'Generate your own dashboard to track the performance and execution of your plans.' },
+                    { label: 'Monitor key metrics in one place instead of stitching together multiple files and status updates.' },
+                    { label: 'Receive notifications when progress slips, milestones move, or metrics fall outside target ranges.' },
+                    { label: 'Create a clear feedback loop between strategic activity and organisational impact.' },
+                ],
+                metrics: [
+                    { label: 'On-track initiatives',     value: '24',  tone: 'purple' },
+                    { label: 'Plans needing attention',  value: '5',   tone: 'amber'  },
+                    { label: 'Impact signals improved',  value: '+18%', tone: 'green' },
+                ],
+                tags: [
+                    { label: 'Execution' }, { label: 'Impact' }, { label: 'Milestones' },
+                    { label: 'Alerts' }, { label: 'KPIs' }, { label: 'Ownership' },
+                ],
+            },
+            reportingOutputs: {
+                kicker: 'Reporting outputs',
+                heading: 'Generate flexible PDF reports and spreadsheet presentations',
+                body: 'Use predefined templates to move quickly, or build your own reporting format for the way your organisation communicates. The same underlying plan data can power a polished board report, a working spreadsheet, or a stakeholder-ready status pack.',
+                points: [
+                    { label: 'Generate flexible PDF reports and spreadsheet presentations using predefined templates or your own layouts.' },
+                    { label: 'Produce audience-specific packs for leadership, programme teams, boards, or external stakeholders without rebuilding the same report twice.' },
+                    { label: 'Turn the same reporting data into polished narrative documents, status summaries, and exportable working files.' },
+                    { label: 'Keep reporting consistent across the organisation while still adapting output to the audience in front of you.' },
+                ],
+                formats: [
+                    { label: 'Board PDF' }, { label: 'Status Pack' }, { label: 'Programme Summary' },
+                    { label: 'Spreadsheet Export' }, { label: 'Custom Template' },
+                ],
+                templateRows: [
+                    { label: 'Executive summary',        width: '88%' },
+                    { label: 'Progress by workstream',   width: '74%' },
+                    { label: 'Impact outcomes',          width: '81%' },
+                    { label: 'Risks and next actions',   width: '67%' },
+                ],
+            },
+        } as any,
+    })
+    console.log('  done.')
+
+    // ── Product Knowledge Base Page ───────────────────────────────────────
+    console.log('Seeding product-knowledgebase-page...')
+    await payload.updateGlobal({
+        slug: 'product-knowledgebase-page',
+        data: {
+            heroTitle: 'Every insight your business generates, always within reach',
+            heroAccent: 'always within reach',
+            heroSubtitle: 'Insaplan automatically captures knowledge as you create plans and reports — building a living intelligence layer your whole team can query in plain language.',
+            capture: {
+                kicker: 'What gets captured',
+                heading: 'Any insight that matters to your business',
+                body: 'Whatever knowledge is relevant to your plan — market signals, competitive moves, internal performance, operational risks — it all flows to the knowledgebase automatically as you work.',
+                insightTags: [
+                    { label: 'Market Insights' }, { label: 'Competitor Intel' }, { label: 'Macroeconomic Influencers' },
+                    { label: 'Business Drivers' }, { label: 'Moderators' }, { label: 'Strategic Activities' },
+                    { label: 'Customer Feedback' }, { label: 'Regulatory Changes' }, { label: 'Technology Trends' },
+                    { label: 'Sales Performance' }, { label: 'Operational Risks' }, { label: 'Partnership Opportunities' },
+                    { label: 'Industry Benchmarks' }, { label: 'Growth Initiatives' }, { label: 'Product Milestones' },
+                    { label: 'Team OKRs' }, { label: 'Financial KPIs' }, { label: 'Talent & Culture' },
+                ],
+                tagEtc: 'and anything else that drives your strategy…',
+            },
+            autoCapture: {
+                kicker: 'Automatic capture',
+                heading: 'Built as you work — no extra effort',
+                body: 'Every infographic, chart, table, and strategic plan you create in Insaplan automatically flows into your knowledge base. Insights flow in continuously, so the pool is always current.',
+                videoLabel: 'Continuous capture — no manual effort',
+                points: [
+                    { label: 'Plans and reports contribute automatically' },
+                    { label: 'Structured by category — no manual tagging' },
+                    { label: 'Accessible to every team member instantly' },
+                    { label: 'Grows richer the more you use Insaplan' },
+                    { label: 'Curate by removing out of date insights' },
+                ],
+            },
+            aiQuery: {
+                kicker: 'AI-powered querying',
+                heading: 'Ask your business anything, in plain language',
+                body: 'Your knowledge base becomes a conversational intelligence layer. Ask questions across all your plans, reports, and captured insights — and get precise, sourced answers instantly.',
+                qaExamples: [
+                    {
+                        question: 'What strategic activities are we working on in the US this quarter?',
+                        answer: 'There are 4 active strategic activities in the US this quarter: (1) Enterprise channel expansion in the Northeast, (2) Partnership programme with regional SIs, (3) Brand awareness campaign targeting mid-market CFOs, and (4) Pilot rollout of the new onboarding flow. The enterprise expansion is flagged as highest priority.',
+                    },
+                    {
+                        question: 'What are the main business drivers shaping our performance?',
+                        answer: 'Your top 3 business drivers this quarter are: Net Revenue Retention (currently 108%, above target), New Logo Acquisition (tracking 12% below plan), and Gross Margin (holding at 74%). Customer churn in the SMB segment is flagged as a key moderator to watch.',
+                    },
+                    {
+                        question: 'What initiatives is the sales team running to grow the business?',
+                        answer: 'The sales team has 3 active growth initiatives: a mid-market outbound sequence launched in week 2, a win-back programme targeting 28 churned accounts from Q3, and an upsell motion targeting single-product customers. The win-back programme has generated 6 qualified opportunities to date.',
+                    },
+                    {
+                        question: 'What upcoming milestones do we have in our strategic plan?',
+                        answer: '5 milestones are due in the next 60 days: Product v2.4 launch (Apr 28), Board strategy review (May 3), EMEA go-live (May 15), Annual partner summit (May 22), and H2 plan sign-off (Jun 1). The EMEA go-live is currently marked at risk due to a data residency dependency.',
+                    },
+                ],
+            },
+        } as any,
+    })
+    console.log('  done.')
+
     // ── Solutions Page ────────────────────────────────────────────────────
     console.log('Seeding solutions-page...')
     await payload.updateGlobal({
@@ -746,6 +948,73 @@ async function seed() {
         await payload.create({ collection: 'pricing-plans', data: plan as any })
         console.log(`  pricing-plans/${plan.planName} — created`)
     }
+
+    // ── Product Visuals Page ──────────────────────────────────────────────
+    console.log('Seeding product-visuals-page...')
+    await payload.updateGlobal({
+        slug: 'product-visuals-page',
+        data: {
+            heroTitle: 'Make your strategy impossible to ignore',
+            heroSubtitle: 'Insaplan turns your plans, data, and frameworks into stunning infographics, charts, and visual plans — no design skills, no slides, no spreadsheet hacks.',
+            painPoints: [
+                { icon: 'presentation', title: 'Slide creation is too slow',      description: 'Constantly building slides to communicate your activities?',          color: '124,58,237' },
+                { icon: 'moodsad',      title: 'Visuals lack impact',             description: 'Slides lacking creative and visual impact?',                          color: '34,139,230' },
+                { icon: 'chart',        title: 'Charts are hard to build',        description: 'Unable to build the charts you require in spreadsheets?',             color: '34,197,94'  },
+                { icon: 'dashboard',    title: 'Framework choice is unclear',     description: 'Unsure on the best business framework to convey your plans?',         color: '251,146,60' },
+                { icon: 'spreadsheet',  title: 'Spreadsheets feel boring',        description: 'Need to make boring spreadsheets engaging?',                         color: '236,72,153' },
+                { icon: 'timeline',     title: 'Plan tracking is messy',          description: 'Tracking strategic plans in spreadsheets?',                          color: '20,184,166' },
+            ],
+            infographics: {
+                kicker: 'Infographics',
+                heading: 'Business frameworks that actually look the part',
+                body: 'Replace hand-built slides with professionally designed infographics. Choose from strategy frameworks, icon-driven summaries, and visual layouts that make complex ideas instantly clear — then customise everything to your brand.',
+                capabilities: [
+                    { label: 'Drag-and-drop visual builder with no design skills required' },
+                    { label: "Business framework templates (SWOT, Porter's Five Forces, McKinsey 7-S, and more)" },
+                    { label: 'Custom colour palettes and brand asset integration' },
+                    { label: 'Export-ready outputs in PDF and image formats' },
+                    { label: 'Animated reveal mode for live presentations' },
+                ],
+            },
+            charting: {
+                kicker: 'Charting',
+                heading: 'Every chart type your business needs',
+                body: 'From revenue trends to spend breakdowns, Insaplan generates beautiful, presentation-ready charts directly from your data — no spreadsheet exports required.',
+                capabilities: [
+                    { label: 'Connect directly to your Insaplan data — no copy-paste' },
+                    { label: 'Auto-select the best chart type for your dataset' },
+                    { label: 'Interactive tooltips and drill-down for stakeholder review' },
+                    { label: 'Annotations, trend lines, and targets overlaid on any chart' },
+                    { label: 'One-click format switching between chart families' },
+                ],
+            },
+            tables: {
+                kicker: 'Tables',
+                heading: 'Spreadsheets that actually tell a story',
+                body: 'Replace static grids with smart, visual tables. Conditional formatting, inline sparklines, and live progress bars turn raw data into decisions — without a single formula or manual update.',
+                capabilities: [
+                    { label: 'Conditional formatting to surface risks, statuses, and priorities at a glance' },
+                    { label: 'Freeze rows and columns to keep context while scrolling large datasets' },
+                    { label: 'Sort, filter, and group by any field — without touching a formula' },
+                    { label: 'Inline sparklines and progress bars embedded directly in cells' },
+                    { label: 'Export to Excel, CSV, or PDF in a single click' },
+                ],
+            },
+            planViews: {
+                kicker: 'Plan Views',
+                heading: 'See your plans the way your audience needs them',
+                body: 'Switch between Gantt, Kanban, and Explorer views of the same plan in a single click. Share a timeline with engineering, a board with your team, and a strategic map with the exec — all from one source of truth.',
+                capabilities: [
+                    { label: 'Gantt view for timeline and dependency management' },
+                    { label: 'Kanban board for task and workstream tracking' },
+                    { label: 'Explorer view for a high-level strategic map across all plans' },
+                    { label: 'Switch between views instantly — same data, different lens' },
+                    { label: 'Share any view as a shareable link or export to PDF' },
+                ],
+            },
+        } as any,
+    })
+    console.log('  done.')
 
     // ── FAQs Page global ──────────────────────────────────────────────────
     console.log('Seeding faqs-page...')

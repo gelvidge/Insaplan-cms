@@ -10,7 +10,6 @@ import { migrations } from './migrations'
 // Collections
 import { Pages } from './collections/Pages'
 import { BlogPosts } from './collections/BlogPosts'
-import { KnowledgeBase } from './collections/KnowledgeBase'
 import { FAQs } from './collections/FAQs'
 import { PricingPlans } from './collections/PricingPlans'
 import { Solutions } from './collections/Solutions'
@@ -33,6 +32,8 @@ import { SiteMetadataGlobal } from './globals/SiteMetadataGlobal'
 import { ProductOverviewPageGlobal } from './globals/ProductOverviewPageGlobal'
 import { ProductPlanningPageGlobal } from './globals/ProductPlanningPageGlobal'
 import { ProductReportingPageGlobal } from './globals/ProductReportingPageGlobal'
+import { ProductVisualsPageGlobal } from './globals/ProductVisualsPageGlobal'
+import { ProductKnowledgeBasePageGlobal } from './globals/ProductKnowledgeBasePageGlobal'
 import { SolutionsPageGlobal } from './globals/SolutionsPageGlobal'
 import { FAQsPageGlobal } from './globals/FAQsPageGlobal'
 
@@ -57,7 +58,6 @@ export default buildConfig({
         Users,
         Pages,
         BlogPosts,
-        KnowledgeBase,
         FAQs,
         PricingPlans,
         Solutions,
@@ -71,6 +71,8 @@ export default buildConfig({
         ProductOverviewPageGlobal,
         ProductPlanningPageGlobal,
         ProductReportingPageGlobal,
+        ProductVisualsPageGlobal,
+        ProductKnowledgeBasePageGlobal,
         SolutionsPageGlobal,
         PricingPageGlobal,
         BlogPageGlobal,

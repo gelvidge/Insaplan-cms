@@ -70,7 +70,6 @@ export interface Config {
     users: User;
     pages: Page;
     'blog-posts': BlogPost;
-    'knowledge-base': KnowledgeBase;
     faqs: Faq;
     'pricing-plans': PricingPlan;
     solutions: Solution;
@@ -87,7 +86,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
-    'knowledge-base': KnowledgeBaseSelect<false> | KnowledgeBaseSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     solutions: SolutionsSelect<false> | SolutionsSelect<true>;
@@ -108,6 +106,8 @@ export interface Config {
     'product-overview-page': ProductOverviewPage;
     'product-planning-page': ProductPlanningPage;
     'product-reporting-page': ProductReportingPage;
+    'product-visuals-page': ProductVisualsPage;
+    'product-knowledgebase-page': ProductKnowledgebasePage;
     'solutions-page': SolutionsPage;
     'pricing-page': PricingPage;
     'blog-page': BlogPage;
@@ -125,6 +125,8 @@ export interface Config {
     'product-overview-page': ProductOverviewPageSelect<false> | ProductOverviewPageSelect<true>;
     'product-planning-page': ProductPlanningPageSelect<false> | ProductPlanningPageSelect<true>;
     'product-reporting-page': ProductReportingPageSelect<false> | ProductReportingPageSelect<true>;
+    'product-visuals-page': ProductVisualsPageSelect<false> | ProductVisualsPageSelect<true>;
+    'product-knowledgebase-page': ProductKnowledgebasePageSelect<false> | ProductKnowledgebasePageSelect<true>;
     'solutions-page': SolutionsPageSelect<false> | SolutionsPageSelect<true>;
     'pricing-page': PricingPageSelect<false> | PricingPageSelect<true>;
     'blog-page': BlogPageSelect<false> | BlogPageSelect<true>;
@@ -377,86 +379,6 @@ export interface BlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "knowledge-base".
- */
-export interface KnowledgeBase {
-  id: number;
-  title: string;
-  /**
-   * URL-friendly identifier
-   */
-  slug: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  category: 'getting-started' | 'features' | 'integrations' | 'troubleshooting' | 'best-practices' | 'advanced';
-  subcategory?: string | null;
-  relatedArticles?: (number | KnowledgeBase)[] | null;
-  /**
-   * Keywords to improve search discoverability
-   */
-  searchKeywords?: string[] | null;
-  status: 'draft' | 'published' | 'archived';
-  /**
-   * Number of times this article was viewed
-   */
-  viewCount?: number | null;
-  /**
-   * Number of "helpful" votes
-   */
-  helpfulCount?: number | null;
-  /**
-   * Number of "not helpful" votes
-   */
-  notHelpfulCount?: number | null;
-  /**
-   * Last time content accuracy was verified
-   */
-  lastReviewed?: string | null;
-  seo?: {
-    /**
-     * Optimal length: 50-60 characters
-     */
-    metaTitle?: string | null;
-    /**
-     * Optimal length: 150-160 characters
-     */
-    metaDescription?: string | null;
-    /**
-     * Recommended: 1200x630px
-     */
-    ogImage?: (number | null) | Media;
-    /**
-     * Leave empty to use default URL
-     */
-    canonicalUrl?: string | null;
-    /**
-     * Prevent search engines from indexing this page
-     */
-    noIndex?: boolean | null;
-    /**
-     * Comma-separated keywords for SEO
-     */
-    keywords?: string[] | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faqs".
  */
 export interface Faq {
@@ -482,7 +404,6 @@ export interface Faq {
    * Display order (lower numbers appear first)
    */
   order: number;
-  relatedArticles?: (number | KnowledgeBase)[] | null;
   helpfulCount?: number | null;
   notHelpfulCount?: number | null;
   updatedAt: string;
@@ -754,10 +675,6 @@ export interface PayloadLockedDocument {
         value: number | BlogPost;
       } | null)
     | ({
-        relationTo: 'knowledge-base';
-        value: number | KnowledgeBase;
-      } | null)
-    | ({
         relationTo: 'faqs';
         value: number | Faq;
       } | null)
@@ -904,37 +821,6 @@ export interface BlogPostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "knowledge-base_select".
- */
-export interface KnowledgeBaseSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  content?: T;
-  category?: T;
-  subcategory?: T;
-  relatedArticles?: T;
-  searchKeywords?: T;
-  status?: T;
-  viewCount?: T;
-  helpfulCount?: T;
-  notHelpfulCount?: T;
-  lastReviewed?: T;
-  seo?:
-    | T
-    | {
-        metaTitle?: T;
-        metaDescription?: T;
-        ogImage?: T;
-        canonicalUrl?: T;
-        noIndex?: T;
-        keywords?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faqs_select".
  */
 export interface FaqsSelect<T extends boolean = true> {
@@ -942,7 +828,6 @@ export interface FaqsSelect<T extends boolean = true> {
   answer?: T;
   category?: T;
   order?: T;
-  relatedArticles?: T;
   helpfulCount?: T;
   notHelpfulCount?: T;
   updatedAt?: T;
@@ -1375,15 +1260,97 @@ export interface ProductPlanningPage {
   id: number;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
-  sectionHeading?: string | null;
-  sectionSubheading?: string | null;
-  features?:
+  painPoints?:
     | {
+        icon: 'spreadsheet' | 'timeline' | 'users' | 'puzzle' | 'clock' | 'chart';
         title: string;
         description: string;
+        /**
+         * RGB e.g. 124,58,237
+         */
+        color: string;
         id?: string | null;
       }[]
     | null;
+  templates?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    /**
+     * e.g. 8+
+     */
+    stat1Value?: string | null;
+    stat1Label?: string | null;
+    stat2Value?: string | null;
+    stat2Label?: string | null;
+    callout?: string | null;
+    pills?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  metrics?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    pills?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    badgeLabel?: string | null;
+    miniStat?: string | null;
+  };
+  tracking?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    views?:
+      | {
+          label: string;
+          description: string;
+          icon?: ('timeline' | 'columns' | 'route') | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  linkedPlanning?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  aiPlanning?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    steps?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    sourcePills?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1395,15 +1362,188 @@ export interface ProductReportingPage {
   id: number;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
-  sectionHeading?: string | null;
-  sectionSubheading?: string | null;
-  features?:
+  painPoints?:
     | {
+        icon: 'presentation' | 'chart' | 'target' | 'clock' | 'spreadsheet' | 'timeline';
         title: string;
         description: string;
+        /**
+         * RGB e.g. 124,58,237
+         */
+        color: string;
         id?: string | null;
       }[]
     | null;
+  dashboards?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    metrics?:
+      | {
+          label: string;
+          value: string;
+          tone?: ('purple' | 'amber' | 'green') | null;
+          id?: string | null;
+        }[]
+      | null;
+    tags?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  reportingOutputs?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    formats?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    templateRows?:
+      | {
+          label: string;
+          /**
+           * CSS width e.g. 88%
+           */
+          width: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-visuals-page".
+ */
+export interface ProductVisualsPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  painPoints?:
+    | {
+        icon: 'presentation' | 'moodsad' | 'chart' | 'dashboard' | 'spreadsheet' | 'timeline';
+        title: string;
+        description: string;
+        /**
+         * RGB e.g. 124,58,237
+         */
+        color: string;
+        id?: string | null;
+      }[]
+    | null;
+  infographics?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    capabilities?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  charting?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    capabilities?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  tables?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    capabilities?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  planViews?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    capabilities?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-knowledgebase-page".
+ */
+export interface ProductKnowledgebasePage {
+  id: number;
+  heroTitle?: string | null;
+  /**
+   * The portion of the title rendered in accent colour
+   */
+  heroAccent?: string | null;
+  heroSubtitle?: string | null;
+  capture?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    insightTags?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    tagEtc?: string | null;
+  };
+  autoCapture?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    videoLabel?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  aiQuery?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    qaExamples?:
+      | {
+          question: string;
+          answer: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1975,14 +2115,100 @@ export interface ProductOverviewPageSelect<T extends boolean = true> {
 export interface ProductPlanningPageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
-  sectionHeading?: T;
-  sectionSubheading?: T;
-  features?:
+  painPoints?:
     | T
     | {
+        icon?: T;
         title?: T;
         description?: T;
+        color?: T;
         id?: T;
+      };
+  templates?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        stat1Value?: T;
+        stat1Label?: T;
+        stat2Value?: T;
+        stat2Label?: T;
+        callout?: T;
+        pills?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  metrics?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        pills?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        badgeLabel?: T;
+        miniStat?: T;
+      };
+  tracking?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        views?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              icon?: T;
+              id?: T;
+            };
+      };
+  linkedPlanning?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  aiPlanning?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        steps?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        sourcePills?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1995,14 +2221,193 @@ export interface ProductPlanningPageSelect<T extends boolean = true> {
 export interface ProductReportingPageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
-  sectionHeading?: T;
-  sectionSubheading?: T;
-  features?:
+  painPoints?:
     | T
     | {
+        icon?: T;
         title?: T;
         description?: T;
+        color?: T;
         id?: T;
+      };
+  dashboards?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        metrics?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              tone?: T;
+              id?: T;
+            };
+        tags?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  reportingOutputs?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        formats?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        templateRows?:
+          | T
+          | {
+              label?: T;
+              width?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-visuals-page_select".
+ */
+export interface ProductVisualsPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  painPoints?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        color?: T;
+        id?: T;
+      };
+  infographics?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        capabilities?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  charting?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        capabilities?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  tables?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        capabilities?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  planViews?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        capabilities?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-knowledgebase-page_select".
+ */
+export interface ProductKnowledgebasePageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroAccent?: T;
+  heroSubtitle?: T;
+  capture?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        insightTags?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+        tagEtc?: T;
+      };
+  autoCapture?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        videoLabel?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
+  aiQuery?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        qaExamples?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

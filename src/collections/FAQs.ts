@@ -53,15 +53,6 @@ export const FAQs: CollectionConfig = {
             }
         },
         {
-            name: 'relatedArticles',
-            type: 'relationship',
-            relationTo: 'knowledge-base',
-            hasMany: true,
-            admin: {
-                position: 'sidebar'
-            }
-        },
-        {
             name: 'helpfulCount',
             type: 'number',
             defaultValue: 0,

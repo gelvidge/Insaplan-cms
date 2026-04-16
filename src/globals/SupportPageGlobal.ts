@@ -12,23 +12,18 @@ export const SupportPageGlobal: GlobalConfig = {
         update: isAdminOrEditor,
     },
     fields: [
-        { name: 'heroTitle', type: 'text', defaultValue: 'Support' },
+        { name: 'heroTitle', type: 'text'},
         {
             name: 'heroSubtitle',
             type: 'text',
-            defaultValue: "We're here to help you succeed with Insaplan",
+            
         },
-        {
-            name: 'comingSoonMessage',
-            type: 'textarea',
-            defaultValue:
-                'Our support center is launching soon. In the meantime, feel free to reach out to us directly.',
-        },
-        { name: 'contactHeading', type: 'text', defaultValue: 'Get in Touch' },
+        { name: 'comingSoonMessage', type: 'textarea' },
+        { name: 'contactHeading', type: 'text'},
         {
             name: 'contactEmail',
             type: 'email',
-            defaultValue: 'support@insaplan.com',
+            
             admin: { description: 'Support email address shown on the page' },
         },
     ],
