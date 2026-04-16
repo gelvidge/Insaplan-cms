@@ -35,17 +35,7 @@
     border-radius: inherit;
     background: linear-gradient(135deg, rgba(126, 87, 194, 0.08) 0%, transparent 60%);
     opacity: 0;
-    transition: opacity 0.25s ease;
     pointer-events: none;
-}
-
-.card:hover {
-    background: white;
-    border-color: rgba(126, 87, 194, 0.35);
-}
-
-.card:hover::after {
-    opacity: 1;
 }
 
 /* ── Colour-popped variant (when --card-color is set) ──────────────────────── */

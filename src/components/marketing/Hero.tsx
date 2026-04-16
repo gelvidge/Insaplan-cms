@@ -211,7 +211,7 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                                         <Stack gap="md" align="center">
                                                             <Text size="lg" fw={600} c="deepblue.9" ta="center">{slide.title}</Text>
                                                             <Text size="sm" c="dimmed" ta="center" maw={400}>{slide.description}</Text>
-                                                            {slideSrc ? (
+                                                            {slideSrc && (
                                                                 <Box className={classes.slideImageWrap}>
                                                                     <img
                                                                         src={slideSrc}
@@ -220,10 +220,6 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                                                         loading="lazy"
                                                                     />
                                                                 </Box>
-                                                            ) : (
-                                                                <Text size="xs" c="dimmed" ta="center" mt="xl">
-                                                                    [Upload a screenshot for this slide in CMS]
-                                                                </Text>
                                                             )}
                                                         </Stack>
                                                     </Box>

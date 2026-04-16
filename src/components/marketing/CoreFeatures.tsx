@@ -158,36 +158,32 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                                         {(feature.visuals || []).map((visual, visualIndex) => {
                                                             const imageSrc = resolveMediaURL(visual.image, 'card')
                                                             return (
-                                                                <motion.div
+                                                                <Box
                                                                     key={`${feature.title || 'feature'}-${visual.label || visualIndex}`}
-                                                                    whileHover={{ y: -4, transition: { duration: 0.25 } }}
+                                                                    className={`${classes.visualCard} ${classes[`visualCard${visualIndex + 1}`]}`}
                                                                 >
-                                                                    <Box
-                                                                        className={`${classes.visualCard} ${classes[`visualCard${visualIndex + 1}`]}`}
-                                                                    >
-                                                                        <Box className={classes.visualChrome}>
-                                                                            <Text size="xs" fw={700} tt="uppercase" className={classes.visualChromeTitle}>
-                                                                                {visual.label}
-                                                                            </Text>
-                                                                            <Box className={classes.visualControls}>
-                                                                                <Box className={classes.visualControl} />
-                                                                                <Box className={classes.visualControl} />
-                                                                            </Box>
-                                                                        </Box>
-                                                                        <Box className={classes.visualBody} aria-hidden="true">
-                                                                            {imageSrc ? (
-                                                                                <img
-                                                                                    src={imageSrc}
-                                                                                    alt={String(visual.label || 'Visual')}
-                                                                                    className={classes.visualImage}
-                                                                                    loading="lazy"
-                                                                                />
-                                                                            ) : (
-                                                                                <Box className={classes.visualPlaceholder} />
-                                                                            )}
+                                                                    <Box className={classes.visualChrome}>
+                                                                        <Text size="xs" fw={700} tt="uppercase" className={classes.visualChromeTitle}>
+                                                                            {visual.label}
+                                                                        </Text>
+                                                                        <Box className={classes.visualControls}>
+                                                                            <Box className={classes.visualControl} />
+                                                                            <Box className={classes.visualControl} />
                                                                         </Box>
                                                                     </Box>
-                                                                </motion.div>
+                                                                    <Box className={classes.visualBody} aria-hidden="true">
+                                                                        {imageSrc ? (
+                                                                            <img
+                                                                                src={imageSrc}
+                                                                                alt={String(visual.label || 'Visual')}
+                                                                                className={classes.visualImage}
+                                                                                loading="lazy"
+                                                                            />
+                                                                        ) : (
+                                                                            <Box className={classes.visualPlaceholder} />
+                                                                        )}
+                                                                    </Box>
+                                                                </Box>
                                                             )
                                                         })}
                                                     </Box>

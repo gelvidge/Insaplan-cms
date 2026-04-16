@@ -733,7 +733,7 @@ async function seed() {
                 { feature: 'Custom branding', included: true, limit: '' },
                 { feature: 'Priority support', included: true, limit: '' },
             ],
-            cta: { text: 'Contact Sales', url: '/contact', variant: 'outline' as const },
+            cta: { text: 'Contact Us', url: '/contact', variant: 'outline' as const },
         },
     ]
 

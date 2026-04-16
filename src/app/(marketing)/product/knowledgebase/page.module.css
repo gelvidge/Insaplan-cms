@@ -100,14 +100,7 @@
     color: var(--mantine-color-dark-6);
     background: var(--mantine-color-gray-0);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
     cursor: default;
-}
-
-.tag:hover {
-    background: rgba(124, 58, 237, 0.07);
-    border-color: rgba(124, 58, 237, 0.35);
-    color: var(--mantine-color-purple-7);
 }
 
 .tagEtc {
@@ -283,10 +276,4 @@
     border-radius: var(--mantine-radius-md);
     background: var(--mantine-color-gray-0);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: background 0.2s, border-color 0.2s;
-}
-
-.questionPill:hover {
-    background: rgba(124, 58, 237, 0.05);
-    border-color: rgba(124, 58, 237, 0.25);
 }

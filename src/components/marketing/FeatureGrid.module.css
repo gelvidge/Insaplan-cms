@@ -51,12 +51,6 @@
     flex-direction: row;
     gap: 0;
     cursor: default;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    border-color: rgba(46, 85, 153, 0.22);
-    box-shadow: 0 8px 28px rgba(16, 36, 69, 0.09);
 }
 
 /* Wide card spans 2 columns and shows a screenshot panel */

@@ -154,7 +154,6 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
                                 key={i}
                                 className={`${classes.card} ${isWide ? classes.cardWide : ''}`}
                                 variants={cardVariant}
-                                whileHover={{ y: -3, transition: { duration: 0.2 } }}
                             >
                                 <div className={classes.cardContent}>
                                     <ThemeIcon

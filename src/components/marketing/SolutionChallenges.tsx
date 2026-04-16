@@ -67,7 +67,6 @@ export default function SolutionChallenges({ challenges }: Props) {
                                 <GridCol key={index} span={{ base: 12, sm: 6, lg: 4 }}>
                                     <motion.div
                                         variants={cardVariants}
-                                        whileHover={{ y: -6, transition: { duration: 0.22 } }}
                                         style={{ height: '100%' }}
                                     >
                                         <Box

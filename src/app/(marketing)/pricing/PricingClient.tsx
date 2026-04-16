@@ -96,14 +96,15 @@ export default function PricingClient({
                 {plans.map((plan) => {
                     const price = annual ? plan.annualPrice : plan.monthlyPrice
                     const sym = currencySymbols[plan.currency] ?? '$'
-                    const isCustom = plan.planType === 'custom' || plan.monthlyPrice === 0
+                    const isTbd = plan.monthlyPrice === 0
+                    const isCustom = plan.planType === 'custom' && !isTbd
+                    const isHighPrice = !isTbd && !isCustom && price > 1000
 
                     return (
                         <motion.article
                             key={plan.id}
                             className={`${classes.card} ${plan.popular ? classes.cardPopular : ''}`}
                             variants={cardVariant}
-                            whileHover={{ y: -4, transition: { duration: 0.2 } }}
                         >
                             {plan.popular && (
                                 <div className={classes.popularBadge}>{popularBadgeLabel}</div>
@@ -115,7 +116,9 @@ export default function PricingClient({
                             </div>
 
                             <div className={classes.priceRow}>
-                                {isCustom ? (
+                                {isTbd ? (
+                                    <span className={classes.priceCustom}>TBD</span>
+                                ) : isCustom || isHighPrice ? (
                                     <span className={classes.priceCustom}>{customPriceLabel}</span>
                                 ) : (
                                     <>
