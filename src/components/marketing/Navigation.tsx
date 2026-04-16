@@ -14,6 +14,7 @@ import {
     Anchor,
     Divider,
 } from '@mantine/core'
+import Logo from './Logo'
 import { useDisclosure } from '@mantine/hooks'
 import Link from 'next/link'
 import { IconChevronDown } from '@tabler/icons-react'
@@ -33,15 +34,9 @@ type NavItem = {
 
 interface NavigationProps {
     menuItems?: NavItem[] | null
-    logoText?: string | null
-    ctaLabel?: string | null
-    ctaUrl?: string | null
 }
 
-export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLabelProp, ctaUrl: ctaUrlProp }: NavigationProps) => {
-    const logoText = logoTextProp
-    const ctaLabel = ctaLabelProp
-    const ctaUrl = ctaUrlProp
+export const Navigation = ({ menuItems }: NavigationProps) => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const [scrolled, setScrolled] = useState(false)
     const { scrollY } = useScroll()
@@ -68,11 +63,9 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
             >
                 <Container size={1440}>
                     <Group justify="space-between" h={70}>
-                        <Anchor component={Link} href="/" className={classes.logo}>
-                            <Text size="xl" fw={700} className={classes.logoText}>
-                                {logoText}
-                            </Text>
-                        </Anchor>
+                        <Link href="/" className={classes.logo}>
+                            <Logo height={40} />
+                        </Link>
 
                         <Group gap="xs" visibleFrom="md">
                             {items.map((item) =>
@@ -116,17 +109,6 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
                             )}
                         </Group>
 
-                        <Group gap="sm" visibleFrom="md">
-                            <Button
-                                variant="gradient"
-                                gradient={{ from: 'deepblue.9', to: 'purple.6', deg: 45 }}
-                                component={Link}
-                                href={ctaUrl ?? '#'}
-                            >
-                                {ctaLabel}
-                            </Button>
-                        </Group>
-
                         <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" color="#FFFFFF" />
                     </Group>
                 </Container>
@@ -141,7 +123,7 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
                 zIndex={1000}
             >
                 <Stack gap="lg">
-                    <Text size="xl" fw={700}>{logoText}</Text>
+                    <Logo height={40} />
                     <Divider />
                     {items.map((item) =>
                         item.type === 'dropdown' && item.children?.length ? (
@@ -171,17 +153,6 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
                             </Anchor>
                         )
                     )}
-                    <Divider my="md" />
-                    <Button
-                        variant="gradient"
-                        gradient={{ from: 'deepblue.9', to: 'purple.6', deg: 45 }}
-                        component={Link}
-                        href={ctaUrl ?? '#'}
-                        fullWidth
-                        onClick={closeDrawer}
-                    >
-                        {ctaLabel}
-                    </Button>
                 </Stack>
             </Drawer>
         </>

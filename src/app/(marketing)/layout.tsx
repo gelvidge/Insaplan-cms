@@ -32,9 +32,6 @@ export default async function MarketingLayout({ children }: { children: React.Re
                 <Providers>
                     <Navigation
                         menuItems={headerNav?.items}
-                        logoText={footerData?.logoText}
-                        ctaLabel={footerData?.navCtaLabel}
-                        ctaUrl={footerData?.navCtaUrl}
                     />
                     <main>{children}</main>
                     <Footer data={footerData} />

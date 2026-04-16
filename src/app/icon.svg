@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.13011 198.84758" width="183.13011" height="198.84758">
+  <style>
+    .d1 { fill: #ffffff; }
+    .d2 { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .d1 { fill: #677dbf; }
+      .d2 { fill: #9a5db9; }
+    }
+  </style>
+  <path d="M 112.69348,229.84758 V 102.2841 h 20.81299 v 127.56348 z" class="d1" />
+  <rect x="110.41264" y="50.847584"  width="25" height="25" class="d1" shape-rendering="crispEdges" />
+  <rect x="63.130112" y="100.84758"  width="25" height="25" class="d2" shape-rendering="crispEdges" />
+  <rect x="0"         y="117.84758"  width="25" height="25" class="d2" shape-rendering="crispEdges" />
+  <rect x="155.97644" y="6.46115"    width="25" height="25" class="d2" shape-rendering="crispEdges" />
+  <rect x="55.07776"  y="30.02835"   width="25" height="25" class="d2" shape-rendering="crispEdges" />
+  <rect x="32.130112" y="173.84758"  width="25" height="25" class="d2" shape-rendering="crispEdges" />
+</svg>
