@@ -210,17 +210,24 @@ const Grainient = ({
     };
 
     const pause = () => {
-      if (!paused) {
-        paused = true;
-        pausedAt = performance.now();
-        cancelAnimationFrame(raf);
-      }
       if (scrollTimeout) clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
+        if (!paused) {
+          paused = true;
+          pausedAt = performance.now();
+          // render one last frame so canvas isn't blank while paused
+          program.uniforms.iTime.value = (pausedAt - t0 - timeOffset) * 0.001;
+          renderer.render({ scene: mesh });
+          cancelAnimationFrame(raf);
+        }
+      }, 100);
+
+      // resume shortly after scrolling stops
+      if (paused) {
         timeOffset += performance.now() - pausedAt;
         paused = false;
         raf = requestAnimationFrame(loop);
-      }, 150);
+      }
     };
 
     window.addEventListener('scroll', pause, { passive: true });
