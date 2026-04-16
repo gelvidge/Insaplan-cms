@@ -44,17 +44,8 @@ import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
+import { fetchProductVisualsPage } from '@/lib/queries'
 import classes from './page.module.css'
-
-// ── Pain points ───────────────────────────────────────────────────────────────
-const PAIN_POINTS = [
-    { icon: 'presentation', title: 'Slide creation is too slow', description: 'Constantly building slides to communicate your activities?',  color: '124,58,237'  },
-    { icon: 'moodsad',      title: 'Visuals lack impact', description: 'Slides lacking creative and visual impact?',                   color: '34,139,230'  },
-    { icon: 'chart',        title: 'Charts are hard to build', description: 'Unable to build the charts you require in spreadsheets?',      color: '34,197,94'   },
-    { icon: 'dashboard',    title: 'Framework choice is unclear', description: 'Unsure on the best business framework to convey your plans?',  color: '251,146,60'  },
-    { icon: 'spreadsheet',  title: 'Spreadsheets feel boring', description: 'Need to make boring spreadsheets engaging?',                   color: '236,72,153'  },
-    { icon: 'timeline',     title: 'Plan tracking is messy', description: 'Tracking strategic plans in spreadsheets?',                    color: '20,184,166'  },
-]
 
 // ── Chart types ───────────────────────────────────────────────────────────────
 const CHART_TYPES = [
@@ -85,32 +76,6 @@ const CHART_TYPES = [
     { icon: IconFunnel,        label: 'Funnel' },
 ]
 
-// ── Infographic capabilities ──────────────────────────────────────────────────
-const INFOGRAPHIC_CAPABILITIES = [
-    'Drag-and-drop visual builder with no design skills required',
-    'Business framework templates (SWOT, Porter\'s Five Forces, McKinsey 7-S, and more)',
-    'Custom colour palettes and brand asset integration',
-    'Export-ready outputs in PDF and image formats',
-    'Animated reveal mode for live presentations',
-]
-
-// ── Charting capabilities ─────────────────────────────────────────────────────
-const CHARTING_CAPABILITIES = [
-    'Connect directly to your Insaplan data — no copy-paste',
-    'Auto-select the best chart type for your dataset',
-    'Interactive tooltips and drill-down for stakeholder review',
-    'Annotations, trend lines, and targets overlaid on any chart',
-    'One-click format switching between chart families',
-]
-
-// ── Table capabilities ────────────────────────────────────────────────────────
-const TABLE_CAPABILITIES = [
-    'Conditional formatting to surface risks, statuses, and priorities at a glance',
-    'Freeze rows and columns to keep context while scrolling large datasets',
-    'Sort, filter, and group by any field — without touching a formula',
-    'Inline sparklines and progress bars embedded directly in cells',
-    'Export to Excel, CSV, or PDF in a single click',
-]
 
 const TABLE_FEATURES = [
     { icon: IconFreezeRow,     label: 'Freeze Rows' },
@@ -123,14 +88,6 @@ const TABLE_FEATURES = [
     { icon: IconTableExport,   label: 'Export' },
 ]
 
-// ── Plan view capabilities ────────────────────────────────────────────────────
-const PLAN_CAPABILITIES = [
-    'Gantt view for timeline and dependency management',
-    'Kanban board for task and workstream tracking',
-    'Explorer view for a high-level strategic map across all plans',
-    'Switch between views instantly — same data, different lens',
-    'Share any view as a shareable link or export to PDF',
-]
 
 // ── Reusable 3-card visual stack ──────────────────────────────────────────────
 function VisualStack({ cards }: { cards: { label: string; content: React.ReactNode }[] }) {
@@ -530,19 +487,26 @@ const PlanExplorer = (
     </svg>
 )
 
-export default function ProductVisualsPage() {
+export default async function ProductVisualsPage() {
+    const page = (await fetchProductVisualsPage().catch(() => null)) ?? {}
+
+    const heroTitle    = page.heroTitle
+    const heroSubtitle = page.heroSubtitle
+    const painPoints   = page.painPoints   ?? []
+    const infographics = page.infographics ?? {}
+    const charting     = page.charting     ?? {}
+    const tables       = page.tables       ?? {}
+    const planViews    = page.planViews    ?? {}
+
     return (
         <div className={classes.page}>
             <Background />
             <div className={classes.content}>
 
-                <PageHero
-                    title="Make your strategy impossible to ignore"
-                    subtitle="Insaplan turns your plans, data, and frameworks into stunning infographics, charts, and visual plans — no design skills, no slides, no spreadsheet hacks."
-                />
+                <PageHero title={heroTitle} subtitle={heroSubtitle} />
 
                 {/* ── Pain points ───────────────────────────────────────── */}
-                <SolutionChallenges challenges={PAIN_POINTS} />
+                <SolutionChallenges challenges={painPoints} />
 
                 {/* ── Infographics section ───────────────────────────────── */}
                 <Box className={classes.featureSectionAlt}>
@@ -551,22 +515,20 @@ export default function ProductVisualsPage() {
                             {/* Text */}
                             <GridCol span={{ base: 12, md: 5 }}>
                                 <Stack gap="lg">
-                                    <Text className={classes.sectionKicker}>Infographics</Text>
+                                    <Text className={classes.sectionKicker}>{infographics.kicker}</Text>
                                     <Title order={2} className={classes.sectionHeading} ta="left">
-                                        Business frameworks that actually look the part
+                                        {infographics.heading}
                                     </Title>
                                     <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                                        Replace hand-built slides with professionally designed infographics.
-                                        Choose from strategy frameworks, icon-driven summaries, and visual layouts
-                                        that make complex ideas instantly clear — then customise everything to your brand.
+                                        {infographics.body}
                                     </Text>
                                     <Stack gap="xs" mt="sm">
-                                        {INFOGRAPHIC_CAPABILITIES.map((point, i) => (
+                                        {(infographics.capabilities ?? []).map((item: { label: string }, i: number) => (
                                             <Box key={i} className={classes.checkRow}>
                                                 <Box className={classes.checkIcon}>
                                                     <IconCheck size={14} />
                                                 </Box>
-                                                <Text size="sm" c="dark.6">{point}</Text>
+                                                <Text size="sm" c="dark.6">{item.label}</Text>
                                             </Box>
                                         ))}
                                     </Stack>
@@ -599,21 +561,20 @@ export default function ProductVisualsPage() {
                             {/* Text — right on desktop */}
                             <GridCol span={{ base: 12, md: 5 }} order={{ base: 1, md: 2 }}>
                                 <Stack gap="lg">
-                                    <Text className={classes.sectionKicker}>Charting</Text>
+                                    <Text className={classes.sectionKicker}>{charting.kicker}</Text>
                                     <Title order={2} className={classes.sectionHeading} ta="left">
-                                        Every chart type your business needs
+                                        {charting.heading}
                                     </Title>
                                     <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                                        From revenue trends to spend breakdowns, Insaplan generates beautiful,
-                                        presentation-ready charts directly from your data — no spreadsheet exports required.
+                                        {charting.body}
                                     </Text>
                                     <Stack gap="xs" mt="sm">
-                                        {CHARTING_CAPABILITIES.map((point, i) => (
+                                        {(charting.capabilities ?? []).map((item: { label: string }, i: number) => (
                                             <Box key={i} className={classes.checkRow}>
                                                 <Box className={classes.checkIcon}>
                                                     <IconCheck size={14} />
                                                 </Box>
-                                                <Text size="sm" c="dark.6">{point}</Text>
+                                                <Text size="sm" c="dark.6">{item.label}</Text>
                                             </Box>
                                         ))}
                                     </Stack>
@@ -644,22 +605,20 @@ export default function ProductVisualsPage() {
                             {/* Text */}
                             <GridCol span={{ base: 12, md: 5 }}>
                                 <Stack gap="lg">
-                                    <Text className={classes.sectionKicker}>Tables</Text>
+                                    <Text className={classes.sectionKicker}>{tables.kicker}</Text>
                                     <Title order={2} className={classes.sectionHeading} ta="left">
-                                        Spreadsheets that actually tell a story
+                                        {tables.heading}
                                     </Title>
                                     <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                                        Replace static grids with smart, visual tables. Conditional formatting,
-                                        inline sparklines, and live progress bars turn raw data into decisions —
-                                        without a single formula or manual update.
+                                        {tables.body}
                                     </Text>
                                     <Stack gap="xs" mt="sm">
-                                        {TABLE_CAPABILITIES.map((point, i) => (
+                                        {(tables.capabilities ?? []).map((item: { label: string }, i: number) => (
                                             <Box key={i} className={classes.checkRow}>
                                                 <Box className={classes.checkIcon}>
                                                     <IconCheck size={14} />
                                                 </Box>
-                                                <Text size="sm" c="dark.6">{point}</Text>
+                                                <Text size="sm" c="dark.6">{item.label}</Text>
                                             </Box>
                                         ))}
                                     </Stack>
@@ -698,22 +657,20 @@ export default function ProductVisualsPage() {
                             {/* Text */}
                             <GridCol span={{ base: 12, md: 5 }}>
                                 <Stack gap="lg">
-                                    <Text className={classes.sectionKicker}>Plan Views</Text>
+                                    <Text className={classes.sectionKicker}>{planViews.kicker}</Text>
                                     <Title order={2} className={classes.sectionHeading} ta="left">
-                                        See your plans the way your audience needs them
+                                        {planViews.heading}
                                     </Title>
                                     <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>
-                                        Switch between Gantt, Kanban, and Explorer views of the same plan in a single click.
-                                        Share a timeline with engineering, a board with your team,
-                                        and a strategic map with the exec — all from one source of truth.
+                                        {planViews.body}
                                     </Text>
                                     <Stack gap="xs" mt="sm">
-                                        {PLAN_CAPABILITIES.map((point, i) => (
+                                        {(planViews.capabilities ?? []).map((item: { label: string }, i: number) => (
                                             <Box key={i} className={classes.checkRow}>
                                                 <Box className={classes.checkIcon}>
                                                     <IconCheck size={14} />
                                                 </Box>
-                                                <Text size="sm" c="dark.6">{point}</Text>
+                                                <Text size="sm" c="dark.6">{item.label}</Text>
                                             </Box>
                                         ))}
                                     </Stack>
