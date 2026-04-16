@@ -51,13 +51,13 @@ const currencySymbols: Record<string, string> = { USD: '$', EUR: '€', GBP: '£
 
 export default function PricingClient({
     plans,
-    monthlyLabel = 'Monthly',
-    annualLabel = 'Annual',
-    annualDiscountBadge = 'Save 20%',
-    customPriceLabel = 'Custom',
-    perMonthSuffix = '/ mo',
-    popularBadgeLabel = 'Most Popular',
-    billedAnnuallyLabel = 'Billed annually',
+    monthlyLabel,
+    annualLabel,
+    annualDiscountBadge,
+    customPriceLabel,
+    perMonthSuffix,
+    popularBadgeLabel,
+    billedAnnuallyLabel,
 }: PricingClientProps) {
     const [annual, setAnnual] = useState(false)
 

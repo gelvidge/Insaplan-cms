@@ -30,46 +30,6 @@ type NavItem = {
     [key: string]: unknown
 }
 
-const FALLBACK_ITEMS: NavItem[] = [
-    {
-        label: 'Product',
-        type: 'dropdown',
-        children: [
-            { label: 'Overview', url: '/product/overview' },
-            { label: 'Features', url: '/product/features' },
-        ],
-    },
-    {
-        label: 'Solutions',
-        type: 'dropdown',
-        children: [
-            { label: 'Sales', url: '/solutions/sales' },
-            { label: 'Marketing', url: '/solutions/marketing' },
-            { label: 'Start Ups', url: '/solutions/startups' },
-            { label: 'Enterprise', url: '/solutions/enterprise' },
-            { label: 'Not for Profit', url: '/solutions/nonprofit' },
-        ],
-    },
-    {
-        label: 'Resources',
-        type: 'dropdown',
-        children: [
-            { label: 'Blog', url: '/resources/blog' },
-            { label: 'FAQs', url: '/resources/faqs' },
-            { label: 'Knowledge Base', url: '/resources/knowledge-base' },
-            { label: 'Support', url: '/resources/support' },
-        ],
-    },
-    { label: 'Pricing', type: 'custom', url: '/pricing' },
-    {
-        label: 'About',
-        type: 'dropdown',
-        children: [
-            { label: 'Contact Us', url: '/contact' },
-            { label: 'Legal', url: '/legal' },
-        ],
-    },
-]
 
 interface NavigationProps {
     menuItems?: NavItem[] | null
@@ -79,9 +39,9 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLabelProp, ctaUrl: ctaUrlProp }: NavigationProps) => {
-    const logoText = logoTextProp ?? 'Insaplan'
-    const ctaLabel = ctaLabelProp ?? 'Request Access'
-    const ctaUrl = ctaUrlProp ?? '/contact'
+    const logoText = logoTextProp
+    const ctaLabel = ctaLabelProp
+    const ctaUrl = ctaUrlProp
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const [scrolled, setScrolled] = useState(false)
     const { scrollY } = useScroll()
@@ -90,7 +50,7 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
         setScrolled(y > 50)
     })
 
-    const items: NavItem[] = menuItems?.length ? (menuItems as NavItem[]) : FALLBACK_ITEMS
+    const items: NavItem[] = (menuItems as NavItem[]) ?? []
 
     return (
         <>

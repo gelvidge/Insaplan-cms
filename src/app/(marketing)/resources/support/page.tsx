@@ -7,10 +7,10 @@ import { fetchSupportPage } from '@/lib/queries'
 export default async function SupportPage() {
     const sp = await fetchSupportPage().catch(() => null) ?? {}
 
-    const heroTitle = sp.heroTitle ?? 'Support'
-    const heroSubtitle = sp.heroSubtitle ?? "We're here to help you succeed with Insaplan"
-const contactHeading = sp.contactHeading ?? 'Get in Touch'
-    const contactEmail = sp.contactEmail ?? 'support@insaplan.com'
+    const heroTitle = sp.heroTitle
+    const heroSubtitle = sp.heroSubtitle
+    const contactHeading = sp.contactHeading
+    const contactEmail = sp.contactEmail
 
     return (
         <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>

@@ -13,21 +13,12 @@ type CTAData = {
     note?: string
 }
 
-const defaultData: CTAData = {
-    title: 'Build better plans, faster',
-    description:
-        'Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.',
-    emailPlaceholder: 'Enter your email',
-    buttonLabel: 'Join Waitlist',
-}
-
 const CTA = ({ data }: { data?: CTAData | null }) => {
     const merged = {
-        title: data?.title ?? defaultData.title,
-        description: data?.description ?? defaultData.description,
-        emailPlaceholder: data?.emailPlaceholder ?? defaultData.emailPlaceholder,
-        buttonLabel: data?.buttonLabel ?? defaultData.buttonLabel,
-
+        title: data?.title,
+        description: data?.description,
+        emailPlaceholder: data?.emailPlaceholder,
+        buttonLabel: data?.buttonLabel,
     }
 
     const formRef = useRef<HTMLFormElement | null>(null)

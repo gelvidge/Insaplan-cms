@@ -14,7 +14,6 @@ import { KnowledgeBase } from './collections/KnowledgeBase'
 import { FAQs } from './collections/FAQs'
 import { PricingPlans } from './collections/PricingPlans'
 import { Solutions } from './collections/Solutions'
-import { Changelog } from './collections/Changelog'
 import { NavigationMenus } from './collections/NavigationMenus'
 import { FormSubmissions } from './collections/FormSubmissions'
 import { Media } from './collections/Media'
@@ -32,9 +31,7 @@ import { SupportPageGlobal } from './globals/SupportPageGlobal'
 import { KnowledgeBasePageGlobal } from './globals/KnowledgeBasePageGlobal'
 import { SiteMetadataGlobal } from './globals/SiteMetadataGlobal'
 import { ProductOverviewPageGlobal } from './globals/ProductOverviewPageGlobal'
-import { ProductKnowledgeBasePageGlobal } from './globals/ProductKnowledgeBasePageGlobal'
 import { ProductPlanningPageGlobal } from './globals/ProductPlanningPageGlobal'
-import { ProductVisualsPageGlobal } from './globals/ProductVisualsPageGlobal'
 import { ProductReportingPageGlobal } from './globals/ProductReportingPageGlobal'
 import { SolutionsPageGlobal } from './globals/SolutionsPageGlobal'
 import { FAQsPageGlobal } from './globals/FAQsPageGlobal'
@@ -64,7 +61,6 @@ export default buildConfig({
         FAQs,
         PricingPlans,
         Solutions,
-        Changelog,
         NavigationMenus,
         FormSubmissions,
         Media
@@ -73,9 +69,7 @@ export default buildConfig({
         // Marketing — ordered to mirror the website nav
         MarketingHome,
         ProductOverviewPageGlobal,
-        ProductKnowledgeBasePageGlobal,
         ProductPlanningPageGlobal,
-        ProductVisualsPageGlobal,
         ProductReportingPageGlobal,
         SolutionsPageGlobal,
         PricingPageGlobal,

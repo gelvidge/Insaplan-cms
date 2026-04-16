@@ -27,60 +27,6 @@ type HeroData = {
     carouselSlides?: { title?: string | null; description?: string | null; image?: unknown }[] | null
 }
 
-const defaultData: Required<Pick<HeroData, 'eyebrow' | 'badge' | 'headline' | 'subtitle'>> & {
-    pillars: { label: string }[]
-    useCases: { label: string }[]
-    trustSignals: { icon: string; label: string }[]
-    carouselSlides: { title: string; description: string; image?: unknown }[]
-} = {
-    eyebrow: 'AI-powered planning',
-    badge: 'Launching Soon',
-    headline: 'Turn insights into actionable plans',
-    subtitle:
-        'Capture insights as beautiful infographics, charts, and tables. Build and iterate plans fast with hundreds of predefined templates, then report and track execution.',
-    pillars: [{ label: 'Insights' }, { label: 'Planning' }, { label: 'Reporting' }],
-    useCases: [
-        { label: 'Strategic Plans' },
-        { label: 'Corporate Plans' },
-        { label: 'Sales Plans' },
-        { label: 'Marketing Plans' },
-        { label: 'Product Launch Plans' },
-        { label: 'Project Management' },
-        { label: 'Growth Plans' },
-        { label: 'Account Plans' },
-        { label: 'Product Roadmaps' },
-        { label: 'Startup Business Plans' },
-    ],
-    trustSignals: [
-        { icon: 'sparkles', label: 'AI-powered' },
-        { icon: 'template', label: 'Custom templates' },
-        { icon: 'cards', label: 'Knowledgebase' },
-        { icon: 'building', label: 'Enterprise features' },
-    ],
-    carouselSlides: [
-        {
-            title: 'Curate Insights Once',
-            description: 'Capture, tag, and reuse internal knowledge across every plan you build.',
-        },
-        {
-            title: 'Frameworks and Processes Built In',
-            description: 'Manage a broad library of business frameworks and planning processes.',
-        },
-        {
-            title: 'Visual Tables and Infographics',
-            description: 'Turn complex information into clear tables and visuals stakeholders understand.',
-        },
-        {
-            title: 'Templates With Hundreds of Options',
-            description: 'Use custom templates and flexible building blocks to fit the way you work.',
-        },
-        {
-            title: 'Iterate Fast',
-            description: 'Refine and evolve plans quickly as priorities, teams, and projects change.',
-        },
-    ],
-}
-
 const trustSignalIcons = {
     sparkles: IconSparkles,
     template: IconTemplate,
@@ -121,12 +67,14 @@ const trustItem: any = {
 
 const Hero = ({ data }: { data?: HeroData | null }) => {
     const merged = {
-        ...defaultData,
-        ...data,
-        pillars: data?.pillars?.length ? data.pillars : defaultData.pillars,
-        useCases: data?.useCases?.length ? data.useCases : defaultData.useCases,
-        trustSignals: data?.trustSignals?.length ? data.trustSignals : defaultData.trustSignals,
-        carouselSlides: data?.carouselSlides?.length ? data.carouselSlides : defaultData.carouselSlides,
+        eyebrow: data?.eyebrow,
+        badge: data?.badge,
+        headline: data?.headline,
+        subtitle: data?.subtitle,
+        pillars: data?.pillars ?? [],
+        useCases: data?.useCases ?? [],
+        trustSignals: data?.trustSignals ?? [],
+        carouselSlides: data?.carouselSlides ?? [],
     }
 
     const autoplay = useRef(Autoplay({ delay: 4000 }))

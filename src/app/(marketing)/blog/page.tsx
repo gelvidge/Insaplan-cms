@@ -5,14 +5,6 @@ import CTA from '@/components/marketing/CTA'
 import { fetchBlogPosts, fetchBlogPage } from '@/lib/queries'
 import classes from './page.module.css'
 
-const DEFAULT_CATEGORY_LABELS: Record<string, string> = {
-    'product-updates': 'Product Updates',
-    'company-news': 'Company News',
-    'best-practices': 'Best Practices',
-    'case-studies': 'Case Studies',
-    'industry-insights': 'Industry Insights',
-}
-
 // Different decorative placeholder visuals cycling through card index
 function CardImagePlaceholder({ index, category }: { index: number; category: string }) {
     const variant = index % 4
@@ -107,14 +99,14 @@ export default async function BlogListingPage() {
         fetchBlogPage().catch(() => null),
     ])
 
-    const heroTitle = copy?.heroTitle ?? 'Blog'
-    const heroSubtitle = copy?.heroSubtitle ?? 'Insights, guides, and best practices for strategic planning'
-    const emptyStateHeading = copy?.emptyStateHeading ?? 'No Posts Yet'
-    const emptyStateMessage = copy?.emptyStateMessage ?? "We're working on content. Check back soon for insights on strategic planning, AI, and more."
-    const readMoreLabel = copy?.readMoreLabel ?? 'Read article →'
-    const CATEGORY_LABELS: Record<string, string> = copy?.categoryLabels?.length
-        ? Object.fromEntries(copy.categoryLabels.map((c: any) => [c.slug, c.label]))
-        : DEFAULT_CATEGORY_LABELS
+    const heroTitle = copy?.heroTitle
+    const heroSubtitle = copy?.heroSubtitle
+    const emptyStateHeading = copy?.emptyStateHeading
+    const emptyStateMessage = copy?.emptyStateMessage
+    const readMoreLabel = copy?.readMoreLabel
+    const CATEGORY_LABELS: Record<string, string> = Object.fromEntries(
+        (copy?.categoryLabels ?? []).map((c: any) => [c.slug, c.label])
+    )
 
     return (
         <div className={classes.page}>

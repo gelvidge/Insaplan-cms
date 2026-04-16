@@ -62,10 +62,8 @@ const TEMPLATE_ROWS = [
 export default async function ProductReportingPage() {
     const pg = await fetchProductReportingPage().catch(() => null) ?? {}
 
-    const heroTitle = pg.heroTitle ?? 'Reporting'
-    const heroSubtitle =
-        pg.heroSubtitle ??
-        'Track execution, measure impact, and communicate progress with dashboards and reports that stay connected to the plan.'
+    const heroTitle = pg.heroTitle
+    const heroSubtitle = pg.heroSubtitle
 
     return (
         <div className={classes.page}>

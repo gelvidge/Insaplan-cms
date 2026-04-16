@@ -9,8 +9,8 @@ export default async function KnowledgeBasePage() {
     return (
         <>
             <PageHero
-                title={kbp.heroTitle ?? 'Knowledge Base'}
-                subtitle={kbp.heroSubtitle ?? 'Learn how to get the most out of Insaplan'}
+                title={kbp.heroTitle}
+                subtitle={kbp.heroSubtitle}
             />
             <Box py={80}>
                 <Container size="md">
@@ -20,10 +20,10 @@ export default async function KnowledgeBasePage() {
                                 <IconBook size={32} />
                             </ThemeIcon>
                             <Text fw={600} size="lg">
-                                {kbp.comingSoonHeading ?? 'Documentation Coming Soon'}
+                                {kbp.comingSoonHeading}
                             </Text>
                             <Text c="dimmed" maw={400}>
-                                {kbp.comingSoonMessage ?? "We're building comprehensive documentation to help you get started with Insaplan. Check back soon!"}
+                                {kbp.comingSoonMessage}
                             </Text>
                         </Stack>
                     </Card>

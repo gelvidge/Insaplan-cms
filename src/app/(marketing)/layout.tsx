@@ -11,8 +11,8 @@ import { fetchSiteMetadata, fetchFooter, fetchNavigationMenu } from '@/lib/queri
 export async function generateMetadata(): Promise<Metadata> {
     const meta = await fetchSiteMetadata().catch(() => null)
     return {
-        title: meta?.defaultTitle ?? 'Insaplan',
-        description: meta?.defaultDescription ?? 'AI-Powered Strategy Execution Platform',
+        title: meta?.defaultTitle,
+        description: meta?.defaultDescription,
     }
 }
 
@@ -26,6 +26,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
         <html lang="en" {...mantineHtmlProps}>
             <head>
                 <ColorSchemeScript />
+                <script defer src="https://umami-production-1420.up.railway.app/script.js" data-website-id="ac9e4413-71a7-4446-809c-f9b8561145da" />
             </head>
             <body>
                 <Providers>

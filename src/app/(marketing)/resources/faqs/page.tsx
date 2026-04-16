@@ -12,28 +12,17 @@ function lexicalToPlainText(node: any): string {
     return ''
 }
 
-const DEFAULT_CATEGORY_LABELS = [
-    { slug: 'general', label: 'General' },
-    { slug: 'features', label: 'Features' },
-    { slug: 'billing', label: 'Billing' },
-    { slug: 'account', label: 'Account' },
-    { slug: 'technical', label: 'Technical' },
-    { slug: 'security', label: 'Security' },
-]
-
 export default async function FAQPage() {
     const [rawFaqs, fp] = await Promise.all([
         fetchFAQs().catch(() => null),
         fetchFAQsPage().catch(() => null),
     ])
 
-    const heroTitle = fp?.heroTitle ?? 'Frequently Asked Questions'
-    const heroSubtitle = fp?.heroSubtitle ?? 'Everything you need to know about Insaplan'
-    const emptyStateMessage = fp?.emptyStateMessage ?? 'No FAQs available yet.'
+    const heroTitle = fp?.heroTitle
+    const heroSubtitle = fp?.heroSubtitle
+    const emptyStateMessage = fp?.emptyStateMessage
 
-    // Build category label map and order from CMS, falling back to defaults
-    const categoryEntries: { slug: string; label: string }[] =
-        fp?.categoryLabels?.length ? fp.categoryLabels : DEFAULT_CATEGORY_LABELS
+    const categoryEntries: { slug: string; label: string }[] = fp?.categoryLabels ?? []
     const CATEGORY_LABELS: Record<string, string> = Object.fromEntries(
         categoryEntries.map((c: any) => [c.slug, c.label])
     )

@@ -21,33 +21,15 @@ const iconMap: Record<IconKey, React.ComponentType<{ size?: number }>> = {
     database: IconDatabase,
 }
 
-const DEPRECATED_features = [
-    { icon: 'palette' as IconKey, title: 'Beautiful Infographics', description: 'Create stunning visual presentations of your strategic plans and data.', benefits: [{ label: 'Professional templates' }, { label: 'Custom branding' }, { label: 'Export to multiple formats' }] },
-    { icon: 'chart-bar' as IconKey, title: 'Beautiful Charts', description: 'Visualize data with professional charts that tell your story.', benefits: [{ label: 'Interactive dashboards' }, { label: 'Real-time data updates' }, { label: 'Multiple chart types' }] },
-    { icon: 'brain' as IconKey, title: 'AI-Assisted Insights & Planning', description: 'Leverage AI to uncover insights and accelerate planning.', benefits: [{ label: 'Smart recommendations' }, { label: 'Automated analysis' }, { label: 'Pattern recognition' }] },
-    { icon: 'adjustments' as IconKey, title: 'Fully Customizable', description: "Tailor every aspect to your organization's needs.", benefits: [{ label: 'Custom workflows' }, { label: 'Flexible data models' }, { label: 'Personalized dashboards' }] },
-    { icon: 'books' as IconKey, title: 'Integrated Business Frameworks', description: 'Access proven frameworks like SWOT, OKRs, and Business Model Canvas.', benefits: [{ label: 'Best practice templates' }, { label: 'Industry-specific frameworks' }, { label: 'Guided planning processes' }] },
-    { icon: 'database' as IconKey, title: 'Integrated Knowledge Bases', description: 'Build and leverage organizational knowledge for better planning.', benefits: [{ label: 'Searchable insights' }, { label: 'Common KPIs library' }, { label: 'Industry benchmarks' }] },
-]
-
-const DEPRECATED_problems = [
-    { problem: 'Plans take weeks to create and are outdated by the time they are finished', solution: 'AI-assisted planning reduces creation time from weeks to hours with real-time updates' },
-    { problem: 'Strategic reports are static, ugly, and fail to communicate vision', solution: 'Beautiful, dynamic reports with professional infographics and data visualizations' },
-    { problem: 'Organizational knowledge is scattered across emails, docs, and spreadsheets', solution: 'Centralized knowledge base that integrates with your planning process' },
-    { problem: 'No standardized approach to strategic planning across the organization', solution: 'Integrated business frameworks ensure consistency and best practices' },
-    { problem: 'Difficult to track progress and measure impact of strategic initiatives', solution: 'Real-time dashboards and progress tracking with customizable KPIs' },
-    { problem: 'Teams work in silos without visibility into overall strategy', solution: 'Collaborative platform with shared visibility and aligned objectives' },
-]
-
 export default async function ProductFeaturesPage() {
     const pf = await fetchProductFeaturesPage().catch(() => null) ?? {}
 
-    const heroTitle = pf.heroTitle ?? 'Features'
-    const heroSubtitle = pf.heroSubtitle ?? 'Everything you need to transform strategic planning from a painful process into a competitive advantage'
-    const problemsHeading = pf.problemsHeading ?? 'Problems We Solve'
-    const problemsSubheading = pf.problemsSubheading ?? 'Common challenges Insaplan addresses'
-    const features = pf.features?.length ? pf.features : DEPRECATED_features
-    const problems = pf.problems?.length ? pf.problems : DEPRECATED_problems
+    const heroTitle = pf.heroTitle
+    const heroSubtitle = pf.heroSubtitle
+    const problemsHeading = pf.problemsHeading
+    const problemsSubheading = pf.problemsSubheading
+    const features = pf.features ?? []
+    const problems = pf.problems ?? []
 
     return (
         <>

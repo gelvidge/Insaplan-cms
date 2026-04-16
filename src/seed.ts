@@ -32,6 +32,113 @@ const richText = (text: string) => ({
 async function seed() {
     const payload = await getPayload({ config })
 
+    // ── Marketing Home ────────────────────────────────────────────────────
+    console.log('Seeding marketing-home...')
+    await payload.updateGlobal({
+        slug: 'marketing-home',
+        data: {
+            hero: {
+                eyebrow: 'AI-powered planning',
+                badge: 'Launching Soon',
+                headline: 'Turn insights into actionable plans',
+                subtitle: 'Capture insights as beautiful infographics, charts, and tables. Build and iterate plans fast with hundreds of predefined templates, then report and track execution.',
+                pillars: [
+                    { label: 'Insights' },
+                    { label: 'Planning' },
+                    { label: 'Reporting' },
+                ],
+                useCases: [
+                    { label: 'Strategic Plans' },
+                    { label: 'Corporate Plans' },
+                    { label: 'Sales Plans' },
+                    { label: 'Marketing Plans' },
+                    { label: 'Product Launch Plans' },
+                    { label: 'Project Management' },
+                    { label: 'Growth Plans' },
+                    { label: 'Account Plans' },
+                    { label: 'Product Roadmaps' },
+                    { label: 'Startup Business Plans' },
+                ],
+                trustSignals: [
+                    { icon: 'sparkles', label: 'AI-powered' },
+                    { icon: 'template', label: 'Custom templates' },
+                    { icon: 'cards', label: 'Knowledgebase' },
+                    { icon: 'building', label: 'Enterprise features' },
+                ],
+                carouselSlides: [
+                    { title: 'Curate Insights Once', description: 'Capture, tag, and reuse internal knowledge across every plan you build.' },
+                    { title: 'Frameworks and Processes Built In', description: 'Manage a broad library of business frameworks and planning processes.' },
+                    { title: 'Visual Tables and Infographics', description: 'Turn complex information into clear tables and visuals stakeholders understand.' },
+                    { title: 'Templates With Hundreds of Options', description: 'Use custom templates and flexible building blocks to fit the way you work.' },
+                    { title: 'Iterate Fast', description: 'Refine and evolve plans quickly as priorities, teams, and projects change.' },
+                ],
+            },
+            coreFeatures: {
+                kicker: 'Built for clarity',
+                heading: 'Different by design.',
+                description: 'Bring knowledge, planning, and reporting together with curated insights and flexible building blocks.',
+                features: [
+                    {
+                        icon: 'bulb',
+                        title: 'Capture and Curate Insights',
+                        description: 'Turn internal knowledge into a reusable library of insights you can apply across plans.',
+                        capabilities: [
+                            { label: 'Capture and organize insights from across the business' },
+                            { label: 'Curate what matters so teams can reuse it consistently' },
+                            { label: 'Build a searchable internal knowledge base for planning' },
+                            { label: 'Create a single source of truth that stays current as you learn' },
+                        ],
+                        visuals: [
+                            { label: 'Insights library' },
+                            { label: 'Tags & themes' },
+                            { label: 'Insight detail' },
+                        ],
+                    },
+                    {
+                        icon: 'target',
+                        title: 'Build Plans at Speed',
+                        description: 'Manage a broad set of business frameworks and processes with flexible templates.',
+                        capabilities: [
+                            { label: 'Use built-in frameworks and planning processes, or create your own' },
+                            { label: 'Create custom templates with hundreds of configuration options' },
+                            { label: 'Assemble strategic plans, project plans, and execution workstreams in one place' },
+                            { label: 'Iterate quickly as priorities change and new information arrives' },
+                        ],
+                        visuals: [
+                            { label: 'Template picker' },
+                            { label: 'Plan builder' },
+                            { label: 'Workstreams' },
+                        ],
+                    },
+                    {
+                        icon: 'report',
+                        title: 'Visualize and Communicate',
+                        description: 'Bring plans to life with visual tables, infographics, and audience-ready reporting.',
+                        capabilities: [
+                            { label: 'Visual tables and dashboards that make progress and priorities clear' },
+                            { label: 'Infographics to communicate complex ideas quickly' },
+                            { label: 'Custom reporting templates for different stakeholders' },
+                            { label: 'Export-ready outputs (PDF and presentation formats)' },
+                        ],
+                        visuals: [
+                            { label: 'Dashboards' },
+                            { label: 'Infographics' },
+                            { label: 'Reporting' },
+                        ],
+                    },
+                ],
+            },
+            cta: {
+                title: 'Build better plans, faster',
+                description: 'Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.',
+                emailPlaceholder: 'Enter your email',
+                buttonLabel: 'Join Waitlist',
+                note: 'Get notified when we launch - no spam, ever',
+            },
+        } as any,
+    })
+    console.log('  done.')
+
     // ── Solutions Page ────────────────────────────────────────────────────
     console.log('Seeding solutions-page...')
     await payload.updateGlobal({

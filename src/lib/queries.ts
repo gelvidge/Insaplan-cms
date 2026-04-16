@@ -94,19 +94,9 @@ export async function fetchProductOverviewPage() {
     return payload.findGlobal({ slug: 'product-overview-page' as any }) as any
 }
 
-export async function fetchProductKnowledgeBasePage() {
-    const payload = await getPayloadClient()
-    return payload.findGlobal({ slug: 'product-knowledge-base-page' as any }) as any
-}
-
 export async function fetchProductPlanningPage() {
     const payload = await getPayloadClient()
     return payload.findGlobal({ slug: 'product-planning-page' as any }) as any
-}
-
-export async function fetchProductVisualsPage() {
-    const payload = await getPayloadClient()
-    return payload.findGlobal({ slug: 'product-visuals-page' as any }) as any
 }
 
 export async function fetchProductReportingPage() {
@@ -141,20 +131,6 @@ export async function fetchSolutionBySlug(slug: string) {
     })
     return result.docs[0] || null
 }
-
-export async function fetchPageBySlug(slug: string) {
-    const payload = await getPayloadClient()
-    const result = await payload.find({
-        collection: 'pages',
-        where: {
-            slug: { equals: slug },
-            status: { equals: 'published' },
-        },
-        limit: 1,
-    })
-    return result.docs[0] || null
-}
-
 
 export async function fetchFAQsPage() {
     const payload = await getPayloadClient()

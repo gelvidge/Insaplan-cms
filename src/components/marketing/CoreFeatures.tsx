@@ -19,55 +19,6 @@ type CoreFeaturesData = {
     }[] | null
 }
 
-const defaultData: Required<Pick<CoreFeaturesData, 'kicker' | 'heading' | 'description'>> & {
-    features: NonNullable<CoreFeaturesData['features']>
-} = {
-    kicker: 'Built for clarity',
-    heading: 'Different by design.',
-    description:
-        'Bring knowledge, planning, and reporting together with curated insights and flexible building blocks.',
-    features: [
-        {
-            icon: 'bulb',
-            title: 'Capture and Curate Insights',
-            description:
-                'Turn internal knowledge into a reusable library of insights you can apply across plans.',
-            capabilities: [
-                { label: 'Capture and organize insights from across the business' },
-                { label: 'Curate what matters so teams can reuse it consistently' },
-                { label: 'Build a searchable internal knowledge base for planning' },
-                { label: 'Create a single source of truth that stays current as you learn' },
-            ],
-            visuals: [{ label: 'Insights library' }, { label: 'Tags & themes' }, { label: 'Insight detail' }],
-        },
-        {
-            icon: 'target',
-            title: 'Build Plans at Speed',
-            description: 'Manage a broad set of business frameworks and processes with flexible templates.',
-            capabilities: [
-                { label: 'Use built-in frameworks and planning processes, or create your own' },
-                { label: 'Create custom templates with hundreds of configuration options' },
-                { label: 'Assemble strategic plans, project plans, and execution workstreams in one place' },
-                { label: 'Iterate quickly as priorities change and new information arrives' },
-            ],
-            visuals: [{ label: 'Template picker' }, { label: 'Plan builder' }, { label: 'Workstreams' }],
-        },
-        {
-            icon: 'report',
-            title: 'Visualize and Communicate',
-            description:
-                'Bring plans to life with visual tables, infographics, and audience-ready reporting.',
-            capabilities: [
-                { label: 'Visual tables and dashboards that make progress and priorities clear' },
-                { label: 'Infographics to communicate complex ideas quickly' },
-                { label: 'Custom reporting templates for different stakeholders' },
-                { label: 'Export-ready outputs (PDF and presentation formats)' },
-            ],
-            visuals: [{ label: 'Dashboards' }, { label: 'Infographics' }, { label: 'Reporting' }],
-        },
-    ],
-}
-
 const featureIcons = {
     bulb: IconBulb,
     target: IconTarget,
@@ -91,9 +42,10 @@ const capabilityVariants: any = {
 
 export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null }) {
     const merged = {
-        ...defaultData,
-        ...data,
-        features: data?.features?.length ? data.features : defaultData.features,
+        kicker: data?.kicker,
+        heading: data?.heading,
+        description: data?.description,
+        features: data?.features ?? [],
     }
 
     return (

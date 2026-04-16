@@ -5,25 +5,15 @@ import PageHero from '@/components/marketing/PageHero'
 import CTA from '@/components/marketing/CTA'
 import { fetchSolutionsPage } from '@/lib/queries'
 
-const DEFAULT_SOLUTION_LINKS = [
-    { label: 'Sales', slug: 'sales', description: 'Transform sales planning and reporting' },
-    { label: 'Marketing', slug: 'marketing', description: 'Accelerate go-to-market strategy and execution' },
-    { label: 'Start Ups', slug: 'startups', description: 'Build investor-ready plans and presentations' },
-    { label: 'Enterprise', slug: 'enterprise', description: 'Standardize planning across the organization' },
-    { label: 'Not for Profit', slug: 'nonprofit', description: 'Track and communicate your mission' },
-    { label: 'Project Management', slug: 'project-management', description: 'Plan, execute, and report on projects with clarity' },
-    { label: 'Government', slug: 'government', description: 'Deliver accountable, evidence-based planning' },
-]
-
 export default async function SolutionsPage() {
     const sp = await fetchSolutionsPage().catch(() => null) ?? {}
 
-    const heroTitle = sp.heroTitle ?? 'Solutions'
-    const heroSubtitle = sp.heroSubtitle ?? 'Tailored for your industry and organizational needs'
-    const sectionHeading = sp.sectionHeading ?? 'Choose your use case'
-    const sectionSubheading = sp.sectionSubheading ?? 'Insaplan adapts to the way your team works'
+    const heroTitle = sp.heroTitle
+    const heroSubtitle = sp.heroSubtitle
+    const sectionHeading = sp.sectionHeading
+    const sectionSubheading = sp.sectionSubheading
     const solutionLinks: { label: string; slug: string; description: string }[] =
-        sp.solutionLinks?.length ? sp.solutionLinks : DEFAULT_SOLUTION_LINKS
+        sp.solutionLinks ?? []
 
     return (
         <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>

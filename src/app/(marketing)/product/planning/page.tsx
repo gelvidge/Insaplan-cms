@@ -102,8 +102,8 @@ const SOURCE_PILLS = ['Knowledge Base', 'Past Plans', 'Best-Practice Frameworks'
 export default async function ProductPlanningPage() {
     const pg = await fetchProductPlanningPage().catch(() => null) ?? {}
 
-    const heroTitle = pg.heroTitle ?? 'Planning'
-    const heroSubtitle = pg.heroSubtitle ?? 'Build connected strategic plans with reusable templates, live tracking views, and AI assistance grounded in your own knowledge.'
+    const heroTitle = pg.heroTitle
+    const heroSubtitle = pg.heroSubtitle
 
     return (
         <div className={classes.page}>

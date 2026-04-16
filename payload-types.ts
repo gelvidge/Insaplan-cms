@@ -74,7 +74,6 @@ export interface Config {
     faqs: Faq;
     'pricing-plans': PricingPlan;
     solutions: Solution;
-    changelog: Changelog;
     'navigation-menus': NavigationMenu;
     'form-submissions': FormSubmission;
     media: Media;
@@ -92,7 +91,6 @@ export interface Config {
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     solutions: SolutionsSelect<false> | SolutionsSelect<true>;
-    changelog: ChangelogSelect<false> | ChangelogSelect<true>;
     'navigation-menus': NavigationMenusSelect<false> | NavigationMenusSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -108,9 +106,7 @@ export interface Config {
   globals: {
     'marketing-home': MarketingHome;
     'product-overview-page': ProductOverviewPage;
-    'product-knowledge-base-page': ProductKnowledgeBasePage;
     'product-planning-page': ProductPlanningPage;
-    'product-visuals-page': ProductVisualsPage;
     'product-reporting-page': ProductReportingPage;
     'solutions-page': SolutionsPage;
     'pricing-page': PricingPage;
@@ -127,9 +123,7 @@ export interface Config {
   globalsSelect: {
     'marketing-home': MarketingHomeSelect<false> | MarketingHomeSelect<true>;
     'product-overview-page': ProductOverviewPageSelect<false> | ProductOverviewPageSelect<true>;
-    'product-knowledge-base-page': ProductKnowledgeBasePageSelect<false> | ProductKnowledgeBasePageSelect<true>;
     'product-planning-page': ProductPlanningPageSelect<false> | ProductPlanningPageSelect<true>;
-    'product-visuals-page': ProductVisualsPageSelect<false> | ProductVisualsPageSelect<true>;
     'product-reporting-page': ProductReportingPageSelect<false> | ProductReportingPageSelect<true>;
     'solutions-page': SolutionsPageSelect<false> | SolutionsPageSelect<true>;
     'pricing-page': PricingPageSelect<false> | PricingPageSelect<true>;
@@ -658,41 +652,6 @@ export interface Solution {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "changelog".
- */
-export interface Changelog {
-  id: number;
-  /**
-   * Semantic version (e.g., "1.2.0")
-   */
-  version: string;
-  releaseDate: string;
-  /**
-   * Release title or theme
-   */
-  title: string;
-  /**
-   * Brief overview of this release
-   */
-  summary: string;
-  changes: {
-    type: 'feature' | 'improvement' | 'bugfix' | 'security' | 'documentation';
-    description: string;
-    id?: string | null;
-  }[];
-  /**
-   * Does this release include breaking changes?
-   */
-  breaking?: boolean | null;
-  /**
-   * Describe the breaking changes and migration steps
-   */
-  breakingDescription?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation-menus".
  */
 export interface NavigationMenu {
@@ -809,10 +768,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'solutions';
         value: number | Solution;
-      } | null)
-    | ({
-        relationTo: 'changelog';
-        value: number | Changelog;
       } | null)
     | ({
         relationTo: 'navigation-menus';
@@ -1089,27 +1044,6 @@ export interface SolutionsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "changelog_select".
- */
-export interface ChangelogSelect<T extends boolean = true> {
-  version?: T;
-  releaseDate?: T;
-  title?: T;
-  summary?: T;
-  changes?:
-    | T
-    | {
-        type?: T;
-        description?: T;
-        id?: T;
-      };
-  breaking?: T;
-  breakingDescription?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1435,49 +1369,9 @@ export interface ProductOverviewPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-knowledge-base-page".
- */
-export interface ProductKnowledgeBasePage {
-  id: number;
-  heroTitle?: string | null;
-  heroSubtitle?: string | null;
-  sectionHeading?: string | null;
-  sectionSubheading?: string | null;
-  features?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "product-planning-page".
  */
 export interface ProductPlanningPage {
-  id: number;
-  heroTitle?: string | null;
-  heroSubtitle?: string | null;
-  sectionHeading?: string | null;
-  sectionSubheading?: string | null;
-  features?:
-    | {
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-visuals-page".
- */
-export interface ProductVisualsPage {
   id: number;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
@@ -2076,49 +1970,9 @@ export interface ProductOverviewPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-knowledge-base-page_select".
- */
-export interface ProductKnowledgeBasePageSelect<T extends boolean = true> {
-  heroTitle?: T;
-  heroSubtitle?: T;
-  sectionHeading?: T;
-  sectionSubheading?: T;
-  features?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "product-planning-page_select".
  */
 export interface ProductPlanningPageSelect<T extends boolean = true> {
-  heroTitle?: T;
-  heroSubtitle?: T;
-  sectionHeading?: T;
-  sectionSubheading?: T;
-  features?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-visuals-page_select".
- */
-export interface ProductVisualsPageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
   sectionHeading?: T;

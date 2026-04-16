@@ -14,27 +14,6 @@ import {
 } from '@mantine/core'
 import { IconCheck, IconX, IconAlertCircle } from '@tabler/icons-react'
 
-// ---------------------------------------------------------------------------
-// DEPRECATED: hardcoded comparison data — enter rows and columns in the CMS
-// under Marketing > Marketing Pages > Comparison Table tab, then remove
-// this block.
-// ---------------------------------------------------------------------------
-const DEPRECATED_columns = ['Spreadsheets', 'PowerPoint', 'Insaplan']
-
-const DEPRECATED_rows: Array<{
-    aspect: string
-    values: Array<'true' | 'false' | 'limited'>
-}> = [
-    { aspect: 'Real-time updates', values: ['false', 'false', 'true'] },
-    { aspect: 'Searchable insights', values: ['false', 'false', 'true'] },
-    { aspect: 'Version control', values: ['limited', 'limited', 'true'] },
-    { aspect: 'Beautiful reports', values: ['false', 'true', 'true'] },
-    { aspect: 'AI assistance', values: ['false', 'false', 'true'] },
-    { aspect: 'Collaboration', values: ['limited', 'limited', 'true'] },
-    { aspect: 'Progress tracking', values: ['false', 'false', 'true'] },
-]
-// ---------------------------------------------------------------------------
-
 type CellValue = 'true' | 'false' | 'limited'
 
 const renderIcon = (value: CellValue) => {
@@ -74,23 +53,13 @@ type SectionData = {
 type Props = { data?: SectionData | null }
 
 const ComparisonTable = ({ data }: Props) => {
-    const heading = data?.heading ?? 'Why Insaplan vs. Traditional Methods'
-    const subheading =
-        data?.subheading ?? 'See how Insaplan compares to traditional planning tools'
-
-    const hasCmsData =
-        data?.columns && data.columns.length > 0 && data?.rows && data.rows.length > 0
-
-    const columns = hasCmsData
-        ? data!.columns!.map((c) => c.label)
-        : DEPRECATED_columns
-
-    const rows = hasCmsData
-        ? data!.rows!.map((r) => ({
-              aspect: r.aspect,
-              values: (r.values ?? []).map((v) => v.value),
-          }))
-        : DEPRECATED_rows
+    const heading = data?.heading
+    const subheading = data?.subheading
+    const columns = (data?.columns ?? []).map((c) => c.label)
+    const rows = (data?.rows ?? []).map((r) => ({
+        aspect: r.aspect,
+        values: (r.values ?? []).map((v) => v.value),
+    }))
 
     return (
         <Box py={80} bg="gray.0" style={{ borderTop: '1px solid rgba(20,28,48,0.06)' }}>
