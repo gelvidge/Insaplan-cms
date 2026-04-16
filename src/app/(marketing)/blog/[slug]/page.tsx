@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { IconClock, IconCalendar } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import { fetchBlogPost, fetchBlogPosts, fetchBlogPage } from '@/lib/queries'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import type { Metadata } from 'next'
@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
                     </article>
                 </div>
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

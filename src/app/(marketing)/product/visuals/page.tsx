@@ -42,7 +42,7 @@ import { IconSunburst }      from '@/components/icons/IconSunburst'
 import { IconFunnel }        from '@/components/icons/IconFunnel'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
 import classes from './page.module.css'
 
@@ -749,7 +749,7 @@ export default function ProductVisualsPage() {
                     </Container>
                 </Box>
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

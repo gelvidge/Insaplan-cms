@@ -2,7 +2,7 @@ import { Box, Container, Title, Text, Stack, Grid, GridCol } from '@mantine/core
 import { IconCheck, IconBellRinging, IconFileExport } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
 import { fetchProductReportingPage } from '@/lib/queries'
 import classes from './page.module.css'
@@ -270,7 +270,7 @@ export default async function ProductReportingPage() {
                     </Container>
                 </Box>
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

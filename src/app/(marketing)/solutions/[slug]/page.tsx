@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { Box, Container, Title, Stack, List, ListItem, ThemeIcon } from '@mantine/core'
 import { IconCheck } from '@tabler/icons-react'
 import SolutionHero from '@/components/marketing/SolutionHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
 import UseCases from '@/components/marketing/UseCases'
 import Background from '@/components/marketing/Background'
@@ -62,7 +62,7 @@ export default async function SolutionPage({ params }: Props) {
                     </Box>
                 )}
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ import {
     IconDatabase,
 } from '@tabler/icons-react'
 import PageHero from '@/components/marketing/PageHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import { fetchProductFeaturesPage } from '@/lib/queries'
 
 type IconKey = 'chart-bar' | 'palette' | 'brain' | 'adjustments' | 'books' | 'database'
@@ -88,7 +88,7 @@ export default async function ProductFeaturesPage() {
                 </Container>
             </Box>
 
-            <CTA />
+            <CTASection />
         </>
     )
 }

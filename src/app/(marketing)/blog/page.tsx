@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import { fetchBlogPosts, fetchBlogPage } from '@/lib/queries'
 import classes from './page.module.css'
 
@@ -159,7 +159,7 @@ export default async function BlogListingPage() {
                     </div>
                 </div>
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

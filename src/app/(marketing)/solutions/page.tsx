@@ -2,7 +2,7 @@ import { Box, Container, Title, Text, Stack, Grid, GridCol, Card, Button } from 
 import Link from 'next/link'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import { fetchSolutionsPage } from '@/lib/queries'
 
 export default async function SolutionsPage() {
@@ -54,7 +54,7 @@ export default async function SolutionsPage() {
                     </Container>
                 </Box>
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

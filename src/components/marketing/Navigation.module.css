@@ -11,6 +11,7 @@
 
 .logo {
     text-decoration: none;
+    transform: translateY(3px);
 }
 
 .logoText {

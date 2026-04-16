@@ -19,7 +19,7 @@ export default async function HomePage() {
             <div className={classes.content}>
                 <Hero data={marketingHome?.hero} />
                 <CoreFeatures data={marketingHome?.coreFeatures} />
-                <CTA />
+                <CTA data={marketingHome?.cta} />
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import Background from '@/components/marketing/Background'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import PageHero from '@/components/marketing/PageHero'
 import { fetchPricingPlans, fetchPricingPage } from '@/lib/queries'
 import PricingClient from './PricingClient'
@@ -52,7 +52,7 @@ export default async function PricingPage() {
                         />
                     </div>
                 </div>
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )

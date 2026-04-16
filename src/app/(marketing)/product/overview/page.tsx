@@ -1,5 +1,5 @@
 import Background from '@/components/marketing/Background'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
 import ComparisonTable from '@/components/marketing/ComparisonTable'
 import FeatureGrid from '@/components/marketing/FeatureGrid'
 import HowItWorks from '@/components/marketing/HowItWorks'
@@ -49,7 +49,7 @@ export default async function ProductOverviewPage() {
 
                 <ComparisonTable data={ov.comparisonTable ?? null} />
 
-                <CTA />
+                <CTASection />
             </div>
         </div>
     )
