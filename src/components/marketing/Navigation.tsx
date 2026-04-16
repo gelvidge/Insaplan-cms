@@ -121,7 +121,7 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
                                 variant="gradient"
                                 gradient={{ from: 'deepblue.9', to: 'purple.6', deg: 45 }}
                                 component={Link}
-                                href={ctaUrl}
+                                href={ctaUrl ?? '#'}
                             >
                                 {ctaLabel}
                             </Button>
@@ -176,7 +176,7 @@ export const Navigation = ({ menuItems, logoText: logoTextProp, ctaLabel: ctaLab
                         variant="gradient"
                         gradient={{ from: 'deepblue.9', to: 'purple.6', deg: 45 }}
                         component={Link}
-                        href={ctaUrl}
+                        href={ctaUrl ?? '#'}
                         fullWidth
                         onClick={closeDrawer}
                     >
