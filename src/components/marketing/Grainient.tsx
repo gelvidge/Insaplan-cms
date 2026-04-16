@@ -135,7 +135,7 @@ const Grainient = ({
 
     const renderer = new Renderer({
       webgl: 2,
-      alpha: true,
+      alpha: false,
       antialias: false,
       dpr: Math.min(window.devicePixelRatio || 1, 2)
     });
@@ -145,6 +145,9 @@ const Grainient = ({
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.display = 'block';
+    canvas.style.willChange = 'transform';
+    canvas.style.backfaceVisibility = 'hidden';
+    canvas.style.transform = 'translateZ(0)';
 
     const container = containerRef.current;
     container.appendChild(canvas);
@@ -197,46 +200,18 @@ const Grainient = ({
     setSize();
 
     let raf = 0;
-    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
-    let paused = false;
     const t0 = performance.now();
-    let pausedAt = 0;
-    let timeOffset = 0;
 
     const loop = (t: number) => {
-      program.uniforms.iTime.value = (t - t0 - timeOffset) * 0.001;
+      program.uniforms.iTime.value = (t - t0) * 0.001;
       renderer.render({ scene: mesh });
       raf = requestAnimationFrame(loop);
     };
 
-    const pause = () => {
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        if (!paused) {
-          paused = true;
-          pausedAt = performance.now();
-          // render one last frame so canvas isn't blank while paused
-          program.uniforms.iTime.value = (pausedAt - t0 - timeOffset) * 0.001;
-          renderer.render({ scene: mesh });
-          cancelAnimationFrame(raf);
-        }
-      }, 100);
-
-      // resume shortly after scrolling stops
-      if (paused) {
-        timeOffset += performance.now() - pausedAt;
-        paused = false;
-        raf = requestAnimationFrame(loop);
-      }
-    };
-
-    window.addEventListener('scroll', pause, { passive: true });
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      window.removeEventListener('scroll', pause);
       ro.disconnect();
       try {
         container.removeChild(canvas);
