@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { IconCheck, IconMinus } from '@tabler/icons-react'
 import classes from './pricing.module.css'
 
@@ -35,18 +34,6 @@ interface PricingClientProps {
     billedAnnuallyLabel?: string
 }
 
-const spring = [0.22, 1, 0.36, 1] as [number, number, number, number]
-
-const cardVariant = {
-    hidden: { opacity: 0, y: 28 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: spring } },
-}
-
-const container = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1 } },
-}
-
 const currencySymbols: Record<string, string> = { USD: '$', EUR: '€', GBP: '£' }
 
 export default function PricingClient({
@@ -73,11 +60,7 @@ export default function PricingClient({
                     aria-checked={annual}
                     aria-label="Toggle annual billing"
                 >
-                    <motion.span
-                        className={classes.toggleThumb}
-                        animate={{ x: annual ? 20 : 2 }}
-                        transition={{ duration: 0.25, ease: spring }}
-                    />
+                    <span className={`${classes.toggleThumb} ${annual ? classes.toggleThumbOn : ''}`} />
                 </button>
                 <span className={`${classes.toggleLabel} ${annual ? classes.toggleLabelActive : ''}`}>
                     {annualLabel}
@@ -86,13 +69,7 @@ export default function PricingClient({
             </div>
 
             {/* Plan cards */}
-            <motion.div
-                className={classes.grid}
-                variants={container}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-            >
+            <div className={classes.grid}>
                 {plans.map((plan) => {
                     const price = annual ? plan.annualPrice : plan.monthlyPrice
                     const sym = currencySymbols[plan.currency] ?? '$'
@@ -101,10 +78,9 @@ export default function PricingClient({
                     const isHighPrice = !isTbd && !isCustom && price > 1000
 
                     return (
-                        <motion.article
+                        <article
                             key={plan.id}
                             className={`${classes.card} ${plan.popular ? classes.cardPopular : ''}`}
-                            variants={cardVariant}
                         >
                             {plan.popular && (
                                 <div className={classes.popularBadge}>{popularBadgeLabel}</div>
@@ -124,14 +100,12 @@ export default function PricingClient({
                                     <>
                                         <span className={classes.priceCurrency}>{sym}</span>
                                         <span className={classes.priceAmount}>
-                                            <motion.span
+                                            <span
                                                 key={annual ? 'annual' : 'monthly'}
-                                                initial={{ opacity: 0, y: -8 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.2, ease: spring }}
+                                                className={classes.priceValue}
                                             >
                                                 {price}
-                                            </motion.span>
+                                            </span>
                                         </span>
                                         <span className={classes.pricePer}>{perMonthSuffix}</span>
                                     </>
@@ -160,10 +134,10 @@ export default function PricingClient({
                                     </li>
                                 ))}
                             </ul>
-                        </motion.article>
+                        </article>
                     )
                 })}
-            </motion.div>
+            </div>
         </div>
     )
 }

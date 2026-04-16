@@ -4,7 +4,6 @@ import { Box, Text, Button, Stack, Group, Container, Grid } from '@mantine/core'
 import { Carousel } from '@mantine/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import { useActionState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 import {
     IconCheck,
     IconSparkles,
@@ -34,37 +33,6 @@ const trustSignalIcons = {
     building: IconBuildingSkyscraper,
 } as const
 
-// Shared fade-up used for each staggered child
-const fadeUp = {
-    hidden: { opacity: 0, y: 28 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.1 },
-    }),
-}
-
-const slideInRight = {
-    hidden: { opacity: 0, x: 60, scale: 0.97 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.2 },
-    },
-}
-
-const trustBar = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.6 } },
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const trustItem: any = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
 const Hero = ({ data }: { data?: HeroData | null }) => {
     const merged = {
         eyebrow: data?.eyebrow,
@@ -93,10 +61,10 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
         <Box className={classes.hero}>
             <Container size={1440} className={classes.heroContainer}>
                 <Grid gutter={{ base: 24, md: 60 }} align="center">
-                    {/* Left column — staggered fade-up */}
+                    {/* Left column */}
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <Stack gap="xl">
-                            <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
+                            <div>
                                 <Group gap="sm" align="center" className={classes.eyebrowRow}>
                                     <Text className={classes.eyebrow} size="sm" tt="uppercase" fw={600}>
                                         {merged.eyebrow}
@@ -105,19 +73,19 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                         {merged.badge}
                                     </Text>
                                 </Group>
-                            </motion.div>
+                            </div>
 
-                            <motion.h1 className={classes.mainTitle} custom={1} variants={fadeUp} initial="hidden" animate="visible">
+                            <h1 className={classes.mainTitle}>
                                 {merged.headline}
-                            </motion.h1>
+                            </h1>
 
-                            <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible">
+                            <div>
                                 <Text className={classes.subtitle} size="xl">
                                     {merged.subtitle}
                                 </Text>
-                            </motion.div>
+                            </div>
 
-                            <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible">
+                            <div>
                                 <Group gap="lg">
                                     {(merged.pillars || []).map((pillar, i) => (
                                         <Group key={`${pillar.label || 'pillar'}-${i}`} gap="xs">
@@ -126,9 +94,9 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                         </Group>
                                     ))}
                                 </Group>
-                            </motion.div>
+                            </div>
 
-                            <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible">
+                            <div>
                                 <Group gap="sm" className={classes.useCases}>
                                     {(merged.useCases || []).map((useCase, i) => (
                                         <Text key={`${useCase.label || 'usecase'}-${i}`} size="sm" className={classes.useCasePill}>
@@ -136,9 +104,9 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                         </Text>
                                     ))}
                                 </Group>
-                            </motion.div>
+                            </div>
 
-                            <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible">
+                            <div>
                                 <form action={formAction} ref={formRef}>
                                     <Stack gap="md" mt="md">
                                         <Text size="lg" fw={500} c="gray.1">Join the waitlist for early access</Text>
@@ -172,13 +140,13 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                         <Text c="gray.2" size="sm">Be the first to know when we launch - no spam</Text>
                                     </Stack>
                                 </form>
-                            </motion.div>
+                            </div>
                         </Stack>
                     </Grid.Col>
 
-                    {/* Right column — slides in from right */}
+                    {/* Right column */}
                     <Grid.Col span={{ base: 12, md: 6 }}>
-                        <motion.div variants={slideInRight} initial="hidden" animate="visible">
+                        <div>
                             <Box className={classes.heroImageContainer}>
                                 <Box className={classes.browserChrome}>
                                     <Group justify="space-between" align="center" mb="sm" className={classes.windowHeader}>
@@ -229,12 +197,12 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                     </Carousel>
                                 </Box>
                             </Box>
-                        </motion.div>
+                        </div>
                     </Grid.Col>
                 </Grid>
 
-                {/* Trust bar — staggered */}
-                <motion.div variants={trustBar} initial="hidden" animate="visible">
+                {/* Trust bar */}
+                <div>
                     <Box className={classes.trustBar} mt={50}>
                         <Grid gutter="xl">
                             {(merged.trustSignals || []).map((signal, i) => {
@@ -243,18 +211,16 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                     IconSparkles
                                 return (
                                     <Grid.Col key={`${signal.label || 'signal'}-${i}`} span={{ base: 6, sm: 3 }}>
-                                        <motion.div variants={trustItem}>
-                                            <Stack align="center" gap="xs">
-                                                <Box className={classes.trustIcon}><Icon size={24} /></Box>
-                                                <Text size="sm" fw={600} c="white" ta="center">{signal.label}</Text>
-                                            </Stack>
-                                        </motion.div>
+                                        <Stack align="center" gap="xs">
+                                            <Box className={classes.trustIcon}><Icon size={24} /></Box>
+                                            <Text size="sm" fw={600} c="white" ta="center">{signal.label}</Text>
+                                        </Stack>
                                     </Grid.Col>
                                 )
                             })}
                         </Grid>
                     </Box>
-                </motion.div>
+                </div>
             </Container>
         </Box>
     )

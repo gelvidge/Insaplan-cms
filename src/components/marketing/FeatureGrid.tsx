@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { ThemeIcon } from '@mantine/core'
 import {
     IconChartBar, IconPalette, IconBrain,
@@ -30,23 +27,6 @@ interface FeatureGridProps {
     heading: string
     subheading: string
     features: Feature[]
-}
-
-const spring = [0.22, 1, 0.36, 1] as [number, number, number, number]
-
-const container = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.08 } },
-}
-
-const cardVariant = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: spring } },
-}
-
-const headingVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: spring } },
 }
 
 // Indices of features that get the wide card treatment (span 2 cols, show screenshot)
@@ -125,24 +105,12 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
     return (
         <section className={classes.root}>
             <div className={classes.inner}>
-                <motion.div
-                    className={classes.header}
-                    variants={headingVariant}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.6 }}
-                >
+                <div className={classes.header}>
                     <h2 className={classes.heading}>{heading}</h2>
                     <p className={classes.sub}>{subheading}</p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    className={classes.grid}
-                    variants={container}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                >
+                <div className={classes.grid}>
                     {features.map((f, i) => {
                         const Icon = (f.icon && iconMap[f.icon as FeatureIconKey]) || IconChartBar
                         const isWide = WIDE_INDICES.has(i)
@@ -150,10 +118,9 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
                         const mockVariant = mockVariants[mockVariantIndex] ?? 'dashboard'
 
                         return (
-                            <motion.article
+                            <article
                                 key={i}
                                 className={`${classes.card} ${isWide ? classes.cardWide : ''}`}
-                                variants={cardVariant}
                             >
                                 <div className={classes.cardContent}>
                                     <ThemeIcon
@@ -180,10 +147,10 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
                                         <MockScreen variant={mockVariant} />
                                     </div>
                                 )}
-                            </motion.article>
+                            </article>
                         )
                     })}
-                </motion.div>
+                </div>
             </div>
         </section>
     )

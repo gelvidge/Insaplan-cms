@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import classes from './UseCases.module.css'
 
 interface UseCase {
@@ -11,18 +8,6 @@ interface UseCase {
 interface UseCasesProps {
     useCases: UseCase[]
     heading?: string
-}
-
-const spring = [0.22, 1, 0.36, 1] as [number, number, number, number]
-
-const leftVariant = {
-    hidden: { opacity: 0, x: -36 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: spring } },
-}
-
-const rightVariant = {
-    hidden: { opacity: 0, x: 36 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: spring } },
 }
 
 function MockScreen({ index }: { index: number }) {
@@ -105,29 +90,20 @@ export default function UseCases({ useCases, heading = 'Use Cases' }: UseCasesPr
                     {useCases.map((uc, i) => {
                         const reversed = i % 2 === 1
                         return (
-                            <motion.div
+                            <div
                                 key={i}
                                 className={`${classes.row} ${reversed ? classes.rowReversed : ''}`}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.3 }}
                             >
-                                <motion.div
-                                    className={classes.textCol}
-                                    variants={reversed ? rightVariant : leftVariant}
-                                >
+                                <div className={classes.textCol}>
                                     <div className={classes.index}>{String(i + 1).padStart(2, '0')}</div>
                                     <h3 className={classes.title}>{uc.title}</h3>
                                     <p className={classes.desc}>{uc.description}</p>
-                                </motion.div>
+                                </div>
 
-                                <motion.div
-                                    className={classes.screenCol}
-                                    variants={reversed ? leftVariant : rightVariant}
-                                >
+                                <div className={classes.screenCol}>
                                     <MockScreen index={i} />
-                                </motion.div>
-                            </motion.div>
+                                </div>
+                            </div>
                         )
                     })}
                 </div>

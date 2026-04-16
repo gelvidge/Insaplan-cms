@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { isAdminOrEditor } from '../access'
+import { notifyFormSubmission } from '../hooks/notifyFormSubmission'
 
 export const FormSubmissions: CollectionConfig = {
     slug: 'form-submissions',
@@ -13,6 +14,9 @@ export const FormSubmissions: CollectionConfig = {
         create: () => true, // Allow public form submissions
         update: isAdminOrEditor,
         delete: isAdminOrEditor
+    },
+    hooks: {
+        afterChange: [notifyFormSubmission]
     },
     fields: [
         {

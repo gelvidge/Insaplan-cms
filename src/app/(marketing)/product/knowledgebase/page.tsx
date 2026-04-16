@@ -2,47 +2,10 @@
 
 import { Box, Container, Title, Text, Stack, Grid, GridCol } from '@mantine/core'
 import { IconSparkles, IconCheck } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
 import Background from '@/components/marketing/Background'
 import CTA from '@/components/marketing/CTA'
 import classes from './page.module.css'
 import { useEffect, useState } from 'react'
-
-const spring = [0.22, 1, 0.36, 1] as [number, number, number, number]
-
-const fadeUp = {
-    hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: spring } },
-}
-
-const fadeLeft = {
-    hidden: { opacity: 0, x: -48 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: spring } },
-}
-
-const fadeRight = {
-    hidden: { opacity: 0, x: 48 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: spring, delay: 0.1 } },
-}
-
-const staggerContainer = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.06 } },
-}
-
-const tagVariant = {
-    hidden: { opacity: 0, scale: 0.8, y: 10 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: spring } },
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const checkRowVariant: any = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (i: number) => ({
-        opacity: 1, x: 0,
-        transition: { duration: 0.4, ease: 'easeOut', delay: i * 0.07 },
-    }),
-}
 
 type QA = { question: string; answer: string }
 type Tag = { label: string }
@@ -109,22 +72,16 @@ export default function ProductKnowledgeBasePage() {
                 <Box className={classes.hero}>
                     <Container size="xl">
                         <Stack gap={0} align="center" ta="center">
-                            <motion.h1
-                                className={classes.heroHeadline}
-                                variants={fadeUp}
-                                initial="hidden"
-                                animate="visible"
-                                transition={{ delay: 0.1 }}
-                            >
+                            <h1 className={classes.heroHeadline}>
                                 {heroBefore}
                                 {heroAccent && <span className={classes.accent}>{heroAccent}</span>}
                                 {heroAfter}
-                            </motion.h1>
-                            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
+                            </h1>
+                            <div>
                                 <Text className={classes.heroSubtitle} maw={700}>
                                     {page.heroSubtitle}
                                 </Text>
-                            </motion.div>
+                            </div>
                         </Stack>
                     </Container>
                 </Box>
@@ -138,24 +95,18 @@ export default function ProductKnowledgeBasePage() {
                                 <Title order={2} className={classes.sectionHeading}>{capture.heading}</Title>
                                 <Text size="lg" c="dimmed" maw={680}>{capture.body}</Text>
                             </Stack>
-                            <motion.div
-                                className={classes.tagCloud}
-                                variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.2 }}
-                            >
+                            <div className={classes.tagCloud}>
                                 {insightTags.map((t, i) => (
-                                    <motion.span key={i} className={classes.tag} variants={tagVariant}>
+                                    <span key={i} className={classes.tag}>
                                         {t.label}
-                                    </motion.span>
+                                    </span>
                                 ))}
                                 {capture.tagEtc && (
-                                    <motion.span className={classes.tagEtc} variants={tagVariant}>
+                                    <span className={classes.tagEtc}>
                                         {capture.tagEtc}
-                                    </motion.span>
+                                    </span>
                                 )}
-                            </motion.div>
+                            </div>
                         </Stack>
                     </Container>
                 </Box>
@@ -165,27 +116,27 @@ export default function ProductKnowledgeBasePage() {
                     <Container size="xl">
                         <Grid gutter={{ base: 40, md: 80 }} align="center">
                             <GridCol span={{ base: 12, md: 5 }}>
-                                <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+                                <div>
                                     <Stack gap="lg">
                                         <Text className={classes.sectionKicker}>{autoCapture.kicker}</Text>
                                         <Title order={2} className={classes.sectionHeading} ta="left">{autoCapture.heading}</Title>
                                         <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>{autoCapture.body}</Text>
                                         <Stack gap="xs" mt="sm">
                                             {autoPoints.map((p, i) => (
-                                                <motion.div key={i} custom={i} variants={checkRowVariant} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+                                                <div key={i}>
                                                     <Box className={classes.checkRow}>
                                                         <Box className={classes.checkIcon}><IconCheck size={14} /></Box>
                                                         <Text size="sm" c="dark.6">{p.label}</Text>
                                                     </Box>
-                                                </motion.div>
+                                                </div>
                                             ))}
                                         </Stack>
                                     </Stack>
-                                </motion.div>
+                                </div>
                             </GridCol>
 
                             <GridCol span={{ base: 12, md: 7 }}>
-                                <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+                                <div>
                                     <Box className={classes.videoWrap}>
                                         <Box className={classes.videoChrome}>
                                             <Box className={classes.videoChromeBar}>
@@ -263,7 +214,7 @@ export default function ProductKnowledgeBasePage() {
                                             </Box>
                                         </Box>
                                     </Box>
-                                </motion.div>
+                                </div>
                             </GridCol>
                         </Grid>
                     </Container>
@@ -274,7 +225,7 @@ export default function ProductKnowledgeBasePage() {
                     <Container size="xl">
                         <Grid gutter={{ base: 40, md: 80 }} align="center">
                             <GridCol span={{ base: 12, md: 7 }} order={{ base: 2, md: 1 }}>
-                                <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+                                <div>
                                     <Box className={classes.videoWrap}>
                                         <Box className={classes.videoChrome}>
                                             <Box className={classes.videoChromeBar}>
@@ -299,11 +250,11 @@ export default function ProductKnowledgeBasePage() {
                                             </Box>
                                         </Box>
                                     </Box>
-                                </motion.div>
+                                </div>
                             </GridCol>
 
                             <GridCol span={{ base: 12, md: 5 }} order={{ base: 1, md: 2 }}>
-                                <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+                                <div>
                                     <Stack gap="lg">
                                         <Text className={classes.sectionKicker}>{aiQuery.kicker}</Text>
                                         <Title order={2} className={classes.sectionHeading} ta="left">{aiQuery.heading}</Title>
@@ -317,7 +268,7 @@ export default function ProductKnowledgeBasePage() {
                                             ))}
                                         </Stack>
                                     </Stack>
-                                </motion.div>
+                                </div>
                             </GridCol>
                         </Grid>
                     </Container>

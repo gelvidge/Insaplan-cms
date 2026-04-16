@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import {
     Container,
     Group,
@@ -39,27 +38,19 @@ interface NavigationProps {
 export const Navigation = ({ menuItems }: NavigationProps) => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const [scrolled, setScrolled] = useState(false)
-    const { scrollY } = useScroll()
 
-    useMotionValueEvent(scrollY, 'change', (y) => {
-        setScrolled(y > 50)
-    })
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 50)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
 
     const items: NavItem[] = (menuItems as NavItem[]) ?? []
 
     return (
         <>
-            <motion.div
-                className={classes.navigation}
-                animate={{
-                    boxShadow: scrolled
-                        ? '0 2px 24px rgba(0,0,0,0.28)'
-                        : '0 0px 0px rgba(0,0,0,0)',
-                    borderBottomColor: scrolled
-                        ? 'rgba(255,255,255,0.06)'
-                        : 'rgba(255,255,255,0)',
-                }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
+            <div
+                className={`${classes.navigation} ${scrolled ? classes.navigationScrolled : ''}`}
             >
                 <Container size={1440}>
                     <Group justify="space-between" h={70}>
@@ -112,7 +103,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                         <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" color="#FFFFFF" />
                     </Group>
                 </Container>
-            </motion.div>
+            </div>
 
             <Drawer
                 opened={drawerOpened}

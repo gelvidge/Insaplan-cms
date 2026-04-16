@@ -87,14 +87,27 @@
     color: rgba(46, 85, 153, 0.5);
     display: flex;
     align-items: center;
+    transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
 }
 
 /* ── Answer ──────────────────────────────────────────────────────────────── */
 .answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
     overflow: hidden;
 }
 
+.answerOpen {
+    grid-template-rows: 1fr;
+}
+
 .answerInner {
+    overflow: hidden;
     padding: 0 4px 18px;
     font-size: 0.9rem;
     line-height: 1.7;

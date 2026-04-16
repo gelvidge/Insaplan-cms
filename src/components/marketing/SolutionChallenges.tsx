@@ -1,5 +1,3 @@
-'use client'
-
 import { Box, Container, Title, Text, Grid, GridCol } from '@mantine/core'
 import {
     IconClock, IconPuzzle, IconBolt, IconChartBar, IconUsers, IconFileText,
@@ -7,7 +5,6 @@ import {
     IconMoodSad, IconLayoutDashboard, IconFileSpreadsheet, IconTimeline,
     IconChartPie, IconChartLine, IconTarget, IconBulb,
 } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
 import classes from './SolutionChallenges.module.css'
 
 type Challenge = {
@@ -34,28 +31,13 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; stroke?: numb
 
 const DEFAULT_ICONS = [IconClock, IconPuzzle, IconBolt, IconChartBar, IconUsers, IconFileText]
 
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.09 } },
-}
-
-const cardVariants = {
-    hidden: { opacity: 0, y: 36, scale: 0.96 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-}
-
 export default function SolutionChallenges({ challenges }: Props) {
     if (!challenges || challenges.length === 0) return null
 
     return (
         <Box className={classes.section}>
             <Container size="xl">
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.15 }}
-                >
+                <div>
                     <Grid gutter={{ base: 'md', md: 'lg' }}>
                         {challenges.map((challenge, index) => {
                             const IconComponent =
@@ -65,10 +47,7 @@ export default function SolutionChallenges({ challenges }: Props) {
 
                             return (
                                 <GridCol key={index} span={{ base: 12, sm: 6, lg: 4 }}>
-                                    <motion.div
-                                        variants={cardVariants}
-                                        style={{ height: '100%' }}
-                                    >
+                                    <div style={{ height: '100%' }}>
                                         <Box
                                             className={classes.card}
                                             data-colored={hasColor ? 'true' : undefined}
@@ -89,12 +68,12 @@ export default function SolutionChallenges({ challenges }: Props) {
                                                 {challenge.description}
                                             </Text>
                                         </Box>
-                                    </motion.div>
+                                    </div>
                                 </GridCol>
                             )
                         })}
                     </Grid>
-                </motion.div>
+                </div>
             </Container>
         </Box>
     )

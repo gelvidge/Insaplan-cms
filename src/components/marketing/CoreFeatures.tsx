@@ -1,8 +1,5 @@
-'use client'
-
 import { Container, Title, Text, Grid, GridCol, Stack, Box, ThemeIcon, List, ListItem } from '@mantine/core'
 import { IconBulb, IconTarget, IconReport, IconCheck } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
 import classes from './CoreFeatures.module.css'
 import { resolveMediaURL } from '@/lib/media'
 
@@ -25,21 +22,6 @@ const featureIcons = {
     report: IconReport,
 } as const
 
-const headerVariants = {
-    hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const capabilityVariants: any = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (i: number) => ({
-        opacity: 1,
-        x: 0,
-        transition: { duration: 0.45, ease: 'easeOut', delay: i * 0.07 },
-    }),
-}
-
 export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null }) {
     const merged = {
         kicker: data?.kicker,
@@ -52,12 +34,7 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
         <Box className={classes.section}>
             <Container size={1440}>
                 <Stack gap="xl">
-                    <motion.div
-                        variants={headerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }}
-                    >
+                    <div>
                         <Stack gap="md" align="center" ta="center" className={classes.header}>
                             <Text className={classes.kicker} size="sm" tt="uppercase" fw={700}>
                                 {merged.kicker}
@@ -67,22 +44,13 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                 {merged.description}
                             </Text>
                         </Stack>
-                    </motion.div>
+                    </div>
 
                     <Stack gap={40} mt="xl">
                         {(merged.features || []).map((feature, index) => {
                             const FeatureIcon =
                                 (feature.icon && featureIcons[feature.icon as keyof typeof featureIcons]) || IconBulb
                             const isEven = index % 2 === 0
-                            // Text slides in from the side it appears on
-                            const textVariants = {
-                                hidden: { opacity: 0, x: isEven ? -60 : 60 },
-                                visible: { opacity: 1, x: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-                            }
-                            const visualVariants = {
-                                hidden: { opacity: 0, x: isEven ? 60 : -60, scale: 0.96 },
-                                visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.12 } },
-                            }
 
                             return (
                                 <Box key={index} className={classes.featureCard}>
@@ -91,17 +59,9 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                             span={{ base: 12, md: 6 }}
                                             order={{ base: 2, md: isEven ? 1 : 2 }}
                                         >
-                                            <motion.div
-                                                variants={textVariants}
-                                                initial="hidden"
-                                                whileInView="visible"
-                                                viewport={{ once: true, amount: 0.3 }}
-                                            >
+                                            <div>
                                                 <Stack gap="md" className={classes.featureText}>
-                                                    <motion.div
-                                                        whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.4 } }}
-                                                        style={{ width: 'fit-content' }}
-                                                    >
+                                                    <div style={{ width: 'fit-content' }}>
                                                         <ThemeIcon
                                                             size={60}
                                                             radius="md"
@@ -110,7 +70,7 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                                         >
                                                             <FeatureIcon size={32} />
                                                         </ThemeIcon>
-                                                    </motion.div>
+                                                    </div>
                                                     <Title order={3}>{feature.title}</Title>
                                                     <Text size="lg" c="dimmed">{feature.description}</Text>
                                                     <Text fw={700} size="sm" mt="md" className={classes.capabilitiesLabel}>
@@ -127,32 +87,20 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                                         }
                                                     >
                                                         {(feature.capabilities || []).map((cap, capIndex) => (
-                                                            <motion.div
-                                                                key={`${cap.label || 'cap'}-${capIndex}`}
-                                                                custom={capIndex}
-                                                                variants={capabilityVariants}
-                                                                initial="hidden"
-                                                                whileInView="visible"
-                                                                viewport={{ once: true, amount: 0.5 }}
-                                                            >
+                                                            <div key={`${cap.label || 'cap'}-${capIndex}`}>
                                                                 <ListItem>{cap.label}</ListItem>
-                                                            </motion.div>
+                                                            </div>
                                                         ))}
                                                     </List>
                                                 </Stack>
-                                            </motion.div>
+                                            </div>
                                         </GridCol>
 
                                         <GridCol
                                             span={{ base: 12, md: 6 }}
                                             order={{ base: 1, md: isEven ? 2 : 1 }}
                                         >
-                                            <motion.div
-                                                variants={visualVariants}
-                                                initial="hidden"
-                                                whileInView="visible"
-                                                viewport={{ once: true, amount: 0.3 }}
-                                            >
+                                            <div>
                                                 <Box className={classes.visualsWrap}>
                                                     <Box className={classes.visualsGrid}>
                                                         {(feature.visuals || []).map((visual, visualIndex) => {
@@ -188,7 +136,7 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                                         })}
                                                     </Box>
                                                 </Box>
-                                            </motion.div>
+                                            </div>
                                         </GridCol>
                                     </Grid>
                                 </Box>
