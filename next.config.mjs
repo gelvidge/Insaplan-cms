@@ -3,6 +3,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
+    allowedDevOrigins: ['192.168.1.178'],
     experimental: {
         workerThreads: false,
         cpus: 1,
