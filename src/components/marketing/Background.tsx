@@ -23,6 +23,7 @@ export const BarChartOverlay = () => (
     height: '45vh',
     pointerEvents: 'none',
     zIndex: -1,
+    transform: 'translateZ(0)',
   }}>
     <svg
       viewBox="0 0 100 100"
@@ -75,6 +76,7 @@ export const ChartOverlay = () => (
     width: '60vw',
     pointerEvents: 'none',
     zIndex: -1,
+    transform: 'translateZ(0)',
   }}>
     <svg
       viewBox="0 0 100 100"
@@ -117,7 +119,7 @@ export const ChartOverlay = () => (
 const Background = () => {
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: -2 }}>
+      <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: -2, transform: 'translateZ(0)', willChange: 'transform' }}>
         <Grainient
           color1="#3a427a"
           color2="#594a8c"

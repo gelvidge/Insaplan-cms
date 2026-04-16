@@ -197,16 +197,39 @@ const Grainient = ({
     setSize();
 
     let raf = 0;
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+    let paused = false;
     const t0 = performance.now();
+    let pausedAt = 0;
+    let timeOffset = 0;
+
     const loop = (t: number) => {
-      program.uniforms.iTime.value = (t - t0) * 0.001;
+      program.uniforms.iTime.value = (t - t0 - timeOffset) * 0.001;
       renderer.render({ scene: mesh });
       raf = requestAnimationFrame(loop);
     };
+
+    const pause = () => {
+      if (!paused) {
+        paused = true;
+        pausedAt = performance.now();
+        cancelAnimationFrame(raf);
+      }
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        timeOffset += performance.now() - pausedAt;
+        paused = false;
+        raf = requestAnimationFrame(loop);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', pause, { passive: true });
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      window.removeEventListener('scroll', pause);
       ro.disconnect();
       try {
         container.removeChild(canvas);

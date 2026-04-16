@@ -89,9 +89,6 @@ export default function ProductKnowledgeBasePage() {
                 <Box className={classes.hero}>
                     <Container size="xl">
                         <Stack gap={0} align="center" ta="center">
-                            <motion.div variants={fadeUp} initial="hidden" animate="visible">
-                                <Text className={classes.kicker}>Knowledge Base</Text>
-                            </motion.div>
                             <motion.h1
                                 className={classes.heroHeadline}
                                 variants={fadeUp}
