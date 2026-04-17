@@ -113,6 +113,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                 padding="md"
                 hiddenFrom="md"
                 zIndex={1000}
+                styles={{ content: { backgroundColor: '#0f1117' }, header: { backgroundColor: '#0f1117' } }}
             >
                 <Stack gap="lg">
                     <Logo height={40} />
@@ -120,7 +121,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                     {items.map((item) =>
                         item.type === 'dropdown' && item.children?.length ? (
                             <Stack key={item.label} gap="sm">
-                                <Text size="xs" tt="uppercase" fw={600} c="dimmed">{item.label}</Text>
+                                <Text size="xs" tt="uppercase" fw={600} c="gray.5">{item.label}</Text>
                                 {item.children.map((child) => (
                                     <Anchor
                                         key={child.label}

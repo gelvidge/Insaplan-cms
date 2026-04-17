@@ -137,18 +137,6 @@ export const Solutions: CollectionConfig = {
                     type: 'text',
                     required: true
                 },
-                {
-                    name: 'description',
-                    type: 'textarea',
-                    required: true
-                },
-                {
-                    name: 'icon',
-                    type: 'text',
-                    admin: {
-                        description: 'Icon name from Tabler Icons (e.g., "IconRocket")'
-                    }
-                }
             ]
         },
         statusField,

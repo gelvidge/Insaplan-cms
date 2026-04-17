@@ -520,11 +520,6 @@ export interface Solution {
   keyFeatures?:
     | {
         title: string;
-        description: string;
-        /**
-         * Icon name from Tabler Icons (e.g., "IconRocket")
-         */
-        icon?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -890,8 +885,6 @@ export interface SolutionsSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
-        description?: T;
-        icon?: T;
         id?: T;
       };
   status?: T;

@@ -9,6 +9,8 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
         ALTER TABLE "solutions" DROP COLUMN IF EXISTS "hero_kicker";
         ALTER TABLE "solutions" DROP COLUMN IF EXISTS "cta_text";
         ALTER TABLE "solutions" DROP COLUMN IF EXISTS "cta_url";
+        ALTER TABLE "solutions_key_features" DROP COLUMN IF EXISTS "description";
+        ALTER TABLE "solutions_key_features" DROP COLUMN IF EXISTS "icon";
         ALTER TABLE "_solutions_v" DROP COLUMN IF EXISTS "version_subtitle";
         ALTER TABLE "_solutions_v" DROP COLUMN IF EXISTS "version_title";
         ALTER TABLE "_solutions_v" DROP COLUMN IF EXISTS "version_hero_kicker";
@@ -24,6 +26,8 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
         ALTER TABLE "solutions" ADD COLUMN IF NOT EXISTS "hero_kicker" varchar;
         ALTER TABLE "solutions" ADD COLUMN IF NOT EXISTS "cta_text" varchar;
         ALTER TABLE "solutions" ADD COLUMN IF NOT EXISTS "cta_url" varchar;
+        ALTER TABLE "solutions_key_features" ADD COLUMN IF NOT EXISTS "description" varchar;
+        ALTER TABLE "solutions_key_features" ADD COLUMN IF NOT EXISTS "icon" varchar;
         ALTER TABLE "_solutions_v" ADD COLUMN IF NOT EXISTS "version_subtitle" varchar;
         ALTER TABLE "_solutions_v" ADD COLUMN IF NOT EXISTS "version_title" varchar;
         ALTER TABLE "_solutions_v" ADD COLUMN IF NOT EXISTS "version_hero_kicker" varchar;
