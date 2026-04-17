@@ -1,3 +1,4 @@
+import React from 'react'
 import { Box, Container, Title, Text, Stack, Grid, GridCol, ThemeIcon } from '@mantine/core'
 import {
     IconChartBar,
@@ -55,6 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: page?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/product/visuals' },
     }
 }
@@ -89,16 +91,16 @@ const CHART_TYPES = [
 ]
 
 
-const TABLE_FEATURES = [
-    { icon: IconFreezeRow,     label: 'Freeze Rows' },
-    { icon: IconFreezeColumn,  label: 'Freeze Columns' },
-    { icon: IconSortAscending, label: 'Sort & Group' },
-    { icon: IconFilter,        label: 'Filters' },
-    { icon: IconTableColumn,   label: 'Custom Columns' },
-    { icon: IconTableRow,      label: 'Row Grouping' },
-    { icon: IconTableOptions,  label: 'Conditional Format' },
-    { icon: IconTableExport,   label: 'Export' },
-]
+const TABLE_FEATURE_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+    'Freeze Rows':        IconFreezeRow,
+    'Freeze Columns':     IconFreezeColumn,
+    'Sort & Group':       IconSortAscending,
+    'Filters':            IconFilter,
+    'Custom Columns':     IconTableColumn,
+    'Row Grouping':       IconTableRow,
+    'Conditional Format': IconTableOptions,
+    'Export':             IconTableExport,
+}
 
 
 // ── Reusable 3-card visual stack ──────────────────────────────────────────────
@@ -635,19 +637,24 @@ export default async function ProductVisualsPage() {
                                         ))}
                                     </Stack>
                                     {/* Feature pills */}
-                                    <Stack gap="xs" mt="md">
-                                        <Text size="xs" fw={700} tt="uppercase" c="dimmed" style={{ letterSpacing: '1.5px' }}>
-                                            Table features
-                                        </Text>
-                                        <div className={classes.chartGrid}>
-                                            {TABLE_FEATURES.map(({ icon: Icon, label }) => (
-                                                <div key={label} className={classes.chartPill}>
-                                                    <Icon size={12} className={classes.chartPillIcon} />
-                                                    <span>{label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </Stack>
+                                    {(tables.features ?? []).length > 0 && (
+                                        <Stack gap="xs" mt="md">
+                                            <Text size="xs" fw={700} tt="uppercase" c="dimmed" style={{ letterSpacing: '1.5px' }}>
+                                                Table features
+                                            </Text>
+                                            <div className={classes.chartGrid}>
+                                                {(tables.features ?? []).map((item: { label: string }, i: number) => {
+                                                    const Icon = TABLE_FEATURE_ICONS[item.label]
+                                                    return (
+                                                        <div key={i} className={classes.chartPill}>
+                                                            {Icon && <Icon size={12} className={classes.chartPillIcon} />}
+                                                            <span>{item.label}</span>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </Stack>
+                                    )}
                                 </Stack>
                             </GridCol>
                             {/* Visuals */}

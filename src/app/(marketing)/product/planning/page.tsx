@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: pg?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/product/planning' },
     }
 }
@@ -52,7 +53,7 @@ export default async function ProductPlanningPage() {
                             <GridCol span={{ base: 12, md: 7 }}>
                                 <div className={classes.templatePanel}>
                                     <Text className={classes.kicker}>{templates.kicker}</Text>
-                                    <Title order={2} className={classes.sectionTitle}>{templates.heading}</Title>
+                                    <Title order={2} className={classes.sectionTitle} c="purple.4">{templates.heading}</Title>
                                     <Text className={classes.sectionBody}>{templates.body}</Text>
                                     <div className={classes.pillCloud}>
                                         {(templates.pills ?? []).map((p: { label: string }) => (
@@ -84,7 +85,7 @@ export default async function ProductPlanningPage() {
                         <Grid gutter={{ base: 24, md: 36 }} align="center">
                             <GridCol span={{ base: 12, md: 5 }}>
                                 <Text className={classes.kicker}>{metrics.kicker}</Text>
-                                <Title order={2} className={classes.sectionTitle}>{metrics.heading}</Title>
+                                <Title order={2} className={classes.sectionTitle} c="blue.5">{metrics.heading}</Title>
                                 <Text className={classes.sectionBody}>{metrics.body}</Text>
                                 <Stack gap="sm" mt="lg">
                                     {(metrics.points ?? []).map((p: { label: string }) => (
@@ -132,7 +133,7 @@ export default async function ProductPlanningPage() {
                         <Grid gutter={{ base: 24, md: 36 }} align="center">
                             <GridCol span={{ base: 12, md: 4 }}>
                                 <Text className={classes.kicker}>{tracking.kicker}</Text>
-                                <Title order={2} className={classes.sectionTitle}>{tracking.heading}</Title>
+                                <Title order={2} className={classes.sectionTitle} c="green.5">{tracking.heading}</Title>
                                 <Text className={classes.sectionBody}>{tracking.body}</Text>
                             </GridCol>
                             <GridCol span={{ base: 12, md: 8 }}>
@@ -160,7 +161,7 @@ export default async function ProductPlanningPage() {
                         <Grid gutter={{ base: 24, md: 36 }} align="center">
                             <GridCol span={{ base: 12, md: 5 }}>
                                 <Text className={classes.kicker}>{linked.kicker}</Text>
-                                <Title order={2} className={classes.sectionTitle}>{linked.heading}</Title>
+                                <Title order={2} className={classes.sectionTitle} c="purple.4">{linked.heading}</Title>
                                 <Text className={classes.sectionBody}>{linked.body}</Text>
                                 <Stack gap="sm" mt="lg">
                                     {(linked.points ?? []).map((p: { label: string }) => (
@@ -180,12 +181,31 @@ export default async function ProductPlanningPage() {
                                     <div className={classes.mapNodeTertiary} data-pos="one">Q3 Pipeline Review</div>
                                     <div className={classes.mapNodeTertiary} data-pos="two">Launch Readiness</div>
                                     <div className={classes.mapNodeTertiary} data-pos="three">Regional Rollout</div>
-                                    <div className={classes.connector} data-conn="one" />
-                                    <div className={classes.connector} data-conn="two" />
-                                    <div className={classes.connector} data-conn="three" />
-                                    <div className={classes.connector} data-conn="four" />
-                                    <div className={classes.connector} data-conn="five" />
-                                    <div className={classes.connector} data-conn="six" />
+                                    {/*
+                                      * SVG connectors.
+                                      * viewBox="0 0 100 380" — x is percentage of width, y is px.
+                                      * preserveAspectRatio="none" stretches x to fill width while y stays px.
+                                      * Column centres: col1=16.67, col2=50, col3=83.33
+                                      * Primary:   top=24, h=48  → bottom-centre y=72
+                                      * Secondary: top=140, h=44 → top y=140, bottom y=184
+                                      * Tertiary:  top=296        → top y=296
+                                      */}
+                                    <svg className={classes.connectorSvg} viewBox="0 0 100 380" preserveAspectRatio="none" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="connectorGrad" x1="0" y1="0" x2="0" y2="380" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0%" stopColor="rgba(46,64,114,0.4)" />
+                                                <stop offset="100%" stopColor="rgba(100,49,127,0.3)" />
+                                            </linearGradient>
+                                        </defs>
+                                        {/* Primary bottom-centre → secondary top-centres */}
+                                        <line x1="50"    y1="72" x2="16.67" y2="140" />
+                                        <line x1="50"    y1="72" x2="50"    y2="140" />
+                                        <line x1="50"    y1="72" x2="83.33" y2="140" />
+                                        {/* Secondary bottom-centres → tertiary top-centres (vertical) */}
+                                        <line x1="16.67" y1="184" x2="16.67" y2="296" />
+                                        <line x1="50"    y1="184" x2="50"    y2="296" />
+                                        <line x1="83.33" y1="184" x2="83.33" y2="296" />
+                                    </svg>
                                 </div>
                             </GridCol>
                         </Grid>
@@ -198,7 +218,7 @@ export default async function ProductPlanningPage() {
                         <div className={classes.aiPanel}>
                             <div className={classes.aiIntro}>
                                 <Text className={classes.kicker}>{ai.kicker}</Text>
-                                <Title order={2} className={classes.sectionTitle}>{ai.heading}</Title>
+                                <Title order={2} className={classes.sectionTitle} c="blue.5">{ai.heading}</Title>
                                 <Text className={classes.sectionBody}>{ai.body}</Text>
                                 <div className={classes.sourcePills}>
                                     {(ai.sourcePills ?? []).map((p: { label: string }) => (

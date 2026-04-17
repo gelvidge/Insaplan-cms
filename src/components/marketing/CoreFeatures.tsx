@@ -1,4 +1,4 @@
-import { Container, Title, Text, Grid, GridCol, Stack, Box, ThemeIcon, List, ListItem } from '@mantine/core'
+import { Container, Title, Text, Grid, GridCol, Stack, Box, ThemeIcon, List, ListItem, Group } from '@mantine/core'
 import { IconBulb, IconTarget, IconReport, IconCheck } from '@tabler/icons-react'
 import classes from './CoreFeatures.module.css'
 import { resolveMediaURL } from '@/lib/media'
@@ -30,6 +30,8 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
         features: data?.features ?? [],
     }
 
+    const titleColors = ['purple.4', 'green.4', 'blue.4'] as const
+
     return (
         <Box className={classes.section}>
             <Container size={1440}>
@@ -51,6 +53,7 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                             const FeatureIcon =
                                 (feature.icon && featureIcons[feature.icon as keyof typeof featureIcons]) || IconBulb
                             const isEven = index % 2 === 0
+                            const headingColor = titleColors[index % titleColors.length]
 
                             return (
                                 <Box key={index} className={classes.featureCard}>
@@ -61,17 +64,17 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                         >
                                             <div>
                                                 <Stack gap="md" className={classes.featureText}>
-                                                    <div style={{ width: 'fit-content' }}>
+                                                    <Group gap="md" align="center" wrap="wrap">
                                                         <ThemeIcon
                                                             size={60}
                                                             radius="md"
                                                             variant="gradient"
-                                                            gradient={{ from: 'deepblue.6', to: 'purple.6', deg: 45 }}
+                                                            gradient={{ from: 'navy.4', to: 'purple.5', deg: 45 }}
                                                         >
                                                             <FeatureIcon size={32} />
                                                         </ThemeIcon>
-                                                    </div>
-                                                    <Title order={3}>{feature.title}</Title>
+                                                        <Title order={3} c={headingColor}>{feature.title}</Title>
+                                                    </Group>
                                                     <Text size="lg" c="dimmed">{feature.description}</Text>
                                                     <Text fw={700} size="sm" mt="md" className={classes.capabilitiesLabel}>
                                                         Capabilities
@@ -81,7 +84,7 @@ export default function CoreFeatures({ data }: { data?: CoreFeaturesData | null 
                                                         size="sm"
                                                         c="dimmed"
                                                         icon={
-                                                            <ThemeIcon size={18} radius="xl" variant="light" color="deepblue.6">
+                                                            <ThemeIcon size={18} radius="xl" variant="light" color="navy.6">
                                                                 <IconCheck size={12} />
                                                             </ThemeIcon>
                                                         }

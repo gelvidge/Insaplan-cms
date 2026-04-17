@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: pg?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/product/reporting' },
     }
 }

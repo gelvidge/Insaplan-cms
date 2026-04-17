@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const ProductKnowledgeBasePageGlobal: GlobalConfig = {
     slug: 'product-knowledgebase-page',
@@ -40,6 +41,19 @@ export const ProductKnowledgeBasePageGlobal: GlobalConfig = {
         },
 
         {
+            name: 'section3', type: 'group', label: 'Section 3',
+            fields: [
+                { name: 'kicker',  type: 'text' },
+                { name: 'heading', type: 'text' },
+                { name: 'body',    type: 'textarea' },
+                {
+                    name: 'points', type: 'array', label: 'Bullet Points',
+                    fields: [{ name: 'label', type: 'text', required: true }],
+                },
+            ],
+        },
+
+        {
             name: 'aiQuery', type: 'group', label: 'AI Query Section',
             fields: [
                 { name: 'kicker',  type: 'text' },
@@ -54,5 +68,6 @@ export const ProductKnowledgeBasePageGlobal: GlobalConfig = {
                 },
             ],
         },
+        ...seoFields,
     ],
 }

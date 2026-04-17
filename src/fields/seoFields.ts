@@ -50,11 +50,10 @@ export const seoFields: Field[] = [
             },
             {
                 name: 'keywords',
-                type: 'text',
+                type: 'textarea',
                 label: 'Keywords',
-                hasMany: true,
                 admin: {
-                    description: 'Comma-separated keywords for SEO'
+                    description: 'Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)'
                 }
             }
         ]

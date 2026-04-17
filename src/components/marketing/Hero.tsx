@@ -4,13 +4,8 @@ import { Box, Text, Button, Stack, Group, Container, Grid } from '@mantine/core'
 import { Carousel } from '@mantine/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import { useActionState, useEffect, useRef } from 'react'
-import {
-    IconCheck,
-    IconSparkles,
-    IconTemplate,
-    IconCards,
-    IconBuildingSkyscraper,
-} from '@tabler/icons-react'
+import { IconCheck, IconSparkles } from '@tabler/icons-react'
+import * as TablerIcons from '@tabler/icons-react'
 import classes from './Hero.module.css'
 import { submitWaitlistForm, type WaitlistFormState } from '@/app/(marketing)/actions'
 import { resolveMediaURL } from '@/lib/media'
@@ -26,12 +21,11 @@ type HeroData = {
     carouselSlides?: { title?: string | null; description?: string | null; image?: unknown }[] | null
 }
 
-const trustSignalIcons = {
-    sparkles: IconSparkles,
-    template: IconTemplate,
-    cards: IconCards,
-    building: IconBuildingSkyscraper,
-} as const
+function getTrustIcon(name: string | null | undefined) {
+    if (!name) return IconSparkles
+    const key = `Icon${name.charAt(0).toUpperCase()}${name.slice(1)}`
+    return (TablerIcons as Record<string, unknown>)[key] as typeof IconSparkles ?? IconSparkles
+}
 
 const Hero = ({ data }: { data?: HeroData | null }) => {
     const merged = {
@@ -123,7 +117,7 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                                 size="lg"
                                                 radius="md"
                                                 variant="white"
-                                                c="deepblue.9"
+                                                c="navy.9"
                                                 className={classes.primaryCta}
                                                 loading={pending}
                                                 disabled={pending}
@@ -137,7 +131,7 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                         {state.status === 'error' && (
                                             <Text c="red.2" size="sm" aria-live="polite">{state.message}</Text>
                                         )}
-                                        <Text c="gray.2" size="sm">Be the first to know when we launch - no spam</Text>
+                                        <Text c="gray.2" size="sm">Be the first to know when we launch</Text>
                                     </Stack>
                                 </form>
                             </div>
@@ -177,7 +171,7 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                                                 <Carousel.Slide key={index}>
                                                     <Box className={classes.imageContent}>
                                                         <Stack gap="md" align="center">
-                                                            <Text size="lg" fw={600} c="deepblue.9" ta="center">{slide.title}</Text>
+                                                            <Text size="lg" fw={600} c="navy.9" ta="center">{slide.title}</Text>
                                                             <Text size="sm" c="dimmed" ta="center" maw={400}>{slide.description}</Text>
                                                             {slideSrc && (
                                                                 <Box className={classes.slideImageWrap}>
@@ -206,9 +200,7 @@ const Hero = ({ data }: { data?: HeroData | null }) => {
                     <Box className={classes.trustBar} mt={50}>
                         <Grid gutter="xl">
                             {(merged.trustSignals || []).map((signal, i) => {
-                                const Icon =
-                                    (signal.icon && trustSignalIcons[signal.icon as keyof typeof trustSignalIcons]) ||
-                                    IconSparkles
+                                const Icon = getTrustIcon(signal.icon)
                                 return (
                                     <Grid.Col key={`${signal.label || 'signal'}-${i}`} span={{ base: 6, sm: 3 }}>
                                         <Stack align="center" gap="xs">

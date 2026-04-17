@@ -75,7 +75,7 @@
 }
 
 .eyebrow {
-    color: var(--mantine-color-purple-3);
+    color: var(--mantine-color-gray-0);
     letter-spacing: 2px;
     line-height: 1;
 }
@@ -126,8 +126,8 @@
 .useCasePill {
     padding: 6px 10px;
     border-radius: 999px;
-    background: #7dbb9148;
-    border: 1px solid #7dbb91;
+    background: rgba(96, 169, 120, 0.28);
+    border: 1px solid var(--mantine-color-green-2);
     color: var(--mantine-color-gray-0);
     line-height: 1.2;
 }
@@ -223,7 +223,7 @@
 
 .carouselIndicator[data-active] {
     width: 24px;
-    background-color: var(--mantine-color-deepblue-6);
+    background-color: var(--mantine-color-navy-6);
 }
 
 .trustBar {

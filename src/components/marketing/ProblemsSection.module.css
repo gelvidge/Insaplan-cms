@@ -1,150 +1,124 @@
 /* ── Root ────────────────────────────────────────────────────────────────── */
 .root {
-    background: #ffffff;
+    background: white;
     border-top: 1px solid rgba(20, 28, 48, 0.06);
     border-bottom: 1px solid rgba(20, 28, 48, 0.06);
-    padding-block: 64px 72px;
+    padding-block: 72px 80px;
 }
 
 .inner {
-    max-width: 900px;
+    max-width: 880px;
     margin-inline: auto;
     padding-inline: 24px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.header {
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.heading {
+    font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+    font-weight: 700;
+    color: var(--mantine-color-navy-9, #0a1128);
+    margin: 0 0 10px;
+    line-height: 1.15;
+}
+
+.subheading {
+    font-size: 0.95rem;
+    color: rgba(30, 30, 40, 0.5);
+    margin: 0;
+    line-height: 1.55;
+}
+
+/* ── Grid of strips ──────────────────────────────────────────────────────── */
+.grid {
     display: flex;
     flex-direction: column;
-    gap: 0;
-}
-
-/* ── Column labels ───────────────────────────────────────────────────────── */
-.colRow {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
-    margin-bottom: 16px;
-}
-
-.colLabelBefore,
-.colLabelAfter {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-.colLabelBefore {
-    color: rgba(180, 50, 50, 0.75);
-    background: rgba(220, 60, 60, 0.07);
-}
-
-.colLabelAfter {
-    color: rgba(30, 100, 60, 0.8);
-    background: rgba(34, 197, 94, 0.08);
-}
-
-.colGap {}
-
-/* ── Row ─────────────────────────────────────────────────────────────────── */
-.row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
-    align-items: center;
-    padding-block: 14px;
-    border-top: 1px solid rgba(20, 28, 48, 0.055);
-    gap: 0;
-}
-
-.row:last-child {
-    border-bottom: 1px solid rgba(20, 28, 48, 0.055);
-}
-
-/* ── Cells ───────────────────────────────────────────────────────────────── */
-.problemCell,
-.solutionCell {
-    display: flex;
-    align-items: flex-start;
     gap: 10px;
-    padding-inline: 4px;
 }
 
-/* ── Dots ────────────────────────────────────────────────────────────────── */
-.xDot,
-.checkDot {
+/* ── Strip (single problem → solution) ───────────────────────────────────── */
+.strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 56px;
+}
+
+/* ── Before / After halves ───────────────────────────────────────────────── */
+.beforeSide,
+.afterSide {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+}
+
+.beforeSide {
+    background: rgba(220, 60, 60, 0.04);
+    border-left: 3px solid rgba(200, 55, 55, 0.35);
+}
+
+.afterSide {
+    background: rgba(34, 197, 94, 0.04);
+    border-left: 3px solid rgba(34, 180, 80, 0.35);
+}
+
+/* ── Icons ───────────────────────────────────────────────────────────────── */
+.icon {
     flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    margin-top: 2px;
-    position: relative;
-}
-
-.xDot {
-    background: rgba(220, 60, 60, 0.1);
-    border: 1.5px solid rgba(220, 60, 60, 0.3);
-}
-.xDot::before,
-.xDot::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 7px; height: 1.5px;
-    background: rgba(200, 50, 50, 0.75);
-    border-radius: 999px;
-}
-.xDot::before { transform: translate(-50%, -50%) rotate(45deg); }
-.xDot::after  { transform: translate(-50%, -50%) rotate(-45deg); }
-
-.checkDot {
-    background: rgba(34, 197, 94, 0.1);
-    border: 1.5px solid rgba(34, 197, 94, 0.35);
-}
-.checkDot::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 4px; height: 7px;
-    border-right: 1.5px solid rgba(22, 160, 70, 0.85);
-    border-bottom: 1.5px solid rgba(22, 160, 70, 0.85);
-    transform: translate(-55%, -60%) rotate(45deg);
-}
-
-/* ── Arrow ───────────────────────────────────────────────────────────────── */
-.arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(100, 120, 180, 0.4);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.beforeSide .icon {
+    color: rgba(190, 50, 50, 0.6);
+    background: rgba(220, 60, 60, 0.08);
+}
+
+.afterSide .icon {
+    color: rgba(22, 140, 65, 0.7);
+    background: rgba(34, 197, 94, 0.1);
 }
 
 /* ── Text ────────────────────────────────────────────────────────────────── */
-.problemText {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: rgba(30, 30, 40, 0.6);
+.beforeText,
+.afterText {
     margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.beforeText {
+    color: rgba(30, 30, 40, 0.52);
     font-weight: 400;
 }
 
-.solutionText {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #1a2e1a;
-    margin: 0;
-    font-weight: 500;
+.afterText {
+    color: rgba(15, 25, 45, 0.82);
+    font-weight: 550;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-    .colRow { display: none; }
-
-    .row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding-block: 16px;
+    .root {
+        padding-block: 48px 56px;
     }
 
-    .arrow { justify-content: flex-start; padding-left: 28px; }
+    .strip {
+        grid-template-columns: 1fr;
+    }
 
-    .problemText { color: rgba(30, 30, 40, 0.55); }
+    .beforeSide { border-left-width: 3px; }
+    .afterSide  { border-left-width: 3px; }
 }
+

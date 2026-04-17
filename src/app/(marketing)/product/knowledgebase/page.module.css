@@ -47,7 +47,7 @@
 }
 
 .accent {
-    color: var(--mantine-color-purple-4);
+    color: var(--mantine-color-purple-2);
 }
 
 .heroSubtitle {
@@ -98,7 +98,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--mantine-color-dark-6);
-    background: var(--mantine-color-gray-0);
+    background: var(--mantine-color-green-1);
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: default;
 }
@@ -187,7 +187,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 24px;
-    background: radial-gradient(ellipse at 60% 40%, #594a8c 0%, #3a427a 45%, #1e1b3a 100%);
+    background: radial-gradient(ellipse at 60% 40%, var(--mantine-color-indigo-5) 0%, var(--mantine-color-navy-7) 45%, var(--mantine-color-navy-9) 100%);
 }
 
 .flowSvg {
@@ -207,6 +207,23 @@
     margin-top: 16px;
     color: var(--mantine-color-purple-4);
     opacity: 0.9;
+}
+
+/* ── Section 3 ──────────────────────────────────────────────────────────── */
+.section3 {
+    padding-block: 80px;
+    background: var(--mantine-color-gray-0);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.screenshotBody {
+    padding: 0;
+}
+
+.screenshotPlaceholder {
+    min-height: 320px;
+    background: var(--mantine-color-gray-2);
 }
 
 /* ── AI query section ───────────────────────────────────────────────────── */

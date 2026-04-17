@@ -133,7 +133,7 @@ async function seed() {
                 description: 'Join the waitlist for early access to curated insights, flexible templates, and rapid iteration across strategy, planning, and project management.',
                 emailPlaceholder: 'Enter your email',
                 buttonLabel: 'Join Waitlist',
-                note: 'Get notified when we launch - no spam, ever',
+                note: 'Get notified when we launch',
             },
         } as any,
     })
@@ -341,37 +341,11 @@ async function seed() {
     })
     console.log('  done.')
 
-    // ── Solutions Page ────────────────────────────────────────────────────
-    console.log('Seeding solutions-page...')
-    await payload.updateGlobal({
-        slug: 'solutions-page',
-        data: {
-            heroTitle: 'Solutions',
-            heroSubtitle: 'Tailored for your industry and organizational needs',
-            sectionHeading: 'Choose your use case',
-            sectionSubheading: 'Insaplan adapts to the way your team works',
-            solutionLinks: [
-                { label: 'Sales', slug: 'sales', description: 'Transform sales planning and reporting' },
-                { label: 'Marketing', slug: 'marketing', description: 'Accelerate go-to-market strategy and execution' },
-                { label: 'Start Ups', slug: 'startups', description: 'Build investor-ready plans and presentations' },
-                { label: 'Enterprise', slug: 'enterprise', description: 'Standardize planning across the organization' },
-                { label: 'Not for Profit', slug: 'nonprofit', description: 'Track and communicate your mission' },
-                { label: 'Project Management', slug: 'project-management', description: 'Plan, execute, and report on projects with clarity' },
-                { label: 'Government', slug: 'government', description: 'Deliver accountable, evidence-based planning' },
-            ],
-        } as any,
-    })
-    console.log('  done.')
-
     // ── Footer ────────────────────────────────────────────────────────────
     console.log('Seeding footer...')
     await payload.updateGlobal({
         slug: 'footer',
         data: {
-            logoText: 'Insaplan',
-            navCtaLabel: 'Request Access',
-            navCtaUrl: '/contact',
-            tagline: 'Turn Insights into Plans. Strategic planning and reporting made simple.',
             copyrightName: 'Insaplan',
             copyrightSuffix: 'All Rights Reserved.',
             linkGroups: [
@@ -547,15 +521,15 @@ async function seed() {
                 { icon: 'books', title: 'Integrated Business Frameworks', description: 'Access proven frameworks like SWOT, OKRs, and Business Model Canvas.', benefits: [{ label: 'Best practice templates' }, { label: 'Industry-specific frameworks' }, { label: 'Guided planning processes' }] },
                 { icon: 'database', title: 'Integrated Knowledge Bases', description: 'Build and leverage organizational knowledge for better planning.', benefits: [{ label: 'Searchable insights' }, { label: 'Common KPIs library' }, { label: 'Industry benchmarks' }] },
             ],
-            problemsHeading: 'Problems We Solve',
-            problemsSubheading: 'Common challenges Insaplan addresses',
+            problemsHeading: 'Sound familiar?',
+            problemsSubheading: 'The planning challenges holding your organisation back — and how Insaplan fixes them.',
             problems: [
-                { problem: 'Plans take weeks to create and are outdated by the time they are finished', solution: 'AI-assisted planning reduces creation time from weeks to hours with real-time updates' },
-                { problem: 'Strategic reports are static, ugly, and fail to communicate vision', solution: 'Beautiful, dynamic reports with professional infographics and data visualizations' },
-                { problem: 'Organizational knowledge is scattered across emails, docs, and spreadsheets', solution: 'Centralized knowledge base that integrates with your planning process' },
-                { problem: 'No standardized approach to strategic planning across the organization', solution: 'Integrated business frameworks ensure consistency and best practices' },
-                { problem: 'Difficult to track progress and measure impact of strategic initiatives', solution: 'Real-time dashboards and progress tracking with customizable KPIs' },
-                { problem: 'Teams work in silos without visibility into overall strategy', solution: 'Collaborative platform with shared visibility and aligned objectives' },
+                { problem: 'Plans take weeks and arrive outdated', solution: 'From weeks to hours with AI-assisted drafting' },
+                { problem: 'Reports are static and hard to read', solution: 'Dynamic visuals and infographics, ready to share' },
+                { problem: 'Knowledge scattered across tools', solution: 'One searchable knowledge base for every plan' },
+                { problem: 'No consistent planning approach', solution: 'Built-in frameworks that scale across teams' },
+                { problem: 'Progress is invisible to leadership', solution: 'Live dashboards with the KPIs that matter' },
+                { problem: 'Teams plan in silos', solution: 'Shared visibility from strategy to execution' },
             ],
         } as any,
     })

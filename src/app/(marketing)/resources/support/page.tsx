@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: sp?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/resources/support' },
     }
 }
@@ -34,13 +35,13 @@ export default async function SupportPage() {
                     <Stack gap="xl">
 <Card shadow="sm" padding="xl" radius="md" withBorder>
                             <Stack align="center" gap="md" ta="center">
-                                <ThemeIcon size={60} radius="md" variant="light" color="deepblue.6">
+                                <ThemeIcon size={60} radius="md" variant="light" color="navy.6">
                                     <IconMail size={32} />
                                 </ThemeIcon>
                                 <Text fw={600} size="lg">{contactHeading}</Text>
                                 <Text c="dimmed">
                                     Email us at{' '}
-                                    <Text component="a" href={`mailto:${contactEmail}`} c="deepblue.6">
+                                    <Text component="a" href={`mailto:${contactEmail}`} c="navy.6">
                                         {contactEmail}
                                     </Text>
                                 </Text>

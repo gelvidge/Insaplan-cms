@@ -24,7 +24,7 @@
 }
 
 .toggleLabelActive {
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     font-weight: 600;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .toggleOn {
-    background: #2e5599;
+    background: var(--mantine-color-navy-5);
 }
 
 .toggleThumb {
@@ -53,7 +53,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #ffffff;
+    background: white;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     transition: left 0.25s ease;
 }
@@ -87,7 +87,7 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 .card {
     position: relative;
-    background: #ffffff;
+    background: white;
     border: 1px solid rgba(20, 28, 48, 0.09);
     border-radius: 20px;
     padding: 28px 24px 24px;
@@ -97,7 +97,7 @@
 }
 
 .cardPopular {
-    border-color: #2e5599;
+    border-color: var(--mantine-color-navy-5);
     box-shadow: 0 12px 40px rgba(46, 85, 153, 0.14);
 }
 
@@ -109,8 +109,8 @@
     height: 24px;
     padding: 0 12px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #2e5599, #6d3fbd);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--mantine-color-navy-5), var(--mantine-color-purple-4));
+    color: white;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -127,7 +127,7 @@
 .planName {
     font-size: 1.05rem;
     font-weight: 800;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     margin: 0 0 6px;
 }
 
@@ -149,7 +149,7 @@
 .priceCurrency {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     line-height: 1;
     padding-bottom: 6px;
 }
@@ -157,7 +157,7 @@
 .priceAmount {
     font-size: 2.8rem;
     font-weight: 900;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     line-height: 1;
     letter-spacing: -1px;
 }
@@ -172,7 +172,7 @@
 .priceCustom {
     font-size: 2rem;
     font-weight: 800;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     line-height: 1;
 }
 
@@ -212,19 +212,19 @@
 }
 
 .ctaButtonPrimary {
-    background: linear-gradient(135deg, #2e5599, #6d3fbd);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--mantine-color-navy-5), var(--mantine-color-purple-4));
+    color: white;
     box-shadow: 0 4px 14px rgba(46, 85, 153, 0.3);
 }
 
 .ctaButtonOutline {
     background: transparent;
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
     border: 1.5px solid rgba(46, 85, 153, 0.3);
 }
 
 .ctaButtonOutline:hover {
-    border-color: #2e5599;
+    border-color: var(--mantine-color-navy-5);
     opacity: 1;
     background: rgba(46, 85, 153, 0.04);
 }
@@ -279,7 +279,7 @@
 }
 
 .featureText strong {
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     font-weight: 600;
 }
 

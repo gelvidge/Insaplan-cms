@@ -19,7 +19,7 @@ export default function HowItWorks({ heading, subheading, steps }: HowItWorksPro
                 <Stack gap="xl">
                     <div>
                         <Stack gap="md" align="center" ta="center">
-                            <Title order={2}>{heading}</Title>
+                            <Title order={2} c="navy.9">{heading}</Title>
                             <Text size="lg" c="dimmed" maw={700}>{subheading}</Text>
                         </Stack>
                     </div>
@@ -32,7 +32,7 @@ export default function HowItWorks({ heading, subheading, steps }: HowItWorksPro
                                         <div className={classes.stepNumber}>
                                             {i + 1}
                                         </div>
-                                        <Title order={3}>{step.title}</Title>
+                                        <Title order={3} c="navy.9">{step.title}</Title>
                                         <Text c="dimmed">{step.description}</Text>
                                     </Stack>
                                 </div>

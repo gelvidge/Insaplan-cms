@@ -66,7 +66,7 @@
 .heroTitle {
     font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 900;
-    color: #ffffff;
+    color: white;
     line-height: 1.15;
     letter-spacing: -0.5px;
     margin: 0 0 20px;
@@ -87,7 +87,7 @@
     margin-inline: auto;
     height: 260px;
     overflow: hidden;
-    background: linear-gradient(160deg, #152b5a, #1e3f7a 55%, #2a5299);
+    background: linear-gradient(160deg, var(--mantine-color-navy-8), var(--mantine-color-navy-7) 55%, var(--mantine-color-navy-6));
     border-radius: 16px 16px 0 0;
 }
 
@@ -142,7 +142,7 @@
 
 /* ── Article body ────────────────────────────────────────────────────────── */
 .articleWrap {
-    background: #ffffff;
+    background: white;
     border-top: none;
     padding-block: 56px 80px;
 }
@@ -153,14 +153,14 @@
     padding-inline: 48px;
     font-size: 1rem;
     line-height: 1.8;
-    color: #1a2a42;
+    color: var(--mantine-color-navy-8);
 }
 
 /* Rich text typography */
 .article h2 {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     margin: 2.2em 0 0.6em;
     letter-spacing: -0.2px;
     line-height: 1.25;
@@ -169,7 +169,7 @@
 .article h3 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     margin: 1.8em 0 0.5em;
 }
 
@@ -190,12 +190,12 @@
 }
 
 .article strong {
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     font-weight: 700;
 }
 
 .article a {
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
     text-decoration: underline;
     text-decoration-color: rgba(46, 85, 153, 0.3);
 }
@@ -207,7 +207,7 @@
     height: 180px;
     border-radius: 12px;
     overflow: hidden;
-    background: linear-gradient(145deg, #152b5a, #2a5299);
+    background: linear-gradient(145deg, var(--mantine-color-navy-8), var(--mantine-color-navy-6));
     box-shadow: 0 8px 24px rgba(16, 36, 69, 0.15);
     margin-bottom: 12px;
     flex-shrink: 0;
@@ -238,7 +238,7 @@
     border-radius: 12px;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(145deg, #152b5a, #1e3f7a 55%, #2a5299);
+    background: linear-gradient(145deg, var(--mantine-color-navy-8), var(--mantine-color-navy-7) 55%, var(--mantine-color-navy-6));
     box-shadow: 0 8px 28px rgba(16, 36, 69, 0.18);
     flex-shrink: 0;
 }
@@ -349,7 +349,7 @@
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
     background: rgba(46, 85, 153, 0.07);
     border: 1px solid rgba(46, 85, 153, 0.14);
 }

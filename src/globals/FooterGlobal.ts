@@ -13,29 +13,6 @@ export const FooterGlobal: GlobalConfig = {
     },
     fields: [
         {
-            name: 'logoText',
-            type: 'text',
-            
-            admin: { description: 'Brand name shown as logo text in nav and footer' },
-        },
-        {
-            name: 'navCtaLabel',
-            type: 'text',
-            
-            admin: { description: 'Label for the primary CTA button in the navigation bar' },
-        },
-        {
-            name: 'navCtaUrl',
-            type: 'text',
-            
-            admin: { description: 'URL for the navigation CTA button' },
-        },
-        {
-            name: 'tagline',
-            type: 'text',
-            
-        },
-        {
             name: 'copyrightName',
             type: 'text',
             

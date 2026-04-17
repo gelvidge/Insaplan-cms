@@ -36,13 +36,8 @@ export const MarketingHome: GlobalConfig = {
                     fields: [
                         {
                             name: 'icon',
-                            type: 'select',
-                            options: [
-                                { label: 'Sparkles', value: 'sparkles' },
-                                { label: 'Template', value: 'template' },
-                                { label: 'Cards',    value: 'cards'    },
-                                { label: 'Building', value: 'building' },
-                            ],
+                            type: 'text',
+                            admin: { description: 'Tabler icon name without the "Icon" prefix, e.g. "Sparkles", "ChartBar", "Users"' },
                         },
                         { name: 'label', type: 'text' },
                     ],

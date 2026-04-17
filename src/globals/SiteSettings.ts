@@ -20,25 +20,20 @@ export const SiteSettings: GlobalConfig = {
                         {
                             name: 'siteName',
                             type: 'text',
-                            required: true,
-                            
                         },
                         {
                             name: 'siteDescription',
                             type: 'textarea',
-                            required: true
                         },
                         {
                             name: 'logo',
                             type: 'upload',
                             relationTo: 'media',
-                            required: true
                         },
                         {
                             name: 'favicon',
                             type: 'upload',
                             relationTo: 'media',
-                            required: true
                         }
                     ]
                 },
@@ -129,12 +124,10 @@ export const SiteSettings: GlobalConfig = {
                                 {
                                     name: 'email',
                                     type: 'email',
-                                    required: true
                                 },
                                 {
                                     name: 'supportEmail',
                                     type: 'email',
-                                    required: true
                                 },
                                 {
                                     name: 'salesEmail',

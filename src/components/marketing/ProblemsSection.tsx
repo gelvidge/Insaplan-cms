@@ -7,37 +7,33 @@ interface ProblemsSectionProps {
     problems: Problem[]
 }
 
-export default function ProblemsSection({ problems }: ProblemsSectionProps) {
+export default function ProblemsSection({ heading, subheading, problems }: ProblemsSectionProps) {
     return (
         <section className={classes.root}>
             <div className={classes.inner}>
-                {/* Column labels */}
-                <div className={classes.colRow} aria-hidden="true">
-                    <div className={classes.colLabelBefore}>Current reality</div>
-                    <div className={classes.colGap} />
-                    <div className={classes.colLabelAfter}>With Insaplan</div>
+                <div className={classes.header}>
+                    <h2 className={classes.heading}>{heading}</h2>
+                    <p className={classes.subheading}>{subheading}</p>
                 </div>
 
-                {/* Rows */}
-                {problems.map((item, i) => (
-                    <div key={i} className={classes.row}>
-                        <div className={classes.problemCell}>
-                            <span className={classes.xDot} aria-hidden="true" />
-                            <p className={classes.problemText}>{item.problem}</p>
+                <div className={classes.grid}>
+                    {problems.map((item, i) => (
+                        <div key={i} className={classes.strip}>
+                            <div className={classes.beforeSide}>
+                                <span className={classes.icon} aria-hidden="true">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
+                                </span>
+                                <p className={classes.beforeText}>{item.problem}</p>
+                            </div>
+                            <div className={classes.afterSide}>
+                                <span className={classes.icon} aria-hidden="true">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5l2.5 3L11 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                </span>
+                                <p className={classes.afterText}>{item.solution}</p>
+                            </div>
                         </div>
-
-                        <div className={classes.arrow} aria-hidden="true">
-                            <svg width="28" height="12" viewBox="0 0 28 12" fill="none">
-                                <path d="M0 6h24M18 1l6 5-6 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </div>
-
-                        <div className={classes.solutionCell}>
-                            <span className={classes.checkDot} aria-hidden="true" />
-                            <p className={classes.solutionText}>{item.solution}</p>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     )

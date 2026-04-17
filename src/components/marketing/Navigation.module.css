@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: #10184d;
+    background: var(--mantine-color-blue-7);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(255,255,255,0);
     box-shadow: 0 0px 0px rgba(0,0,0,0);
@@ -29,7 +29,7 @@
 }
 
 .menuButton {
-    color: #FFFFFF !important;
+    color: white !important;
     font-weight: 500;
     font-size: 16px;
     transition: all 0.2s ease;
@@ -37,25 +37,26 @@
 
 .menuButton:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF !important;
+    color: white !important;
 }
 
 .menuButton > span {
-    color: #FFFFFF !important;
+    color: white !important;
 }
 
 .menuButton svg {
-    color: #FFFFFF !important;
+    color: white !important;
 }
 
 .menuItem {
     font-size: 14px;
     padding: 12px 16px;
     transition: all 0.2s ease;
+    color: var(--mantine-color-gray-9);
 }
 
 .menuItem:hover {
-    background: var(--mantine-color-deepblue-0);
+    background: var(--mantine-color-navy-0);
 }
 
 .mobileLink {
@@ -67,5 +68,5 @@
 }
 
 .mobileLink:hover {
-    color: var(--mantine-color-deepblue-6);
+    color: var(--mantine-color-navy-6);
 }

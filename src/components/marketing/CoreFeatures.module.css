@@ -21,6 +21,7 @@
 .header {
     position: relative;
     z-index: 1;
+    color: var(--mantine-color-purple-6);
 }
 
 .kicker {

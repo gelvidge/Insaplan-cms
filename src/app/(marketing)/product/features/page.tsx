@@ -19,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: pf?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/product/features' },
     }
 }
@@ -56,7 +57,7 @@ export default async function ProductFeaturesPage() {
                                 <GridCol key={index} span={{ base: 12, md: 6 }}>
                                     <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
                                         <Stack gap="md">
-                                            <ThemeIcon size={50} radius="md" variant="gradient" gradient={{ from: 'deepblue.6', to: 'purple.6', deg: 45 }}>
+                                            <ThemeIcon size={50} radius="md" variant="gradient" gradient={{ from: 'navy.6', to: 'purple.6', deg: 45 }}>
                                                 <IconComponent size={28} />
                                             </ThemeIcon>
                                             <Title order={4}>{feature.title}</Title>

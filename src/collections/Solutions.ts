@@ -7,8 +7,8 @@ import { seoFields } from '../fields/seoFields'
 export const Solutions: CollectionConfig = {
     slug: 'solutions',
     admin: {
-        useAsTitle: 'title',
-        defaultColumns: ['title', 'slug', 'status'],
+        useAsTitle: 'heroHeadline',
+        defaultColumns: ['heroHeadline', 'slug', 'status'],
         group: 'Content'
     },
     access: {
@@ -18,26 +18,8 @@ export const Solutions: CollectionConfig = {
         delete: isAdminOrEditor
     },
     fields: [
-        {
-            name: 'title',
-            type: 'text',
-            required: true
-        },
         slugField,
-        {
-            name: 'subtitle',
-            type: 'text',
-            required: true
-        },
-        // ── Hero section (replaces plain PageHero banner) ──────────────────
-        {
-            name: 'heroKicker',
-            type: 'text',
-            label: 'Hero Kicker',
-            admin: {
-                description: 'Small label above the headline — e.g. "THE PROBLEM"'
-            }
-        },
+        // ── Hero section ───────────────────────────────────────────────────
         {
             name: 'heroHeadline',
             type: 'text',
@@ -166,21 +148,6 @@ export const Solutions: CollectionConfig = {
                     admin: {
                         description: 'Icon name from Tabler Icons (e.g., "IconRocket")'
                     }
-                }
-            ]
-        },
-        {
-            name: 'cta',
-            type: 'group',
-            label: 'Call to Action',
-            fields: [
-                {
-                    name: 'text',
-                    type: 'text',
-                },
-                {
-                    name: 'url',
-                    type: 'text'
                 }
             ]
         },

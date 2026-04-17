@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Background from '@/components/marketing/Background'
+import BenefitsGrid from '@/components/marketing/BenefitsGrid'
 import CTASection from '@/components/marketing/CTASection'
 import ComparisonTable from '@/components/marketing/ComparisonTable'
-import FeatureGrid from '@/components/marketing/FeatureGrid'
 import HowItWorks from '@/components/marketing/HowItWorks'
 import PageHero from '@/components/marketing/PageHero'
 import ProblemsSection from '@/components/marketing/ProblemsSection'
@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title,
         description,
+        keywords: ov?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
         openGraph: { title, description, url: 'https://insaplan.com/product/overview' },
     }
 }
@@ -31,9 +32,10 @@ export default async function ProductOverviewPage() {
     const problemsHeading = ov.problemsHeading
     const problemsSubheading = ov.problemsSubheading
     const problems = ov.problems ?? []
-    const featuresHeading = ov.featuresHeading
-    const featuresSubheading = ov.featuresSubheading
-    const features = ov.features ?? []
+    const keyBenefits = ov.keyBenefits ?? {}
+    const keyBenefitsHeading = keyBenefits.heading
+    const keyBenefitsSubheading = keyBenefits.subheading
+    const keyBenefitsList = keyBenefits.benefits ?? []
 
     return (
         <div className={classes.page}>
@@ -53,10 +55,10 @@ export default async function ProductOverviewPage() {
                     problems={problems as { problem: string; solution: string }[]}
                 />
 
-                <FeatureGrid
-                    heading={featuresHeading}
-                    subheading={featuresSubheading}
-                    features={features}
+                <BenefitsGrid
+                    heading={keyBenefitsHeading}
+                    subheading={keyBenefitsSubheading}
+                    benefits={keyBenefitsList}
                 />
 
                 <ComparisonTable data={ov.comparisonTable ?? null} />

@@ -1,62 +1,35 @@
-'use client'
-
+import type { Metadata } from 'next'
 import { Box, Container, Title, Text, Stack, Grid, GridCol } from '@mantine/core'
 import { IconSparkles, IconCheck } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
-import CTA from '@/components/marketing/CTA'
+import CTASection from '@/components/marketing/CTASection'
+import { fetchProductKnowledgeBasePage } from '@/lib/queries'
 import classes from './page.module.css'
-import { useEffect, useState } from 'react'
 
-type QA = { question: string; answer: string }
-type Tag = { label: string }
-type Point = { label: string }
-
-interface PageData {
-    heroTitle?: string
-    heroAccent?: string
-    heroSubtitle?: string
-    capture?: {
-        kicker?: string
-        heading?: string
-        body?: string
-        insightTags?: Tag[]
-        tagEtc?: string
-    }
-    autoCapture?: {
-        kicker?: string
-        heading?: string
-        body?: string
-        videoLabel?: string
-        points?: Point[]
-    }
-    aiQuery?: {
-        kicker?: string
-        heading?: string
-        body?: string
-        qaExamples?: QA[]
+export async function generateMetadata(): Promise<Metadata> {
+    const page = await fetchProductKnowledgeBasePage().catch(() => null)
+    const title = page?.seo?.metaTitle ?? page?.heroTitle ?? 'Knowledge Base'
+    const description = page?.seo?.metaDescription ?? page?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        keywords: page?.seo?.keywords?.split(',').map((k: string) => k.trim()).filter(Boolean) ?? [],
+        openGraph: { title, description, url: 'https://insaplan.com/product/knowledgebase' },
     }
 }
 
-export default function ProductKnowledgeBasePage() {
-    const [page, setPage] = useState<PageData | null>(null)
-
-    useEffect(() => {
-        fetch('/api/globals/product-knowledgebase-page')
-            .then(r => r.json())
-            .then(data => setPage(data))
-            .catch(() => setPage({}))
-    }, [])
-
-    if (!page) return null
+export default async function ProductKnowledgeBasePage() {
+    const page = await fetchProductKnowledgeBasePage().catch(() => ({}))
 
     const capture     = page.capture     ?? {}
     const autoCapture = page.autoCapture ?? {}
+    const section3    = page.section3    ?? {}
     const aiQuery     = page.aiQuery     ?? {}
     const insightTags = capture.insightTags ?? []
     const autoPoints  = autoCapture.points  ?? []
+    const sec3Points  = section3.points     ?? []
     const qaExamples  = aiQuery.qaExamples  ?? []
 
-    // Split hero title on the accent phrase so we can wrap it in a span
     const heroTitle  = page.heroTitle  ?? ''
     const heroAccent = page.heroAccent ?? ''
     const accentIdx  = heroTitle.indexOf(heroAccent)
@@ -96,7 +69,7 @@ export default function ProductKnowledgeBasePage() {
                                 <Text size="lg" c="dimmed" maw={680}>{capture.body}</Text>
                             </Stack>
                             <div className={classes.tagCloud}>
-                                {insightTags.map((t, i) => (
+                                {insightTags.map((t: { label: string }, i: number) => (
                                     <span key={i} className={classes.tag}>
                                         {t.label}
                                     </span>
@@ -122,7 +95,7 @@ export default function ProductKnowledgeBasePage() {
                                         <Title order={2} className={classes.sectionHeading} ta="left">{autoCapture.heading}</Title>
                                         <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>{autoCapture.body}</Text>
                                         <Stack gap="xs" mt="sm">
-                                            {autoPoints.map((p, i) => (
+                                            {autoPoints.map((p: { label: string }, i: number) => (
                                                 <div key={i}>
                                                     <Box className={classes.checkRow}>
                                                         <Box className={classes.checkIcon}><IconCheck size={14} /></Box>
@@ -236,7 +209,7 @@ export default function ProductKnowledgeBasePage() {
                                             </Box>
                                             <Box className={classes.aiChatBody}>
                                                 <Box className={classes.aiChatScroll}>
-                                                    {[...qaExamples, ...qaExamples].map((qa, i) => (
+                                                    {[...qaExamples, ...qaExamples].map((qa: { question: string; answer: string }, i: number) => (
                                                         <Box key={i} className={classes.aiMessage}>
                                                             <Box className={classes.aiQ}>
                                                                 <Text size="sm" c="dark.7">{qa.question}</Text>
@@ -260,7 +233,7 @@ export default function ProductKnowledgeBasePage() {
                                         <Title order={2} className={classes.sectionHeading} ta="left">{aiQuery.heading}</Title>
                                         <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>{aiQuery.body}</Text>
                                         <Stack gap="sm">
-                                            {qaExamples.map((qa, i) => (
+                                            {qaExamples.map((qa: { question: string; answer: string }, i: number) => (
                                                 <Box key={i} className={classes.questionPill}>
                                                     <IconSparkles size={13} style={{ flexShrink: 0, color: 'var(--mantine-color-purple-6)' }} />
                                                     <Text size="sm" c="dark.6">"{qa.question}"</Text>
@@ -274,7 +247,51 @@ export default function ProductKnowledgeBasePage() {
                     </Container>
                 </Box>
 
-                <CTA />
+                {/* ── Section 3 ───────────────────────────────────────── */}
+                <Box className={classes.section3}>
+                    <Container size="xl">
+                        <Grid gutter={{ base: 40, md: 80 }} align="center">
+                            <GridCol span={{ base: 12, md: 5 }}>
+                                <div>
+                                    <Stack gap="lg">
+                                        <Text className={classes.sectionKicker}>{section3.kicker}</Text>
+                                        <Title order={2} className={classes.sectionHeading} ta="left">{section3.heading}</Title>
+                                        <Text size="lg" c="dimmed" style={{ lineHeight: 1.7 }}>{section3.body}</Text>
+                                        <Stack gap="xs" mt="sm">
+                                            {sec3Points.map((p: { label: string }, i: number) => (
+                                                <div key={i}>
+                                                    <Box className={classes.checkRow}>
+                                                        <Box className={classes.checkIcon}><IconCheck size={14} /></Box>
+                                                        <Text size="sm" c="dark.6">{p.label}</Text>
+                                                    </Box>
+                                                </div>
+                                            ))}
+                                        </Stack>
+                                    </Stack>
+                                </div>
+                            </GridCol>
+
+                            <GridCol span={{ base: 12, md: 7 }}>
+                                <div>
+                                    <Box className={classes.videoWrap}>
+                                        <Box className={classes.videoChrome}>
+                                            <Box className={classes.videoChromeBar}>
+                                                <Box className={classes.videoDot} />
+                                                <Box className={classes.videoDot} />
+                                                <Box className={classes.videoDot} />
+                                            </Box>
+                                            <Box className={classes.screenshotBody}>
+                                                <Box className={classes.screenshotPlaceholder} />
+                                            </Box>
+                                        </Box>
+                                    </Box>
+                                </div>
+                            </GridCol>
+                        </Grid>
+                    </Container>
+                </Box>
+
+                <CTASection />
             </div>
         </div>
     )

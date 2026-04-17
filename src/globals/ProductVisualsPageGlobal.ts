@@ -65,6 +65,11 @@ export const ProductVisualsPageGlobal: GlobalConfig = {
                     labels: { singular: 'Capability', plural: 'Capabilities' },
                     fields: [{ name: 'label', type: 'text', required: true }],
                 },
+                {
+                    name: 'features', type: 'array', label: 'Table Features (pills)',
+                    labels: { singular: 'Feature', plural: 'Features' },
+                    fields: [{ name: 'label', type: 'text', required: true }],
+                },
             ],
         },
 

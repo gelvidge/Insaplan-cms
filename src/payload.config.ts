@@ -34,7 +34,6 @@ import { ProductPlanningPageGlobal } from './globals/ProductPlanningPageGlobal'
 import { ProductReportingPageGlobal } from './globals/ProductReportingPageGlobal'
 import { ProductVisualsPageGlobal } from './globals/ProductVisualsPageGlobal'
 import { ProductKnowledgeBasePageGlobal } from './globals/ProductKnowledgeBasePageGlobal'
-import { SolutionsPageGlobal } from './globals/SolutionsPageGlobal'
 import { FAQsPageGlobal } from './globals/FAQsPageGlobal'
 
 const filename = fileURLToPath(import.meta.url)
@@ -50,6 +49,7 @@ export default buildConfig({
     }),
     admin: {
         user: Users.slug,
+        theme: 'dark',
         meta: {
             titleSuffix: '- Insaplan',
         }
@@ -73,7 +73,6 @@ export default buildConfig({
         ProductReportingPageGlobal,
         ProductVisualsPageGlobal,
         ProductKnowledgeBasePageGlobal,
-        SolutionsPageGlobal,
         PricingPageGlobal,
         BlogPageGlobal,
         FAQsPageGlobal,

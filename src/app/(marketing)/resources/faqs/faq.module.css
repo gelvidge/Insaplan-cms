@@ -14,7 +14,7 @@
 
 .body {
     flex: 1;
-    background: #f8fafc;
+    background: var(--mantine-color-gray-0);
     border-top: 1px solid rgba(20, 28, 48, 0.06);
     padding-block: 64px 96px;
 }
@@ -39,7 +39,7 @@
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
     margin: 0 0 16px;
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(46, 85, 153, 0.15);
@@ -73,13 +73,13 @@
     text-align: left;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     line-height: 1.4;
     transition: color 0.15s ease;
 }
 
 .question:hover {
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
 }
 
 .chevron {

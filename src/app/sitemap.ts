@@ -6,7 +6,6 @@ const BASE_URL = 'https://insaplan.com'
 const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, priority: 1.0, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/pricing`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/solutions`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/product/overview`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/product/planning`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/product/reporting`, priority: 0.7, changeFrequency: 'monthly' },

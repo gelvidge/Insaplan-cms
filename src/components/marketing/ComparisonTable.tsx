@@ -66,18 +66,25 @@ const ComparisonTable = ({ data }: Props) => {
             <Container size="lg">
                 <Stack gap="xl">
                     <Stack gap="md" align="center" ta="center">
-                        <Title order={2}>{heading}</Title>
-                        <Text size="lg" c="dimmed" maw={700}>
+                        <Title order={2} c="navy.9">{heading}</Title>
+                        <Text size="lg" c="rgba(20,36,70,0.6)" maw={700}>
                             {subheading}
                         </Text>
                     </Stack>
 
-                    <Table striped highlightOnHover mt="xl">
+                    <Table
+                        striped
+                        stripedColor="gray.1"
+                        highlightOnHover
+                        highlightOnHoverColor="navy.0"
+                        borderColor="rgba(20,28,48,0.07)"
+                        mt="xl"
+                    >
                         <TableThead>
                             <TableTr>
-                                <TableTh>Aspect</TableTh>
+                                <TableTh c="navy.9">Aspect</TableTh>
                                 {columns.map((col) => (
-                                    <TableTh key={col} ta="center">
+                                    <TableTh key={col} ta="center" c="navy.9">
                                         {col}
                                     </TableTh>
                                 ))}
@@ -86,7 +93,7 @@ const ComparisonTable = ({ data }: Props) => {
                         <TableTbody>
                             {rows.map((row, index) => (
                                 <TableTr key={index}>
-                                    <TableTd fw={500}>{row.aspect}</TableTd>
+                                    <TableTd fw={500} c="navy.9">{row.aspect}</TableTd>
                                     {row.values.map((value, vIndex) => (
                                         <TableTd key={vIndex} ta="center">
                                             {renderIcon(value as CellValue)}

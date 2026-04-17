@@ -67,18 +67,19 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                                                 variant="subtle"
                                                 className={classes.menuButton}
                                                 rightSection={<IconChevronDown size={16} />}
-                                                style={{ color: '#FFFFFF' }}
+                                                style={{ color: 'white' }}
                                             >
                                                 {item.label}
                                             </Button>
                                         </Menu.Target>
-                                        <Menu.Dropdown>
+                                        <Menu.Dropdown style={{ background: 'white', borderColor: 'var(--mantine-color-gray-2)' }}>
                                             {item.children.map((child) => (
                                                 <Menu.Item
                                                     key={child.label}
                                                     component={Link}
                                                     href={child.url || '/'}
                                                     className={classes.menuItem}
+                                                    style={{ color: 'var(--mantine-color-gray-9)' }}
                                                 >
                                                     {child.label}
                                                 </Menu.Item>
@@ -92,7 +93,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                                         className={classes.menuButton}
                                         component={Link}
                                         href={item.url || '/'}
-                                        style={{ color: '#FFFFFF' }}
+                                        style={{ color: 'white' }}
                                     >
                                         {item.label}
                                     </Button>
@@ -100,7 +101,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                             )}
                         </Group>
 
-                        <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" color="#FFFFFF" />
+                        <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" color="white" />
                     </Group>
                 </Container>
             </div>

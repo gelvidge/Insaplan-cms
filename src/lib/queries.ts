@@ -109,9 +109,9 @@ export async function fetchProductVisualsPage() {
     return payload.findGlobal({ slug: 'product-visuals-page' as any }) as any
 }
 
-export async function fetchSolutionsPage() {
+export async function fetchProductKnowledgeBasePage() {
     const payload = await getPayloadClient()
-    return payload.findGlobal({ slug: 'solutions-page' as any }) as any
+    return payload.findGlobal({ slug: 'product-knowledgebase-page' as any }) as any
 }
 
 export async function fetchNavigationMenu(location: 'header' | 'footer' | 'mobile') {

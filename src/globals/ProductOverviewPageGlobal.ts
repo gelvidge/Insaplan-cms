@@ -55,42 +55,13 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
                         },
                         { name: 'title', type: 'text', required: true },
                         { name: 'description', type: 'textarea', required: true },
+                        {
+                            name: 'pills',
+                            type: 'array',
+                            labels: { singular: 'Pill', plural: 'Pills' },
+                            fields: [{ name: 'label', type: 'text', required: true }],
+                        },
                     ],
-                },
-            ],
-        },
-        // ── Features ─────────────────────────────────────────────────────────
-        {
-            name: 'featuresHeading', type: 'text',
-        },
-        {
-            name: 'featuresSubheading', type: 'textarea',
-            
-        },
-        {
-            name: 'features',
-            type: 'array',
-            labels: { singular: 'Feature', plural: 'Features' },
-            fields: [
-                {
-                    name: 'icon',
-                    type: 'select',
-                    options: [
-                        { label: 'Chart Bar', value: 'chart-bar' },
-                        { label: 'Palette', value: 'palette' },
-                        { label: 'Brain', value: 'brain' },
-                        { label: 'Adjustments', value: 'adjustments' },
-                        { label: 'Books', value: 'books' },
-                        { label: 'Database', value: 'database' },
-                    ],
-                },
-                { name: 'title', type: 'text', required: true },
-                { name: 'description', type: 'textarea', required: true },
-                {
-                    name: 'benefits',
-                    type: 'array',
-                    labels: { singular: 'Benefit', plural: 'Benefits' },
-                    fields: [{ name: 'label', type: 'text', required: true }],
                 },
             ],
         },

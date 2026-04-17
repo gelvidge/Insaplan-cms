@@ -30,14 +30,14 @@
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #5a46b7;
+    color: var(--mantine-color-indigo-4);
 }
 
 .sectionTitle {
     font-size: clamp(2rem, 3vw, 3rem);
     line-height: 1.05;
     letter-spacing: -0.04em;
-    color: #162033;
+    color: var(--mantine-color-navy-9);
 }
 
 .sectionBody {
@@ -61,7 +61,7 @@
     height: 24px;
     border-radius: 999px;
     background: rgba(90, 70, 183, 0.1);
-    color: #513cae;
+    color: var(--mantine-color-indigo-4);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -100,7 +100,7 @@
 
 .panelEyebrow {
     background: linear-gradient(135deg, rgba(46, 64, 114, 0.12), rgba(100, 49, 127, 0.14));
-    color: #26334d;
+    color: var(--mantine-color-navy-7);
 }
 
 .panelBadge {
@@ -141,7 +141,7 @@
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.05em;
-    color: #162033;
+    color: var(--mantine-color-navy-9);
 }
 
 .metricLabel {
@@ -174,7 +174,7 @@
     padding: 0 14px;
     border-radius: 999px;
     background: rgba(92, 68, 201, 0.08);
-    color: #513cae;
+    color: var(--mantine-color-indigo-4);
     font-size: 0.8rem;
     font-weight: 700;
 }
@@ -203,7 +203,7 @@
     background: rgba(90, 70, 183, 0.06);
     font-size: 0.85rem;
     font-weight: 700;
-    color: #26334d;
+    color: var(--mantine-color-navy-7);
 }
 
 .reportShell {
@@ -239,7 +239,7 @@
 .reportTitle {
     font-size: 1rem;
     font-weight: 800;
-    color: #162033;
+    color: var(--mantine-color-navy-9);
 }
 
 .reportMeta {
@@ -276,7 +276,7 @@
     margin-top: 6px;
     font-size: 1.35rem;
     line-height: 1.2;
-    color: #162033;
+    color: var(--mantine-color-navy-9);
 }
 
 .exportPill {
@@ -290,7 +290,7 @@
     border: 1px solid rgba(20, 28, 48, 0.08);
     font-size: 0.82rem;
     font-weight: 700;
-    color: #26334d;
+    color: var(--mantine-color-navy-7);
 }
 
 .templateList {
@@ -341,7 +341,7 @@
     padding: 0 12px;
     border-radius: 999px;
     background: rgba(90, 70, 183, 0.08);
-    color: #513cae;
+    color: var(--mantine-color-indigo-4);
     font-size: 0.78rem;
     font-weight: 700;
 }

@@ -1,6 +1,6 @@
 /* ── Root ────────────────────────────────────────────────────────────────── */
 .root {
-    background: #ffffff;
+    background: white;
     border-top: 1px solid rgba(20, 28, 48, 0.06);
     padding-block: 72px 88px;
 }
@@ -15,7 +15,7 @@
 .heading {
     font-size: clamp(1.4rem, 2.5vw, 1.9rem);
     font-weight: 800;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     letter-spacing: -0.3px;
     margin: 0 0 56px;
     text-align: center;
@@ -54,14 +54,14 @@
     font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.14em;
-    color: #2e5599;
+    color: var(--mantine-color-navy-5);
     opacity: 0.6;
 }
 
 .title {
     font-size: 1.25rem;
     font-weight: 800;
-    color: #0f1f3d;
+    color: var(--mantine-color-navy-9);
     margin: 0;
     line-height: 1.25;
     letter-spacing: -0.2px;
@@ -86,7 +86,7 @@
 .mock {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(145deg, #1a3264, #244d8a 60%, #2e5fa8);
+    background: linear-gradient(145deg, var(--mantine-color-navy-7), var(--mantine-color-navy-6) 60%, var(--mantine-color-navy-5));
     min-height: 220px;
 }
 

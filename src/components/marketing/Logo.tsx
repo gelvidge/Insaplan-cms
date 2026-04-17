@@ -25,7 +25,7 @@ export const Logo = function ({ height, width }: { height?: number; width?: numb
             viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
             role="img"
             aria-label="Insaplan"
-            style={{ display: 'block', color: '#fff', flexShrink: 0 }}>
+            style={{ display: 'block', color: 'white', flexShrink: 0 }}>
             <path d={WORDMARK_PATH} fill="currentColor" transform={`scale(${WORDMARK_SCALE})`} />
             {DOT_POSITIONS.map(({ x, y }) => (
                 <rect

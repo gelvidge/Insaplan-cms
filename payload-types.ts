@@ -108,7 +108,6 @@ export interface Config {
     'product-reporting-page': ProductReportingPage;
     'product-visuals-page': ProductVisualsPage;
     'product-knowledgebase-page': ProductKnowledgebasePage;
-    'solutions-page': SolutionsPage;
     'pricing-page': PricingPage;
     'blog-page': BlogPage;
     'faqs-page': FaqsPage;
@@ -127,7 +126,6 @@ export interface Config {
     'product-reporting-page': ProductReportingPageSelect<false> | ProductReportingPageSelect<true>;
     'product-visuals-page': ProductVisualsPageSelect<false> | ProductVisualsPageSelect<true>;
     'product-knowledgebase-page': ProductKnowledgebasePageSelect<false> | ProductKnowledgebasePageSelect<true>;
-    'solutions-page': SolutionsPageSelect<false> | SolutionsPageSelect<true>;
     'pricing-page': PricingPageSelect<false> | PricingPageSelect<true>;
     'blog-page': BlogPageSelect<false> | BlogPageSelect<true>;
     'faqs-page': FaqsPageSelect<false> | FaqsPageSelect<true>;
@@ -242,9 +240,9 @@ export interface Page {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -369,9 +367,9 @@ export interface BlogPost {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -455,16 +453,10 @@ export interface PricingPlan {
  */
 export interface Solution {
   id: number;
-  title: string;
   /**
    * URL-friendly identifier
    */
   slug: string;
-  subtitle: string;
-  /**
-   * Small label above the headline — e.g. "THE PROBLEM"
-   */
-  heroKicker?: string | null;
   /**
    * Large bold headline — e.g. "WHAT'S KILLING YOUR RANKINGS?"
    */
@@ -536,10 +528,6 @@ export interface Solution {
         id?: string | null;
       }[]
     | null;
-  cta?: {
-    text?: string | null;
-    url?: string | null;
-  };
   status: 'draft' | 'published' | 'archived';
   seo?: {
     /**
@@ -563,9 +551,9 @@ export interface Solution {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -869,10 +857,7 @@ export interface PricingPlansSelect<T extends boolean = true> {
  * via the `definition` "solutions_select".
  */
 export interface SolutionsSelect<T extends boolean = true> {
-  title?: T;
   slug?: T;
-  subtitle?: T;
-  heroKicker?: T;
   heroHeadline?: T;
   heroHeadlineAccent?: T;
   heroBody?: T;
@@ -908,12 +893,6 @@ export interface SolutionsSelect<T extends boolean = true> {
         description?: T;
         icon?: T;
         id?: T;
-      };
-  cta?:
-    | T
-    | {
-        text?: T;
-        url?: T;
       };
   status?: T;
   seo?:
@@ -1105,7 +1084,10 @@ export interface MarketingHome {
       | null;
     trustSignals?:
       | {
-          icon?: ('sparkles' | 'template' | 'cards' | 'building') | null;
+          /**
+           * Tabler icon name without the "Icon" prefix, e.g. "Sparkles", "ChartBar", "Users"
+           */
+          icon?: string | null;
           label?: string | null;
           id?: string | null;
         }[]
@@ -1192,9 +1174,9 @@ export interface MarketingHome {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1224,26 +1206,16 @@ export interface ProductOverviewPage {
           icon?: ('clock' | 'palette' | 'adjustments' | 'books' | 'database' | 'sparkles') | null;
           title: string;
           description: string;
+          pills?:
+            | {
+                label: string;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[]
       | null;
   };
-  featuresHeading?: string | null;
-  featuresSubheading?: string | null;
-  features?:
-    | {
-        icon?: ('chart-bar' | 'palette' | 'brain' | 'adjustments' | 'books' | 'database') | null;
-        title: string;
-        description: string;
-        benefits?:
-          | {
-              label: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   problemsHeading?: string | null;
   problemsSubheading?: string | null;
   problems?:
@@ -1297,9 +1269,9 @@ export interface ProductOverviewPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1425,9 +1397,9 @@ export interface ProductPlanningPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1526,9 +1498,9 @@ export interface ProductReportingPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1585,6 +1557,12 @@ export interface ProductVisualsPage {
           id?: string | null;
         }[]
       | null;
+    features?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   planViews?: {
     kicker?: string | null;
@@ -1619,9 +1597,9 @@ export interface ProductVisualsPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1662,6 +1640,17 @@ export interface ProductKnowledgebasePage {
         }[]
       | null;
   };
+  section3?: {
+    kicker?: string | null;
+    heading?: string | null;
+    body?: string | null;
+    points?:
+      | {
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   aiQuery?: {
     kicker?: string | null;
     heading?: string | null;
@@ -1674,39 +1663,6 @@ export interface ProductKnowledgebasePage {
         }[]
       | null;
   };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "solutions-page".
- */
-export interface SolutionsPage {
-  id: number;
-  heroTitle?: string | null;
-  heroSubtitle?: string | null;
-  sectionHeading?: string | null;
-  sectionSubheading?: string | null;
-  /**
-   * The list of solutions shown on the solutions landing page. Order determines display order.
-   */
-  solutionLinks?:
-    | {
-        /**
-         * Display name (e.g. "Sales")
-         */
-        label: string;
-        /**
-         * URL slug (e.g. "sales" → /solutions/sales)
-         */
-        slug: string;
-        /**
-         * Short description shown on the card
-         */
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
   seo?: {
     /**
      * Optimal length: 50-60 characters
@@ -1729,9 +1685,9 @@ export interface SolutionsPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1794,9 +1750,9 @@ export interface PricingPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1850,9 +1806,9 @@ export interface BlogPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1907,9 +1863,9 @@ export interface FaqsPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1950,9 +1906,9 @@ export interface SupportPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2007,9 +1963,9 @@ export interface ContactPage {
      */
     noIndex?: boolean | null;
     /**
-     * Comma-separated keywords for SEO
+     * Comma-separated keywords for SEO (e.g. business planning software, AI planning tool)
      */
-    keywords?: string[] | null;
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2110,19 +2066,6 @@ export interface LegalPage {
 export interface Footer {
   id: number;
   /**
-   * Brand name shown as logo text in nav and footer
-   */
-  logoText?: string | null;
-  /**
-   * Label for the primary CTA button in the navigation bar
-   */
-  navCtaLabel?: string | null;
-  /**
-   * URL for the navigation CTA button
-   */
-  navCtaUrl?: string | null;
-  tagline?: string | null;
-  /**
    * Name used in the copyright line (e.g. "Insaplan")
    */
   copyrightName?: string | null;
@@ -2172,10 +2115,10 @@ export interface SiteMetadatum {
  */
 export interface SiteSetting {
   id: number;
-  siteName: string;
-  siteDescription: string;
-  logo: number | Media;
-  favicon: number | Media;
+  siteName?: string | null;
+  siteDescription?: string | null;
+  logo?: (number | null) | Media;
+  favicon?: (number | null) | Media;
   socialLinks?: {
     twitter?: string | null;
     linkedin?: string | null;
@@ -2195,9 +2138,9 @@ export interface SiteSetting {
      */
     plausibleDomain?: string | null;
   };
-  contact: {
-    email: string;
-    supportEmail: string;
+  contact?: {
+    email?: string | null;
+    supportEmail?: string | null;
     salesEmail?: string | null;
     phone?: string | null;
     address?: string | null;
@@ -2348,24 +2291,14 @@ export interface ProductOverviewPageSelect<T extends boolean = true> {
               icon?: T;
               title?: T;
               description?: T;
+              pills?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
               id?: T;
             };
-      };
-  featuresHeading?: T;
-  featuresSubheading?: T;
-  features?:
-    | T
-    | {
-        icon?: T;
-        title?: T;
-        description?: T;
-        benefits?:
-          | T
-          | {
-              label?: T;
-              id?: T;
-            };
-        id?: T;
       };
   problemsHeading?: T;
   problemsSubheading?: T;
@@ -2667,6 +2600,12 @@ export interface ProductVisualsPageSelect<T extends boolean = true> {
               label?: T;
               id?: T;
             };
+        features?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
       };
   planViews?:
     | T
@@ -2731,6 +2670,19 @@ export interface ProductKnowledgebasePageSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  section3?:
+    | T
+    | {
+        kicker?: T;
+        heading?: T;
+        body?: T;
+        points?:
+          | T
+          | {
+              label?: T;
+              id?: T;
+            };
+      };
   aiQuery?:
     | T
     | {
@@ -2744,27 +2696,6 @@ export interface ProductKnowledgebasePageSelect<T extends boolean = true> {
               answer?: T;
               id?: T;
             };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "solutions-page_select".
- */
-export interface SolutionsPageSelect<T extends boolean = true> {
-  heroTitle?: T;
-  heroSubtitle?: T;
-  sectionHeading?: T;
-  sectionSubheading?: T;
-  solutionLinks?:
-    | T
-    | {
-        label?: T;
-        slug?: T;
-        description?: T;
-        id?: T;
       };
   seo?:
     | T
@@ -2958,10 +2889,6 @@ export interface LegalPageSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  logoText?: T;
-  navCtaLabel?: T;
-  navCtaUrl?: T;
-  tagline?: T;
   copyrightName?: T;
   copyrightSuffix?: T;
   linkGroups?:

@@ -37,7 +37,7 @@ export default function CTAForm({
                     size="lg"
                     radius="md"
                     variant="white"
-                    c="deepblue.9"
+                    c="navy.9"
                     className={classes.primaryCta}
                     loading={pending}
                     disabled={pending}

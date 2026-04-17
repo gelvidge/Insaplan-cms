@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params
     const solution = await fetchSolutionBySlug(slug).catch(() => null)
     if (!solution) return { title: 'Solution Not Found' }
-    const title = solution.heroHeadline ?? solution.title
-    const description = solution.heroBody ?? solution.subtitle ?? ''
+    const title = solution.heroHeadline ?? ''
+    const description = solution.heroBody ?? ''
     return {
         title,
         description,
@@ -35,15 +35,15 @@ export default async function SolutionPage({ params }: Props) {
     const useCases = solution.useCases ?? []
     const keyFeatures = solution.keyFeatures ?? []
 
+
     return (
         <div className={classes.page}>
             <Background />
             <div className={classes.content}>
                 <SolutionHero
-                    kicker={solution.heroKicker}
-                    headline={solution.heroHeadline ?? solution.title}
+                    headline={solution.heroHeadline}
                     headlineAccent={solution.heroHeadlineAccent}
-                    body={solution.heroBody ?? solution.subtitle}
+                    body={solution.heroBody}
                     steps={solution.heroSteps}
                 />
 

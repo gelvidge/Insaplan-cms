@@ -1,35 +1,34 @@
 import { ThemeIcon } from '@mantine/core'
 import {
-    IconChartBar, IconPalette, IconBrain,
-    IconAdjustments, IconBooks, IconDatabase,
+    IconClock, IconPalette, IconAdjustments, IconBooks, IconDatabase, IconSparkles,
 } from '@tabler/icons-react'
 import classes from './FeatureGrid.module.css'
 
-type FeatureIconKey = 'chart-bar' | 'palette' | 'brain' | 'adjustments' | 'books' | 'database'
+type BenefitIconKey = 'clock' | 'palette' | 'adjustments' | 'books' | 'database' | 'sparkles'
 
-const iconMap: Record<FeatureIconKey, React.ComponentType<{ size?: number }>> = {
-    'chart-bar': IconChartBar,
+const iconMap: Record<BenefitIconKey, React.ComponentType<{ size?: number }>> = {
+    clock:       IconClock,
     palette:     IconPalette,
-    brain:       IconBrain,
     adjustments: IconAdjustments,
     books:       IconBooks,
     database:    IconDatabase,
+    sparkles:    IconSparkles,
 }
 
-interface Feature {
+interface Benefit {
     icon?: string
     title: string
     description: string
-    benefits?: { label: string }[]
+    pills?: { label: string }[]
 }
 
-interface FeatureGridProps {
+interface BenefitsGridProps {
     heading: string
     subheading: string
-    features: Feature[]
+    benefits: Benefit[]
 }
 
-// Indices of features that get the wide card treatment (span 2 cols, show screenshot)
+// Indices of benefits that get the wide card treatment (span 2 cols, show screenshot)
 const WIDE_INDICES = new Set([0, 3])
 
 function MockScreen({ variant }: { variant: 'dashboard' | 'report' | 'knowledge' }) {
@@ -99,9 +98,9 @@ function MockScreen({ variant }: { variant: 'dashboard' | 'report' | 'knowledge'
     )
 }
 
-const mockVariants: Array<'dashboard' | 'report' | 'knowledge'> = ['dashboard', 'report', 'knowledge']
+const mockVariants: Array<'dashboard' | 'report' | 'knowledge'> = ['report', 'knowledge']
 
-export default function FeatureGrid({ heading, subheading, features }: FeatureGridProps) {
+export default function BenefitsGrid({ heading, subheading, benefits }: BenefitsGridProps) {
     return (
         <section className={classes.root}>
             <div className={classes.inner}>
@@ -111,8 +110,8 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
                 </div>
 
                 <div className={classes.grid}>
-                    {features.map((f, i) => {
-                        const Icon = (f.icon && iconMap[f.icon as FeatureIconKey]) || IconChartBar
+                    {benefits.map((b, i) => {
+                        const Icon = (b.icon && iconMap[b.icon as BenefitIconKey]) || IconSparkles
                         const isWide = WIDE_INDICES.has(i)
                         const mockVariantIndex = Array.from(WIDE_INDICES).indexOf(i)
                         const mockVariant = mockVariants[mockVariantIndex] ?? 'dashboard'
@@ -123,21 +122,23 @@ export default function FeatureGrid({ heading, subheading, features }: FeatureGr
                                 className={`${classes.card} ${isWide ? classes.cardWide : ''}`}
                             >
                                 <div className={classes.cardContent}>
-                                    <ThemeIcon
-                                        size={40}
-                                        radius="md"
-                                        variant="gradient"
-                                        gradient={{ from: 'navy.7', to: 'violet.5', deg: 135 }}
-                                        className={classes.icon}
-                                    >
-                                        <Icon size={20} />
-                                    </ThemeIcon>
-                                    <h3 className={classes.title}>{f.title}</h3>
-                                    <p className={classes.desc}>{f.description}</p>
-                                    {f.benefits && f.benefits.length > 0 && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                        <ThemeIcon
+                                            size={40}
+                                            radius="md"
+                                            variant="gradient"
+                                            gradient={{ from: 'navy.7', to: 'violet.5', deg: 135 }}
+                                            className={classes.icon}
+                                        >
+                                            <Icon size={20} />
+                                        </ThemeIcon>
+                                        <h3 className={classes.title}>{b.title}</h3>
+                                    </div>
+                                    <p className={classes.desc}>{b.description}</p>
+                                    {b.pills && b.pills.length > 0 && (
                                         <div className={classes.pills}>
-                                            {f.benefits.slice(0, 3).map((b, j) => (
-                                                <span key={j} className={classes.pill}>{b.label}</span>
+                                            {b.pills.slice(0, 3).map((p, j) => (
+                                                <span key={j} className={classes.pill}>{p.label}</span>
                                             ))}
                                         </div>
                                     )}
