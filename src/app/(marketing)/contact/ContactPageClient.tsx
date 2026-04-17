@@ -39,6 +39,13 @@ export default function ContactPageClient({
                     <Card shadow="sm" padding="xl" radius="md" withBorder>
                         <form action={formAction}>
                             <Stack gap="md">
+                                <TextInput label="Name" name="name" placeholder={namePlaceholder} required />
+                                <TextInput label="Email" name="email" type="email" placeholder={emailPlaceholder} required />
+                                <TextInput label="Company" name="company" placeholder={companyPlaceholder} />
+                                <Textarea label="Message" name="message" placeholder={messagePlaceholder} minRows={10} required />
+                                <Button type="submit" size="lg" variant="filled" loading={isPending}>
+                                    {submitButtonLabel}
+                                </Button>
                                 {state?.success && (
                                     <Alert icon={<IconCheck size={16} />} color="green" title="Message Sent">
                                         {successMessage}
@@ -49,13 +56,6 @@ export default function ContactPageClient({
                                         {state.error}
                                     </Alert>
                                 )}
-                                <TextInput label="Name" name="name" placeholder={namePlaceholder} required />
-                                <TextInput label="Email" name="email" type="email" placeholder={emailPlaceholder} required />
-                                <TextInput label="Company" name="company" placeholder={companyPlaceholder} />
-                                <Textarea label="Message" name="message" placeholder={messagePlaceholder} minRows={10} required />
-                                <Button type="submit" size="lg" variant="filled" loading={isPending}>
-                                    {submitButtonLabel}
-                                </Button>
                                 <Text size="sm" c="dimmed" ta="center">
                                     {responseNote}
                                 </Text>

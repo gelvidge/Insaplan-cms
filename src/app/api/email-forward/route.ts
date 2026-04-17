@@ -37,10 +37,16 @@ export async function POST(request: NextRequest) {
         return Response.json({ error: 'Invalid JSON' }, { status: 400 })
     }
 
-    const event = body as { type?: string; data?: { email_id?: string } }
+    const event = body as { type?: string; data?: { email_id?: string; from?: string; to?: string[] } }
 
     if (event.type !== 'email.received' || !event.data?.email_id) {
-        // Acknowledge other event types without acting
+        return Response.json({ received: true })
+    }
+
+    // Only forward emails addressed to insaplan.com, not sent from it
+    const toAddresses = event.data.to ?? []
+    const isToInsaplan = toAddresses.some(addr => addr.toLowerCase().includes('@insaplan.com'))
+    if (!isToInsaplan) {
         return Response.json({ received: true })
     }
 
