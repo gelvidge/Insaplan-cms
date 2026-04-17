@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Box, Container, Title, Text, Stack, Grid, GridCol } from '@mantine/core'
 import { IconCheck, IconBellRinging, IconFileExport } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
@@ -6,6 +7,17 @@ import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
 import { fetchProductReportingPage } from '@/lib/queries'
 import classes from './page.module.css'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const pg = await fetchProductReportingPage().catch(() => null)
+    const title = pg?.seo?.metaTitle ?? pg?.heroTitle ?? 'Reporting'
+    const description = pg?.seo?.metaDescription ?? pg?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/product/reporting' },
+    }
+}
 
 export default async function ProductReportingPage() {
     const pg = (await fetchProductReportingPage().catch(() => null)) ?? {}

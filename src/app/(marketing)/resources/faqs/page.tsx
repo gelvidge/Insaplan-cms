@@ -1,8 +1,20 @@
+import type { Metadata } from 'next'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import { fetchFAQs, fetchFAQsPage } from '@/lib/queries'
 import FAQClient from './FAQClient'
 import classes from './faq.module.css'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const fp = await fetchFAQsPage().catch(() => null)
+    const title = fp?.seo?.metaTitle ?? fp?.heroTitle ?? 'FAQs'
+    const description = fp?.seo?.metaDescription ?? fp?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/resources/faqs' },
+    }
+}
 
 // Extract plain text from Payload Lexical richText nodes
 function lexicalToPlainText(node: any): string {
@@ -52,8 +64,24 @@ export default async function FAQPage() {
         }
     }
 
+    const faqSchema = faqs.length > 0 ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+    } : null
+
     return (
         <div className={classes.page}>
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
             <Background />
             <div className={classes.content}>
                 <PageHero title={heroTitle} subtitle={heroSubtitle} />

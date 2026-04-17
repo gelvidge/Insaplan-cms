@@ -1,9 +1,21 @@
+import type { Metadata } from 'next'
 import Background from '@/components/marketing/Background'
 import CTASection from '@/components/marketing/CTASection'
 import PageHero from '@/components/marketing/PageHero'
 import { fetchPricingPlans, fetchPricingPage } from '@/lib/queries'
 import PricingClient from './PricingClient'
 import classes from './page.module.css'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const pp = await fetchPricingPage().catch(() => null)
+    const title = pp?.seo?.metaTitle ?? pp?.heroTitle ?? 'Pricing'
+    const description = pp?.seo?.metaDescription ?? pp?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/pricing' },
+    }
+}
 
 export default async function PricingPage() {
     const [pp, rawPlans] = await Promise.all([

@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const ContactPageGlobal: GlobalConfig = {
     slug: 'contact-page',
@@ -29,5 +30,6 @@ export const ContactPageGlobal: GlobalConfig = {
             
         },
         { name: 'responseNote', type: 'text'},
+        ...seoFields,
     ],
 }

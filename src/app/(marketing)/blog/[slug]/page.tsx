@@ -22,9 +22,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params
     const post = await fetchBlogPost(slug)
     if (!post) return { title: 'Post Not Found' }
+    const title = post.seo?.metaTitle ?? post.title
+    const description = post.seo?.metaDescription ?? post.excerpt ?? ''
     return {
-        title: `${post.title} | Insaplan Blog`,
-        description: post.excerpt,
+        title,
+        description,
+        openGraph: {
+            type: 'article',
+            title,
+            description,
+            url: `https://insaplan.com/blog/${slug}`,
+            publishedTime: post.publishedDate,
+            modifiedTime: post.updatedAt,
+        },
+        twitter: { card: 'summary_large_image', title, description },
     }
 }
 
@@ -53,8 +64,24 @@ export default async function BlogPostPage({ params }: Props) {
 
     const category = CATEGORY_LABELS[post.category] ?? post.category
 
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt ?? '',
+        datePublished: post.publishedDate,
+        dateModified: post.updatedAt ?? post.publishedDate,
+        author: { '@type': 'Organization', name: 'Insaplan', url: 'https://insaplan.com' },
+        publisher: { '@type': 'Organization', name: 'Insaplan', url: 'https://insaplan.com' },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `https://insaplan.com/blog/${post.slug}` },
+    }
+
     return (
         <div className={classes.page}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
             <Background />
             <div className={classes.content}>
 

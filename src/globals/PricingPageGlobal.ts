@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const PricingPageGlobal: GlobalConfig = {
     slug: 'pricing-page',
@@ -16,5 +17,6 @@ export const PricingPageGlobal: GlobalConfig = {
         { name: 'perMonthSuffix',       type: 'text', admin: { description: 'Suffix appended to monthly price display' } },
         { name: 'popularBadgeLabel',    type: 'text', admin: { description: 'Badge label on the highlighted plan' } },
         { name: 'billedAnnuallyLabel',  type: 'text', admin: { description: 'Note shown below price when annual billing is selected' } },
+        ...seoFields,
     ],
 }

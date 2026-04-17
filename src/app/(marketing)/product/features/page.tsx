@@ -7,9 +7,21 @@ import {
     IconBooks,
     IconDatabase,
 } from '@tabler/icons-react'
+import type { Metadata } from 'next'
 import PageHero from '@/components/marketing/PageHero'
 import CTASection from '@/components/marketing/CTASection'
 import { fetchProductFeaturesPage } from '@/lib/queries'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const pf = await fetchProductFeaturesPage().catch(() => null)
+    const title = pf?.seo?.metaTitle ?? pf?.heroTitle ?? 'Features'
+    const description = pf?.seo?.metaDescription ?? pf?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/product/features' },
+    }
+}
 
 type IconKey = 'chart-bar' | 'palette' | 'brain' | 'adjustments' | 'books' | 'database'
 const iconMap: Record<IconKey, React.ComponentType<{ size?: number }>> = {

@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const BlogPageGlobal: GlobalConfig = {
     slug: 'blog-page',
@@ -22,5 +23,6 @@ export const BlogPageGlobal: GlobalConfig = {
                 { name: 'label', type: 'text', required: true, admin: { description: 'Display label shown in the UI (e.g. "Product Updates")' } },
             ],
         },
+        ...seoFields,
     ],
 }

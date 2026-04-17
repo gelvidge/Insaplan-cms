@@ -1170,6 +1170,32 @@ export interface MarketingHome {
     buttonLabel?: string | null;
     note?: string | null;
   };
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1248,6 +1274,32 @@ export interface ProductOverviewPage {
           id?: string | null;
         }[]
       | null;
+  };
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1351,6 +1403,32 @@ export interface ProductPlanningPage {
         }[]
       | null;
   };
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1426,6 +1504,32 @@ export interface ProductReportingPage {
         }[]
       | null;
   };
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1492,6 +1596,32 @@ export interface ProductVisualsPage {
           id?: string | null;
         }[]
       | null;
+  };
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1577,6 +1707,32 @@ export interface SolutionsPage {
         id?: string | null;
       }[]
     | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1616,6 +1772,32 @@ export interface PricingPage {
    * Note shown below price when annual billing is selected
    */
   billedAnnuallyLabel?: string | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1646,6 +1828,32 @@ export interface BlogPage {
         id?: string | null;
       }[]
     | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1677,6 +1885,32 @@ export interface FaqsPage {
         id?: string | null;
       }[]
     | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1694,6 +1928,32 @@ export interface SupportPage {
    * Support email address shown on the page
    */
   contactEmail?: string | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1725,6 +1985,32 @@ export interface ContactPage {
   submitButtonLabel?: string | null;
   successMessage?: string | null;
   responseNote?: string | null;
+  seo?: {
+    /**
+     * Optimal length: 50-60 characters
+     */
+    metaTitle?: string | null;
+    /**
+     * Optimal length: 150-160 characters
+     */
+    metaDescription?: string | null;
+    /**
+     * Recommended: 1200x630px
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Leave empty to use default URL
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
+    keywords?: string[] | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2021,6 +2307,16 @@ export interface MarketingHomeSelect<T extends boolean = true> {
         buttonLabel?: T;
         note?: T;
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2103,6 +2399,16 @@ export interface ProductOverviewPageSelect<T extends boolean = true> {
                   };
               id?: T;
             };
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -2210,6 +2516,16 @@ export interface ProductPlanningPageSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2283,6 +2599,16 @@ export interface ProductReportingPageSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2354,6 +2680,16 @@ export interface ProductVisualsPageSelect<T extends boolean = true> {
               label?: T;
               id?: T;
             };
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -2430,6 +2766,16 @@ export interface SolutionsPageSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2448,6 +2794,16 @@ export interface PricingPageSelect<T extends boolean = true> {
   perMonthSuffix?: T;
   popularBadgeLabel?: T;
   billedAnnuallyLabel?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2469,6 +2825,16 @@ export interface BlogPageSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2488,6 +2854,16 @@ export interface FaqsPageSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2502,6 +2878,16 @@ export interface SupportPageSelect<T extends boolean = true> {
   comingSoonMessage?: T;
   contactHeading?: T;
   contactEmail?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2533,6 +2919,16 @@ export interface ContactPageSelect<T extends boolean = true> {
   submitButtonLabel?: T;
   successMessage?: T;
   responseNote?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

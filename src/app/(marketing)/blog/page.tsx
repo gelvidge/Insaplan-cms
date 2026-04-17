@@ -1,9 +1,21 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import CTASection from '@/components/marketing/CTASection'
 import { fetchBlogPosts, fetchBlogPage } from '@/lib/queries'
 import classes from './page.module.css'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const copy = await fetchBlogPage().catch(() => null)
+    const title = copy?.seo?.metaTitle ?? copy?.heroTitle ?? 'Blog'
+    const description = copy?.seo?.metaDescription ?? copy?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/blog' },
+    }
+}
 
 // Different decorative placeholder visuals cycling through card index
 function CardImagePlaceholder({ index, category }: { index: number; category: string }) {

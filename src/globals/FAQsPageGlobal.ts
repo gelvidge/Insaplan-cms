@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const FAQsPageGlobal: GlobalConfig = {
     slug: 'faqs-page',
@@ -20,5 +21,6 @@ export const FAQsPageGlobal: GlobalConfig = {
                 { name: 'label', type: 'text', required: true, admin: { description: 'Display label shown in the UI (e.g. "General")' } },
             ],
         },
+        ...seoFields,
     ],
 }

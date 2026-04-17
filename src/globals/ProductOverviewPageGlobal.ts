@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const ProductOverviewPageGlobal: GlobalConfig = {
     slug: 'product-overview-page',
@@ -146,5 +147,6 @@ export const ProductOverviewPageGlobal: GlobalConfig = {
                 },
             ],
         },
+        ...seoFields,
     ],
 }

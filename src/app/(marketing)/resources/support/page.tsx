@@ -1,8 +1,20 @@
+import type { Metadata } from 'next'
 import { Box, Container, Stack, Card, Text, ThemeIcon } from '@mantine/core'
 import { IconMail } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import { fetchSupportPage } from '@/lib/queries'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const sp = await fetchSupportPage().catch(() => null)
+    const title = sp?.seo?.metaTitle ?? sp?.heroTitle ?? 'Support'
+    const description = sp?.seo?.metaDescription ?? sp?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/resources/support' },
+    }
+}
 
 export default async function SupportPage() {
     const sp = await fetchSupportPage().catch(() => null) ?? {}

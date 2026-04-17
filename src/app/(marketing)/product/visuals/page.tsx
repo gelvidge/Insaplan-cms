@@ -40,12 +40,24 @@ import { IconChordCustom }   from '@/components/icons/IconChordCustom'
 import { IconSankey }        from '@/components/icons/IconSankey'
 import { IconSunburst }      from '@/components/icons/IconSunburst'
 import { IconFunnel }        from '@/components/icons/IconFunnel'
+import type { Metadata } from 'next'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import CTASection from '@/components/marketing/CTASection'
 import SolutionChallenges from '@/components/marketing/SolutionChallenges'
 import { fetchProductVisualsPage } from '@/lib/queries'
 import classes from './page.module.css'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const page = await fetchProductVisualsPage().catch(() => null)
+    const title = page?.seo?.metaTitle ?? page?.heroTitle ?? 'Visuals'
+    const description = page?.seo?.metaDescription ?? page?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/product/visuals' },
+    }
+}
 
 // ── Chart types ───────────────────────────────────────────────────────────────
 const CHART_TYPES = [

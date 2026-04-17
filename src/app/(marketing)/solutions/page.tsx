@@ -1,9 +1,21 @@
+import type { Metadata } from 'next'
 import { Box, Container, Title, Text, Stack, Grid, GridCol, Card, Button } from '@mantine/core'
 import Link from 'next/link'
 import Background from '@/components/marketing/Background'
 import PageHero from '@/components/marketing/PageHero'
 import CTASection from '@/components/marketing/CTASection'
 import { fetchSolutionsPage } from '@/lib/queries'
+
+export async function generateMetadata(): Promise<Metadata> {
+    const sp = await fetchSolutionsPage().catch(() => null)
+    const title = sp?.seo?.metaTitle ?? sp?.heroTitle ?? 'Solutions'
+    const description = sp?.seo?.metaDescription ?? sp?.heroSubtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: 'https://insaplan.com/solutions' },
+    }
+}
 
 export default async function SolutionsPage() {
     const sp = await fetchSolutionsPage().catch(() => null) ?? {}

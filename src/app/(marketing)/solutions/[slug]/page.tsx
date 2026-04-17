@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Box, Container, Title, Stack, List, ListItem, ThemeIcon } from '@mantine/core'
 import { IconCheck } from '@tabler/icons-react'
@@ -10,6 +11,19 @@ import { fetchSolutionBySlug } from '@/lib/queries'
 import classes from './page.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = await params
+    const solution = await fetchSolutionBySlug(slug).catch(() => null)
+    if (!solution) return { title: 'Solution Not Found' }
+    const title = solution.heroHeadline ?? solution.title
+    const description = solution.heroBody ?? solution.subtitle ?? ''
+    return {
+        title,
+        description,
+        openGraph: { title, description, url: `https://insaplan.com/solutions/${slug}` },
+    }
+}
 
 export default async function SolutionPage({ params }: Props) {
     const { slug } = await params

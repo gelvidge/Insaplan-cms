@@ -124,6 +124,16 @@ export async function fetchNavigationMenu(location: 'header' | 'footer' | 'mobil
     return result.docs[0] || null
 }
 
+export async function fetchSolutions() {
+    const payload = await getPayloadClient()
+    const result = await payload.find({
+        collection: 'solutions',
+        where: { status: { equals: 'published' } },
+        limit: 200,
+    })
+    return result.docs
+}
+
 export async function fetchSolutionBySlug(slug: string) {
     const payload = await getPayloadClient()
     const result = await payload.find({

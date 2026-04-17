@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { isAdminOrEditor, publicRead } from '../access'
+import { seoFields } from '../fields/seoFields'
 
 export const ProductFeaturesPageGlobal: GlobalConfig = {
     slug: 'product-features-page',
@@ -47,5 +48,6 @@ export const ProductFeaturesPageGlobal: GlobalConfig = {
                 { name: 'solution', type: 'textarea', required: true },
             ],
         },
+        ...seoFields,
     ],
 }
