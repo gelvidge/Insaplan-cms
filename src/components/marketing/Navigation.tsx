@@ -121,7 +121,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                     {items.map((item) =>
                         item.type === 'dropdown' && item.children?.length ? (
                             <Stack key={item.label} gap="sm">
-                                <Text size="xs" tt="uppercase" fw={600} c="gray.5">{item.label}</Text>
+                                <Text size="xs" tt="uppercase" fw={600} c="white">{item.label}</Text>
                                 {item.children.map((child) => (
                                     <Anchor
                                         key={child.label}
