@@ -11,17 +11,28 @@ export async function POST(request: NextRequest) {
         return Response.json({ error: 'Server misconfigured' }, { status: 500 })
     }
 
-    // Verify webhook secret if configured
+    const payload = await request.text()
+
     if (webhookSecret) {
-        const signature = request.headers.get('svix-signature')
-        if (!signature || signature !== webhookSecret) {
+        const resend = new Resend(apiKey)
+        try {
+            resend.webhooks.verify({
+                payload,
+                headers: {
+                    id: request.headers.get('svix-id') ?? '',
+                    timestamp: request.headers.get('svix-timestamp') ?? '',
+                    signature: request.headers.get('svix-signature') ?? '',
+                },
+                webhookSecret,
+            })
+        } catch {
             return Response.json({ error: 'Unauthorized' }, { status: 401 })
         }
     }
 
     let body: unknown
     try {
-        body = await request.json()
+        body = JSON.parse(payload)
     } catch {
         return Response.json({ error: 'Invalid JSON' }, { status: 400 })
     }
