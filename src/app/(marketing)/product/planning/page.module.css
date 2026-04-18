@@ -499,6 +499,10 @@
         grid-template-columns: 1fr;
     }
 
+    .viewGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .mapPanel {
         min-height: 520px;
     }
@@ -527,7 +531,16 @@
     .mapPanel {
         min-height: auto;
         display: grid;
-        gap: 12px;
+        gap: 8px;
+        padding: 20px;
+    }
+
+    .mapNodeSecondary {
+        margin-left: 24px;
+    }
+
+    .mapNodeTertiary {
+        margin-left: 48px;
     }
 
     .mapNodePrimary,
@@ -541,6 +554,10 @@
     }
 
     .connector {
+        display: none;
+    }
+
+    .connectorSvg {
         display: none;
     }
 

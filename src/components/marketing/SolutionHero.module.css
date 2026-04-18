@@ -3,16 +3,8 @@
     padding-top: 160px;
     padding-bottom: 80px;
     overflow: hidden;
-    /* transparent so the page-level animated Background shows through */
     background: transparent;
     color: white;
-}
-
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 110px;
-        padding-bottom: 60px;
-    }
 }
 
 .inner {
@@ -27,7 +19,6 @@
     max-width: 780px;
 }
 
-/* ── Left column ── */
 .headline {
     font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 900;
@@ -89,3 +80,44 @@
     flex-shrink: 0;
 }
 
+.stepArrowDown {
+    display: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+
+    .steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-top: 40px;
+    }
+
+    .step {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .stepArrow {
+        display: none;
+    }
+
+    .stepArrowDown {
+        display: block;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .stepLabel {
+        width: 200px;
+        text-align: center;
+        margin: 0;
+    }
+}

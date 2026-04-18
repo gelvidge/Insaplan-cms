@@ -54,7 +54,10 @@ export default function SolutionHero({ headline, headlineAccent, body, steps }: 
                                     {step.label}
                                 </span>
                                 {i < steps.length - 1 && (
-                                    <span className={classes.stepArrow} aria-hidden>→</span>
+                                    <>
+                                        <span className={classes.stepArrow} aria-hidden>→</span>
+                                        <span className={classes.stepArrowDown} aria-hidden>↓</span>
+                                    </>
                                 )}
                             </div>
                         ))}
