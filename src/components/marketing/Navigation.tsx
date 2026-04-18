@@ -113,7 +113,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                 padding="md"
                 hiddenFrom="md"
                 zIndex={1000}
-                styles={{ content: { backgroundColor: '#0f1117' }, header: { backgroundColor: '#0f1117' } }}
+                styles={{ content: { backgroundColor: 'var(--mantine-color-blue-7)' }, header: { backgroundColor: 'var(--mantine-color-blue-7)' } }}
             >
                 <Stack gap="lg">
                     <Logo height={40} />
