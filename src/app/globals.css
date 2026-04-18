@@ -1,1 +1,6 @@
 /* Payload UI styles are imported via (payload)/layout.tsx @payloadcms/next/css */
+
+html,
+body {
+  background-color: #3a427a;
+}
