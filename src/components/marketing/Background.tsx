@@ -119,7 +119,7 @@ export const ChartOverlay = () => (
 const Background = () => {
   return (
     <>
-      <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: -2, transform: 'translateZ(0)', willChange: 'transform' }}>
+      <div style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: -2, transform: 'translateZ(0)', willChange: 'transform', backgroundColor: '#3a427a' }}>
         <Grainient
           color1="#3a427a"
           color2="#594a8c"

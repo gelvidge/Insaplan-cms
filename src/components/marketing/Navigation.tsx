@@ -40,9 +40,11 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 50)
-        window.addEventListener('scroll', onScroll, { passive: true })
-        return () => window.removeEventListener('scroll', onScroll)
+        const scrollEl = document.getElementById('scroll-root')
+        const onScroll = () => setScrolled((scrollEl?.scrollTop ?? window.scrollY) > 50)
+        const target = scrollEl ?? window
+        target.addEventListener('scroll', onScroll, { passive: true })
+        return () => target.removeEventListener('scroll', onScroll)
     }, [])
 
     const items: NavItem[] = (menuItems as NavItem[]) ?? []

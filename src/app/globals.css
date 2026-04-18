@@ -1,1 +1,15 @@
 /* Payload UI styles are imported via (payload)/layout.tsx @payloadcms/next/css */
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  background-color: #3a427a;
+}
+
+#scroll-root {
+  overflow-y: auto;
+  height: 100%;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
