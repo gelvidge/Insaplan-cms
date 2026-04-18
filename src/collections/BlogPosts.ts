@@ -12,7 +12,7 @@ export const BlogPosts: CollectionConfig = {
         group: 'Content'
     },
     access: {
-        read: publishedOnly,
+        read: isAdminOrEditor,
         create: isAdminOrEditor,
         update: isAdminOrEditor,
         delete: isAdminOrEditor
@@ -102,9 +102,7 @@ export const BlogPosts: CollectionConfig = {
         },
         ...seoFields
     ],
-    versions: {
-        drafts: true
-    },
+    versions: false,
     hooks: {
         beforeChange: [
             ({ data }) => {

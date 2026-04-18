@@ -373,7 +373,6 @@ export interface BlogPost {
   };
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -480,21 +479,6 @@ export interface Solution {
       }[]
     | null;
   heroImage?: (number | null) | Media;
-  overview: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   /**
    * The key challenges or frustrations this solution resolves for the audience
    */
@@ -800,7 +784,6 @@ export interface BlogPostsSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -864,7 +847,6 @@ export interface SolutionsSelect<T extends boolean = true> {
         id?: T;
       };
   heroImage?: T;
-  overview?: T;
   challenges?:
     | T
     | {

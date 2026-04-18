@@ -29,7 +29,7 @@ interface BenefitsGridProps {
 }
 
 // Indices of benefits that get the wide card treatment (span 2 cols, show screenshot)
-const WIDE_INDICES = new Set([0, 3])
+const WIDE_INDICES = new Set([0, 3, 4])
 
 function MockScreen({ variant }: { variant: 'dashboard' | 'report' | 'knowledge' }) {
     return (
@@ -98,7 +98,7 @@ function MockScreen({ variant }: { variant: 'dashboard' | 'report' | 'knowledge'
     )
 }
 
-const mockVariants: Array<'dashboard' | 'report' | 'knowledge'> = ['report', 'knowledge']
+const mockVariants: Array<'dashboard' | 'report' | 'knowledge'> = ['report', 'knowledge', 'dashboard']
 
 export default function BenefitsGrid({ heading, subheading, benefits }: BenefitsGridProps) {
     return (
@@ -116,11 +116,17 @@ export default function BenefitsGrid({ heading, subheading, benefits }: Benefits
                         const mockVariantIndex = Array.from(WIDE_INDICES).indexOf(i)
                         const mockVariant = mockVariants[mockVariantIndex] ?? 'dashboard'
 
+                        const flipped = i === 0 || i === 4
                         return (
                             <article
                                 key={i}
                                 className={`${classes.card} ${isWide ? classes.cardWide : ''}`}
                             >
+                                {isWide && flipped && (
+                                    <div className={`${classes.cardScreenshot} ${classes.cardScreenshotLeft}`}>
+                                        <MockScreen variant={mockVariant} />
+                                    </div>
+                                )}
                                 <div className={classes.cardContent}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                         <ThemeIcon
@@ -143,7 +149,7 @@ export default function BenefitsGrid({ heading, subheading, benefits }: Benefits
                                         </div>
                                     )}
                                 </div>
-                                {isWide && (
+                                {isWide && !flipped && (
                                     <div className={classes.cardScreenshot}>
                                         <MockScreen variant={mockVariant} />
                                     </div>

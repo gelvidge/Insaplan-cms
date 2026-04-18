@@ -73,12 +73,6 @@ export const Solutions: CollectionConfig = {
             label: 'Hero Image'
         },
         {
-            name: 'overview',
-            type: 'richText',
-            required: true,
-            label: 'Solution Overview'
-        },
-        {
             name: 'challenges',
             type: 'array',
             label: 'Challenges & Frustrations',

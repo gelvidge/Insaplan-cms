@@ -16,12 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params
     const solution = await fetchSolutionBySlug(slug).catch(() => null)
     if (!solution) return { title: 'Solution Not Found' }
-    const title = solution.heroHeadline ?? ''
-    const description = solution.heroBody ?? ''
+    const title = (solution.seo as any)?.metaTitle || solution.heroHeadline || ''
+    const description = (solution.seo as any)?.metaDescription || solution.heroBody || ''
+    const keywords = (solution.seo as any)?.keywords || undefined
+    const canonical = (solution.seo as any)?.canonicalUrl || `https://insaplan.com/solutions/${slug}`
+    const noIndex = (solution.seo as any)?.noIndex ?? false
     return {
         title,
         description,
-        openGraph: { title, description, url: `https://insaplan.com/solutions/${slug}` },
+        ...(keywords && { keywords }),
+        ...(noIndex && { robots: { index: false, follow: false } }),
+        alternates: { canonical },
+        openGraph: { title, description, url: canonical },
     }
 }
 

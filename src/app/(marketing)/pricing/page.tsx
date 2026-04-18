@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { IconClock } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
 import CTASection from '@/components/marketing/CTASection'
 import PageHero from '@/components/marketing/PageHero'
@@ -53,16 +54,26 @@ export default async function PricingPage() {
                 />
                 <div className={classes.body}>
                     <div className={classes.inner}>
-                        <PricingClient
-                            plans={plans}
-                            monthlyLabel={(pp as any)?.monthlyLabel}
-                            annualLabel={(pp as any)?.annualLabel}
-                            annualDiscountBadge={(pp as any)?.annualDiscountBadge}
-                            customPriceLabel={(pp as any)?.customPriceLabel}
-                            perMonthSuffix={(pp as any)?.perMonthSuffix}
-                            popularBadgeLabel={(pp as any)?.popularBadgeLabel}
-                            billedAnnuallyLabel={(pp as any)?.billedAnnuallyLabel}
-                        />
+                        <div style={{ display: 'flex', justifyContent: 'center', padding: '48px 24px' }}>
+                            <div style={{
+                                background: 'white',
+                                borderRadius: '16px',
+                                padding: '48px 56px',
+                                textAlign: 'center',
+                                maxWidth: '480px',
+                                boxShadow: '0 2px 16px rgba(20,28,48,0.08)',
+                            }}>
+                                <div style={{ marginBottom: '16px', color: '#2853a4' }}><IconClock size={40} stroke={1.5} /></div>
+                                <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#111e36', margin: '0 0 12px' }}>
+                                    Pricing Coming Soon
+                                </h2>
+                                <p style={{ fontSize: '0.95rem', color: 'rgba(20,36,70,0.6)', lineHeight: 1.6, margin: 0 }}>
+                                    Pricing will be available closer to launch. In the meantime,{' '}
+                                    <a href="/contact" style={{ color: '#2853a4', fontWeight: 600 }}>get in touch</a>
+                                    {' '}to discuss your needs.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <CTASection />

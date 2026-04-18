@@ -34,9 +34,9 @@ export default function ContactPageClient({
     return (
         <div style={{ display: 'contents' }}>
             <PageHero title={heroTitle} subtitle={heroSubtitle} />
-            <Box py={80} bg="gray.0" style={{ flex: 1, borderTop: '1px solid rgba(20,28,48,0.06)' }}>
+            <Box py={80} bg="gray.1" style={{ flex: 1 }}>
                 <Container size="sm">
-                    <Card shadow="sm" padding="xl" radius="md" withBorder>
+                    <Card shadow="sm" padding="xl" radius="md">
                         <form action={formAction}>
                             <Stack gap="md">
                                 <TextInput label="Name" name="name" placeholder={namePlaceholder} required />

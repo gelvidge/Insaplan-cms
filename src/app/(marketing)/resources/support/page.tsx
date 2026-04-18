@@ -30,10 +30,10 @@ export default async function SupportPage() {
             <Background />
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <PageHero title={heroTitle} subtitle={heroSubtitle} />
-            <Box py={80} bg="gray.0" style={{ borderTop: '1px solid rgba(20,28,48,0.06)', flex: 1 }}>
+            <Box py={80} bg="gray.1" style={{ flex: 1 }}>
                 <Container size="md">
                     <Stack gap="xl">
-<Card shadow="sm" padding="xl" radius="md" withBorder>
+                        <Card shadow="sm" padding="xl" radius="md">
                             <Stack align="center" gap="md" ta="center">
                                 <ThemeIcon size={60} radius="md" variant="light" color="navy.6">
                                     <IconMail size={32} />

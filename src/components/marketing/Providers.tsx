@@ -4,5 +4,5 @@ import { MantineProvider } from '@mantine/core'
 import { theme } from '@/theme'
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-    return <MantineProvider theme={theme} defaultColorScheme="dark">{children}</MantineProvider>
+    return <MantineProvider theme={theme} forceColorScheme="light">{children}</MantineProvider>
 }
