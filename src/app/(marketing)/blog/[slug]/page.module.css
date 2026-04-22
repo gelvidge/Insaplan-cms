@@ -200,6 +200,14 @@
     text-decoration-color: rgba(46, 85, 153, 0.3);
 }
 
+.article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin-inline: auto;
+}
+
 /* ── Inline image placeholders ───────────────────────────────────────────── */
 /* These wrap around text — float left on even, right on odd */
 .article :global(.inline-image) {

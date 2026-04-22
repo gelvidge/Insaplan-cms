@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Read(//c/Users/garet/GitRep/Insaplan/src/components/Chart/icons/**)"
+      "Read(//c/Users/garet/GitRep/Insaplan/src/components/Chart/icons/**)",
+      "Read(//c/Users/garet/GitRep/Insaplan/src/**)",
+      "Read(//c/Users/garet/GitRep/Insaplan/**)",
+      "Bash(xargs grep *)"
     ]
   }
 }

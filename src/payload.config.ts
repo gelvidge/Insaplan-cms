@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, EXPERIMENTAL_TableFeature, FixedToolbarFeature } from '@payloadcms/richtext-lexical'
 import { resendAdapter } from '@payloadcms/email-resend'
 import sharp from 'sharp'
 import path from 'path'
@@ -85,7 +85,13 @@ export default buildConfig({
         SiteMetadataGlobal,
         SiteSettings,
     ],
-    editor: lexicalEditor({}),
+    editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+            ...defaultFeatures,
+            FixedToolbarFeature(),
+            EXPERIMENTAL_TableFeature(),
+        ],
+    }),
     typescript: {
         outputFile: path.resolve(dirname, '../payload-types.ts')
     },

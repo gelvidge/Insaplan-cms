@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import { IconClock, IconCalendar } from '@tabler/icons-react'
 import Background from '@/components/marketing/Background'
 import CTASection from '@/components/marketing/CTASection'
 import { fetchBlogPost, fetchBlogPosts, fetchBlogPage } from '@/lib/queries'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import { resolveMediaURL } from '@/lib/media'
 import type { Metadata } from 'next'
 import classes from './page.module.css'
 import BlogArticle from './BlogArticle'
@@ -110,22 +112,33 @@ export default async function BlogPostPage({ params }: Props) {
                         <p className={classes.heroExcerpt}>{post.excerpt}</p>
                     </div>
 
-                    {/* Image placeholder beneath headline */}
+                    {/* Featured image */}
                     <div className={classes.heroImage}>
-                        <div className={classes.heroImageOrb} style={{ top: -60, right: -60, width: 300, height: 300, background: 'radial-gradient(circle, rgba(120,80,220,0.3), transparent 70%)' }} />
-                        <div className={classes.heroImageOrb} style={{ bottom: -40, left: -40, width: 220, height: 220, background: 'radial-gradient(circle, rgba(60,160,255,0.2), transparent 70%)' }} />
-                        <div className={classes.heroImageContent}>
-                            {/* Mock bar chart */}
-                            <div className={classes.mockDoc}>
-                                <div className={classes.mockDocHeading} />
-                                <div className={classes.mockDocLine} style={{ width: '60%' }} />
-                            </div>
-                            <div className={classes.mockBars}>
-                                {[50, 75, 40, 90, 60, 80, 55, 70, 45, 85].map((h, i) => (
-                                    <div key={i} className={classes.mockBar} style={{ height: `${h}%` }} />
-                                ))}
-                            </div>
-                        </div>
+                        {resolveMediaURL(post.featuredImage, 'hero') ? (
+                            <Image
+                                src={resolveMediaURL(post.featuredImage, 'hero')!}
+                                alt={typeof post.featuredImage === 'object' && post.featuredImage?.alt ? post.featuredImage.alt : post.title}
+                                fill
+                                style={{ objectFit: 'cover' }}
+                                priority
+                            />
+                        ) : (
+                            <>
+                                <div className={classes.heroImageOrb} style={{ top: -60, right: -60, width: 300, height: 300, background: 'radial-gradient(circle, rgba(120,80,220,0.3), transparent 70%)' }} />
+                                <div className={classes.heroImageOrb} style={{ bottom: -40, left: -40, width: 220, height: 220, background: 'radial-gradient(circle, rgba(60,160,255,0.2), transparent 70%)' }} />
+                                <div className={classes.heroImageContent}>
+                                    <div className={classes.mockDoc}>
+                                        <div className={classes.mockDocHeading} />
+                                        <div className={classes.mockDocLine} style={{ width: '60%' }} />
+                                    </div>
+                                    <div className={classes.mockBars}>
+                                        {[50, 75, 40, 90, 60, 80, 55, 70, 45, 85].map((h, i) => (
+                                            <div key={i} className={classes.mockBar} style={{ height: `${h}%` }} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
