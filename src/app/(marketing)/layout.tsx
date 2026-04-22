@@ -39,8 +39,10 @@ export default async function MarketingLayout({ children }: { children: React.Re
             <body>
                 <Providers>
                     <Navigation menuItems={headerNav?.items} />
-                    <main>{children}</main>
-                    <Footer data={footerData} />
+                    <div id="scroll-root">
+                        <main>{children}</main>
+                        <Footer data={footerData} />
+                    </div>
                 </Providers>
             </body>
         </html>

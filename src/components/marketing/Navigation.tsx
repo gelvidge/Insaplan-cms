@@ -40,9 +40,11 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 50)
-        window.addEventListener('scroll', onScroll, { passive: true })
-        return () => window.removeEventListener('scroll', onScroll)
+        const scrollEl = document.getElementById('scroll-root')
+        const onScroll = () => setScrolled((scrollEl?.scrollTop ?? window.scrollY) > 50)
+        const target = scrollEl ?? window
+        target.addEventListener('scroll', onScroll, { passive: true })
+        return () => target.removeEventListener('scroll', onScroll)
     }, [])
 
     const items: NavItem[] = (menuItems as NavItem[]) ?? []
@@ -113,7 +115,7 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                 padding="md"
                 hiddenFrom="md"
                 zIndex={1000}
-                styles={{ content: { backgroundColor: '#0f1117' }, header: { backgroundColor: '#0f1117' } }}
+                styles={{ content: { backgroundColor: 'var(--mantine-color-blue-7)' }, header: { backgroundColor: 'var(--mantine-color-blue-7)' } }}
             >
                 <Stack gap="lg">
                     <Logo height={40} />
