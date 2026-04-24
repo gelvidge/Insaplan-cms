@@ -101,6 +101,15 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                                     </Button>
                                 )
                             )}
+                            <Button
+                                component={Link}
+                                href="/request-demo"
+                                variant="white"
+                                color="blue"
+                                className={classes.ctaButton}
+                            >
+                                Request Demo
+                            </Button>
                         </Group>
 
                         <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" color="white" />
@@ -148,6 +157,16 @@ export const Navigation = ({ menuItems }: NavigationProps) => {
                             </Anchor>
                         )
                     )}
+                    <Button
+                        component={Link}
+                        href="/request-demo"
+                        variant="outline"
+                        color="white"
+                        className={classes.mobileCtaButton}
+                        onClick={closeDrawer}
+                    >
+                        Request Demo
+                    </Button>
                 </Stack>
             </Drawer>
         </>

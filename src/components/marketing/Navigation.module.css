@@ -48,11 +48,19 @@
     color: white !important;
 }
 
+.ctaButton {
+    min-width: 150px;
+}
+
 .menuItem {
     font-size: 14px;
     padding: 12px 16px;
     transition: all 0.2s ease;
     color: var(--mantine-color-gray-9);
+}
+
+.mobileCtaButton {
+    width: 100%;
 }
 
 .menuItem:hover {
