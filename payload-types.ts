@@ -436,6 +436,14 @@ export interface PricingPlan {
     variant?: ('primary' | 'secondary' | 'outline') | null;
   };
   /**
+   * Stripe Price ID for monthly billing (e.g. price_xxx). Leave blank for custom/enterprise contact-sales plans.
+   */
+  stripePriceIdMonthly?: string | null;
+  /**
+   * Stripe Price ID for annual billing (e.g. price_xxx). Leave blank for custom/enterprise contact-sales plans.
+   */
+  stripePriceIdAnnual?: string | null;
+  /**
    * Mark as "Most Popular" plan
    */
   popular?: boolean | null;
@@ -825,6 +833,8 @@ export interface PricingPlansSelect<T extends boolean = true> {
         url?: T;
         variant?: T;
       };
+  stripePriceIdMonthly?: T;
+  stripePriceIdAnnual?: T;
   popular?: T;
   order?: T;
   updatedAt?: T;
@@ -1673,6 +1683,10 @@ export interface ProductKnowledgebasePage {
  */
 export interface PricingPage {
   id: number;
+  /**
+   * When checked, the pricing page shows a "Coming Soon" placeholder instead of live pricing. Uncheck to publish pricing.
+   */
+  comingSoon?: boolean | null;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
   /**
@@ -2691,6 +2705,7 @@ export interface ProductKnowledgebasePageSelect<T extends boolean = true> {
  * via the `definition` "pricing-page_select".
  */
 export interface PricingPageSelect<T extends boolean = true> {
+  comingSoon?: T;
   heroTitle?: T;
   heroSubtitle?: T;
   monthlyLabel?: T;

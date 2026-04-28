@@ -118,6 +118,22 @@ export const PricingPlans: CollectionConfig = {
             ]
         },
         {
+            name: 'stripePriceIdMonthly',
+            type: 'text',
+            admin: {
+                position: 'sidebar',
+                description: 'Stripe Price ID for monthly billing (e.g. price_xxx). Leave blank for custom/enterprise contact-sales plans.'
+            }
+        },
+        {
+            name: 'stripePriceIdAnnual',
+            type: 'text',
+            admin: {
+                position: 'sidebar',
+                description: 'Stripe Price ID for annual billing (e.g. price_xxx). Leave blank for custom/enterprise contact-sales plans.'
+            }
+        },
+        {
             name: 'popular',
             type: 'checkbox',
             defaultValue: false,

@@ -19,7 +19,7 @@ export default function RequestDemoPage() {
                     emailPlaceholder="Enter your email"
                     submitButtonLabel="Request Demo"
                     successMessage="Thanks! We’ll be in touch soon to schedule your demo."
-                    responseNote="You’ll receive a confirmation from demo@insaplan.com shortly."
+                    responseNote="You’ll receive a confirmation from support@insaplan.com shortly."
                 />
             </div>
         </div>

@@ -8,6 +8,15 @@ export const PricingPageGlobal: GlobalConfig = {
     admin: { group: 'Pages' },
     access: { read: publicRead, update: isAdminOrEditor },
     fields: [
+        {
+            name: 'comingSoon',
+            type: 'checkbox',
+            defaultValue: true,
+            admin: {
+                position: 'sidebar',
+                description: 'When checked, the pricing page shows a "Coming Soon" placeholder instead of live pricing. Uncheck to publish pricing.'
+            }
+        },
         { name: 'heroTitle',            type: 'text' },
         { name: 'heroSubtitle',         type: 'text' },
         { name: 'monthlyLabel',         type: 'text', admin: { description: 'Label for the monthly billing toggle option' } },
